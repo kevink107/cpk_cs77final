@@ -1,4 +1,4 @@
-# Install script for directory: /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/tech_proj
+# Install script for directory: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/assignments/tech_proj
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.25.1/bin/cmake
+CMAKE_COMMAND = /usr/local/Cellar/cmake/3.25.2/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.25.1/bin/cmake -E rm -f
+RM = /usr/local/Cellar/cmake/3.25.2/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/logan/Desktop/cs77/dartmouth-cg-starter-code
+CMAKE_SOURCE_DIR = "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build
+CMAKE_BINARY_DIR = "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.25.1/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/Cellar/cmake/3.25.2/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.25.1/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/Cellar/cmake/3.25.2/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/CMakeFiles /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments//CMakeFiles/progress.marks
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/CMakeFiles 0
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments//CMakeFiles/progress.marks"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/clean
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,17 +103,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/preinstall
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/preinstall
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -135,6 +135,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

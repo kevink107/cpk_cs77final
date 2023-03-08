@@ -527,15 +527,39 @@ vec3 ShadeBoat( vec3 pos, vec3 ray )
 
 	// anti-alias the albedo
 	float aa = 4.0/iResolution.x;
-	
+	float PI = 3.1415926535;
 	//vec3 albedo = ((fract(pos.x)-.5)*(fract(pos.y)-.5)*(fract(pos.z)-.5) < 0.0) ? vec3(0) : vec3(1);
-	vec3 albedo = vec3(1,.01,0);
-	albedo = mix( vec3(.04), albedo, smoothstep( .25-aa, .25, abs(pos.y) ) );
-	albedo = mix( mix( vec3(1), vec3(.04), smoothstep(-aa*4.0,aa*4.0,cos(atan(pos.x,pos.z)*6.0)) ), albedo, smoothstep( .2-aa*1.5, .2, abs(pos.y) ) );
-	albedo = mix( vec3(.04), albedo, smoothstep( .05-aa*1.0, .05, abs(abs(pos.y)-.6) ) );
-	albedo = mix( vec3(1,.8,.08), albedo, smoothstep( .05-aa*1.0, .05, abs(abs(pos.y)-.65) ) );
+	// vec3 albedo = vec3(1,.01,0);
+	// albedo = mix( vec3(.04), albedo, smoothstep( .25-aa, .25, abs(pos.y) ) );
+	// albedo = mix( mix( vec3(1), vec3(.04), smoothstep(-aa*4.0,aa*4.0,cos(atan(pos.x,pos.z)*6.0)) ), albedo, smoothstep( .2-aa*1.5, .2, abs(pos.y) ) );
+	// albedo = mix( vec3(.04), albedo, smoothstep( .05-aa*1.0, .05, abs(abs(pos.y)-.6) ) );
+	// albedo = mix( vec3(1,.8,.08), albedo, smoothstep( .05-aa*1.0, .05, abs(abs(pos.y)-.65) ) );
 	
-	vec3 col = albedo*light;
+	vec3 col = vec3(1.0);
+
+    float radius = sqrt(pos.x*pos.x + pos.y*pos.y + pos.z*pos.z);
+    float phi = atan(-pos.z, pos.x) + PI;
+
+    float u = phi / (2.0 * PI); // longitude component
+    float v = 0.5 + (asin(-pos.y / radius) / PI); // latitude component
+
+    // divide longitude into six sections
+    float section = floor(u * 6.0);
+
+    if (section == 0.0 || section == 2.0 || section == 4.0) {
+        col = vec3(1.0); // alternating white bands
+    }
+    else if (section == 1.0) {
+        col = vec3(1.0, 0.0, 0.0); // red band
+    }
+    else if (section == 3.0) {
+        col = vec3(0.0, 0.0, 1.0); // blue band
+    }
+    else if (section == 5.0) {
+        col = vec3(0.0, 1.0, 0.0); // green band
+    }
+
+	col = col*light;
 	
 	// specular
 	vec3 h = normalize(lightDir-ray);
