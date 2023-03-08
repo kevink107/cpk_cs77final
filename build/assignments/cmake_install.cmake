@@ -1,4 +1,4 @@
-# Install script for directory: /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments
+# Install script for directory: /Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/assignments
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,14 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments/a0/cmake_install.cmake")
-  include("/Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments/a1/cmake_install.cmake")
-  include("/Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments/a2/cmake_install.cmake")
-  include("/Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments/a3/cmake_install.cmake")
-  include("/Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments/a4/cmake_install.cmake")
-  include("/Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments/a5/cmake_install.cmake")
-  include("/Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments/a6/cmake_install.cmake")
-  include("/Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments/tech_proj/cmake_install.cmake")
+  include("/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0/cmake_install.cmake")
 
 endif()
 

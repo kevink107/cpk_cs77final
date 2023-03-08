@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.25.1/bin/cmake
+CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.25.2/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.25.1/bin/cmake -E rm -f
+RM = /opt/homebrew/Cellar/cmake/3.25.2/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/logan/Desktop/cs77/dartmouth-cg-starter-code
+CMAKE_SOURCE_DIR = "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build
+CMAKE_BINARY_DIR = "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.25.1/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/3.25.2/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.25.1/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/3.25.2/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/CMakeFiles /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -129,97 +129,6 @@ assignment0/fast:
 	$(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/build
 .PHONY : assignment0/fast
 
-#=============================================================================
-# Target rules for targets named assignment1
-
-# Build rule for target.
-assignment1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignment1
-.PHONY : assignment1
-
-# fast build rule for target.
-assignment1/fast:
-	$(MAKE) $(MAKESILENT) -f assignments/a1/CMakeFiles/assignment1.dir/build.make assignments/a1/CMakeFiles/assignment1.dir/build
-.PHONY : assignment1/fast
-
-#=============================================================================
-# Target rules for targets named assignment2
-
-# Build rule for target.
-assignment2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignment2
-.PHONY : assignment2
-
-# fast build rule for target.
-assignment2/fast:
-	$(MAKE) $(MAKESILENT) -f assignments/a2/CMakeFiles/assignment2.dir/build.make assignments/a2/CMakeFiles/assignment2.dir/build
-.PHONY : assignment2/fast
-
-#=============================================================================
-# Target rules for targets named assignment3
-
-# Build rule for target.
-assignment3: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignment3
-.PHONY : assignment3
-
-# fast build rule for target.
-assignment3/fast:
-	$(MAKE) $(MAKESILENT) -f assignments/a3/CMakeFiles/assignment3.dir/build.make assignments/a3/CMakeFiles/assignment3.dir/build
-.PHONY : assignment3/fast
-
-#=============================================================================
-# Target rules for targets named assignment4
-
-# Build rule for target.
-assignment4: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignment4
-.PHONY : assignment4
-
-# fast build rule for target.
-assignment4/fast:
-	$(MAKE) $(MAKESILENT) -f assignments/a4/CMakeFiles/assignment4.dir/build.make assignments/a4/CMakeFiles/assignment4.dir/build
-.PHONY : assignment4/fast
-
-#=============================================================================
-# Target rules for targets named assignment5
-
-# Build rule for target.
-assignment5: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignment5
-.PHONY : assignment5
-
-# fast build rule for target.
-assignment5/fast:
-	$(MAKE) $(MAKESILENT) -f assignments/a5/CMakeFiles/assignment5.dir/build.make assignments/a5/CMakeFiles/assignment5.dir/build
-.PHONY : assignment5/fast
-
-#=============================================================================
-# Target rules for targets named assignment6
-
-# Build rule for target.
-assignment6: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignment6
-.PHONY : assignment6
-
-# fast build rule for target.
-assignment6/fast:
-	$(MAKE) $(MAKESILENT) -f assignments/a6/CMakeFiles/assignment6.dir/build.make assignments/a6/CMakeFiles/assignment6.dir/build
-.PHONY : assignment6/fast
-
-#=============================================================================
-# Target rules for targets named tech_proj
-
-# Build rule for target.
-tech_proj: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tech_proj
-.PHONY : tech_proj
-
-# fast build rule for target.
-tech_proj/fast:
-	$(MAKE) $(MAKESILENT) -f assignments/tech_proj/CMakeFiles/tech_proj.dir/build.make assignments/tech_proj/CMakeFiles/tech_proj.dir/build
-.PHONY : tech_proj/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -229,13 +138,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... assignment0"
-	@echo "... assignment1"
-	@echo "... assignment2"
-	@echo "... assignment3"
-	@echo "... assignment4"
-	@echo "... assignment5"
-	@echo "... assignment6"
-	@echo "... tech_proj"
 .PHONY : help
 
 

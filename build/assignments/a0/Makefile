@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.25.1/bin/cmake
+CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.25.2/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.25.1/bin/cmake -E rm -f
+RM = /opt/homebrew/Cellar/cmake/3.25.2/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/logan/Desktop/cs77/dartmouth-cg-starter-code
+CMAKE_SOURCE_DIR = "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build
+CMAKE_BINARY_DIR = "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.25.1/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/3.25.2/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.25.1/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/3.25.2/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/CMakeFiles /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments/a0//CMakeFiles/progress.marks
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/a0/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/CMakeFiles 0
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0//CMakeFiles/progress.marks"
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/a0/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/a0/clean
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/a0/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/a0/preinstall
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/a0/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/a0/preinstall
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/a0/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 assignments/a0/CMakeFiles/assignment0.dir/rule:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/a0/CMakeFiles/assignment0.dir/rule
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 assignments/a0/CMakeFiles/assignment0.dir/rule
 .PHONY : assignments/a0/CMakeFiles/assignment0.dir/rule
 
 # Convenience name for target.
@@ -127,7 +127,7 @@ assignment0: assignments/a0/CMakeFiles/assignment0.dir/rule
 
 # fast build rule for target.
 assignment0/fast:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/build
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/build
 .PHONY : assignment0/fast
 
 __/__/ext/stb/StbImage.o: __/__/ext/stb/StbImage.cpp.o
@@ -135,7 +135,7 @@ __/__/ext/stb/StbImage.o: __/__/ext/stb/StbImage.cpp.o
 
 # target to build an object file
 __/__/ext/stb/StbImage.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o
 .PHONY : __/__/ext/stb/StbImage.cpp.o
 
 __/__/ext/stb/StbImage.i: __/__/ext/stb/StbImage.cpp.i
@@ -143,7 +143,7 @@ __/__/ext/stb/StbImage.i: __/__/ext/stb/StbImage.cpp.i
 
 # target to preprocess a source file
 __/__/ext/stb/StbImage.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.i
 .PHONY : __/__/ext/stb/StbImage.cpp.i
 
 __/__/ext/stb/StbImage.s: __/__/ext/stb/StbImage.cpp.s
@@ -151,7 +151,7 @@ __/__/ext/stb/StbImage.s: __/__/ext/stb/StbImage.cpp.s
 
 # target to generate assembly for a file
 __/__/ext/stb/StbImage.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.s
 .PHONY : __/__/ext/stb/StbImage.cpp.s
 
 __/__/ext/tiny_gltf/TinyGltfLoader.o: __/__/ext/tiny_gltf/TinyGltfLoader.cpp.o
@@ -159,7 +159,7 @@ __/__/ext/tiny_gltf/TinyGltfLoader.o: __/__/ext/tiny_gltf/TinyGltfLoader.cpp.o
 
 # target to build an object file
 __/__/ext/tiny_gltf/TinyGltfLoader.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o
 .PHONY : __/__/ext/tiny_gltf/TinyGltfLoader.cpp.o
 
 __/__/ext/tiny_gltf/TinyGltfLoader.i: __/__/ext/tiny_gltf/TinyGltfLoader.cpp.i
@@ -167,7 +167,7 @@ __/__/ext/tiny_gltf/TinyGltfLoader.i: __/__/ext/tiny_gltf/TinyGltfLoader.cpp.i
 
 # target to preprocess a source file
 __/__/ext/tiny_gltf/TinyGltfLoader.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.i
 .PHONY : __/__/ext/tiny_gltf/TinyGltfLoader.cpp.i
 
 __/__/ext/tiny_gltf/TinyGltfLoader.s: __/__/ext/tiny_gltf/TinyGltfLoader.cpp.s
@@ -175,7 +175,7 @@ __/__/ext/tiny_gltf/TinyGltfLoader.s: __/__/ext/tiny_gltf/TinyGltfLoader.cpp.s
 
 # target to generate assembly for a file
 __/__/ext/tiny_gltf/TinyGltfLoader.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.s
 .PHONY : __/__/ext/tiny_gltf/TinyGltfLoader.cpp.s
 
 __/__/src/OpenGLBufferObjects.o: __/__/src/OpenGLBufferObjects.cpp.o
@@ -183,7 +183,7 @@ __/__/src/OpenGLBufferObjects.o: __/__/src/OpenGLBufferObjects.cpp.o
 
 # target to build an object file
 __/__/src/OpenGLBufferObjects.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o
 .PHONY : __/__/src/OpenGLBufferObjects.cpp.o
 
 __/__/src/OpenGLBufferObjects.i: __/__/src/OpenGLBufferObjects.cpp.i
@@ -191,7 +191,7 @@ __/__/src/OpenGLBufferObjects.i: __/__/src/OpenGLBufferObjects.cpp.i
 
 # target to preprocess a source file
 __/__/src/OpenGLBufferObjects.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.i
 .PHONY : __/__/src/OpenGLBufferObjects.cpp.i
 
 __/__/src/OpenGLBufferObjects.s: __/__/src/OpenGLBufferObjects.cpp.s
@@ -199,7 +199,7 @@ __/__/src/OpenGLBufferObjects.s: __/__/src/OpenGLBufferObjects.cpp.s
 
 # target to generate assembly for a file
 __/__/src/OpenGLBufferObjects.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.s
 .PHONY : __/__/src/OpenGLBufferObjects.cpp.s
 
 __/__/src/OpenGLMarkerObjects.o: __/__/src/OpenGLMarkerObjects.cpp.o
@@ -207,7 +207,7 @@ __/__/src/OpenGLMarkerObjects.o: __/__/src/OpenGLMarkerObjects.cpp.o
 
 # target to build an object file
 __/__/src/OpenGLMarkerObjects.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o
 .PHONY : __/__/src/OpenGLMarkerObjects.cpp.o
 
 __/__/src/OpenGLMarkerObjects.i: __/__/src/OpenGLMarkerObjects.cpp.i
@@ -215,7 +215,7 @@ __/__/src/OpenGLMarkerObjects.i: __/__/src/OpenGLMarkerObjects.cpp.i
 
 # target to preprocess a source file
 __/__/src/OpenGLMarkerObjects.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.i
 .PHONY : __/__/src/OpenGLMarkerObjects.cpp.i
 
 __/__/src/OpenGLMarkerObjects.s: __/__/src/OpenGLMarkerObjects.cpp.s
@@ -223,7 +223,7 @@ __/__/src/OpenGLMarkerObjects.s: __/__/src/OpenGLMarkerObjects.cpp.s
 
 # target to generate assembly for a file
 __/__/src/OpenGLMarkerObjects.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.s
 .PHONY : __/__/src/OpenGLMarkerObjects.cpp.s
 
 __/__/src/OpenGLObject.o: __/__/src/OpenGLObject.cpp.o
@@ -231,7 +231,7 @@ __/__/src/OpenGLObject.o: __/__/src/OpenGLObject.cpp.o
 
 # target to build an object file
 __/__/src/OpenGLObject.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o
 .PHONY : __/__/src/OpenGLObject.cpp.o
 
 __/__/src/OpenGLObject.i: __/__/src/OpenGLObject.cpp.i
@@ -239,7 +239,7 @@ __/__/src/OpenGLObject.i: __/__/src/OpenGLObject.cpp.i
 
 # target to preprocess a source file
 __/__/src/OpenGLObject.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.i
 .PHONY : __/__/src/OpenGLObject.cpp.i
 
 __/__/src/OpenGLObject.s: __/__/src/OpenGLObject.cpp.s
@@ -247,7 +247,7 @@ __/__/src/OpenGLObject.s: __/__/src/OpenGLObject.cpp.s
 
 # target to generate assembly for a file
 __/__/src/OpenGLObject.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.s
 .PHONY : __/__/src/OpenGLObject.cpp.s
 
 __/__/src/OpenGLShaderProgram.o: __/__/src/OpenGLShaderProgram.cpp.o
@@ -255,7 +255,7 @@ __/__/src/OpenGLShaderProgram.o: __/__/src/OpenGLShaderProgram.cpp.o
 
 # target to build an object file
 __/__/src/OpenGLShaderProgram.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o
 .PHONY : __/__/src/OpenGLShaderProgram.cpp.o
 
 __/__/src/OpenGLShaderProgram.i: __/__/src/OpenGLShaderProgram.cpp.i
@@ -263,7 +263,7 @@ __/__/src/OpenGLShaderProgram.i: __/__/src/OpenGLShaderProgram.cpp.i
 
 # target to preprocess a source file
 __/__/src/OpenGLShaderProgram.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.i
 .PHONY : __/__/src/OpenGLShaderProgram.cpp.i
 
 __/__/src/OpenGLShaderProgram.s: __/__/src/OpenGLShaderProgram.cpp.s
@@ -271,7 +271,7 @@ __/__/src/OpenGLShaderProgram.s: __/__/src/OpenGLShaderProgram.cpp.s
 
 # target to generate assembly for a file
 __/__/src/OpenGLShaderProgram.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.s
 .PHONY : __/__/src/OpenGLShaderProgram.cpp.s
 
 __/__/src/OpenGLTexture.o: __/__/src/OpenGLTexture.cpp.o
@@ -279,7 +279,7 @@ __/__/src/OpenGLTexture.o: __/__/src/OpenGLTexture.cpp.o
 
 # target to build an object file
 __/__/src/OpenGLTexture.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o
 .PHONY : __/__/src/OpenGLTexture.cpp.o
 
 __/__/src/OpenGLTexture.i: __/__/src/OpenGLTexture.cpp.i
@@ -287,7 +287,7 @@ __/__/src/OpenGLTexture.i: __/__/src/OpenGLTexture.cpp.i
 
 # target to preprocess a source file
 __/__/src/OpenGLTexture.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.i
 .PHONY : __/__/src/OpenGLTexture.cpp.i
 
 __/__/src/OpenGLTexture.s: __/__/src/OpenGLTexture.cpp.s
@@ -295,7 +295,7 @@ __/__/src/OpenGLTexture.s: __/__/src/OpenGLTexture.cpp.s
 
 # target to generate assembly for a file
 __/__/src/OpenGLTexture.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.s
 .PHONY : __/__/src/OpenGLTexture.cpp.s
 
 __/__/src/OpenGLViewer.o: __/__/src/OpenGLViewer.cpp.o
@@ -303,7 +303,7 @@ __/__/src/OpenGLViewer.o: __/__/src/OpenGLViewer.cpp.o
 
 # target to build an object file
 __/__/src/OpenGLViewer.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o
 .PHONY : __/__/src/OpenGLViewer.cpp.o
 
 __/__/src/OpenGLViewer.i: __/__/src/OpenGLViewer.cpp.i
@@ -311,7 +311,7 @@ __/__/src/OpenGLViewer.i: __/__/src/OpenGLViewer.cpp.i
 
 # target to preprocess a source file
 __/__/src/OpenGLViewer.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.i
 .PHONY : __/__/src/OpenGLViewer.cpp.i
 
 __/__/src/OpenGLViewer.s: __/__/src/OpenGLViewer.cpp.s
@@ -319,7 +319,7 @@ __/__/src/OpenGLViewer.s: __/__/src/OpenGLViewer.cpp.s
 
 # target to generate assembly for a file
 __/__/src/OpenGLViewer.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.s
 .PHONY : __/__/src/OpenGLViewer.cpp.s
 
 __/__/src/OpenGLWindow.o: __/__/src/OpenGLWindow.cpp.o
@@ -327,7 +327,7 @@ __/__/src/OpenGLWindow.o: __/__/src/OpenGLWindow.cpp.o
 
 # target to build an object file
 __/__/src/OpenGLWindow.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o
 .PHONY : __/__/src/OpenGLWindow.cpp.o
 
 __/__/src/OpenGLWindow.i: __/__/src/OpenGLWindow.cpp.i
@@ -335,7 +335,7 @@ __/__/src/OpenGLWindow.i: __/__/src/OpenGLWindow.cpp.i
 
 # target to preprocess a source file
 __/__/src/OpenGLWindow.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.i
 .PHONY : __/__/src/OpenGLWindow.cpp.i
 
 __/__/src/OpenGLWindow.s: __/__/src/OpenGLWindow.cpp.s
@@ -343,7 +343,7 @@ __/__/src/OpenGLWindow.s: __/__/src/OpenGLWindow.cpp.s
 
 # target to generate assembly for a file
 __/__/src/OpenGLWindow.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.s
 .PHONY : __/__/src/OpenGLWindow.cpp.s
 
 __/__/src/glad.o: __/__/src/glad.cpp.o
@@ -351,7 +351,7 @@ __/__/src/glad.o: __/__/src/glad.cpp.o
 
 # target to build an object file
 __/__/src/glad.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o
 .PHONY : __/__/src/glad.cpp.o
 
 __/__/src/glad.i: __/__/src/glad.cpp.i
@@ -359,7 +359,7 @@ __/__/src/glad.i: __/__/src/glad.cpp.i
 
 # target to preprocess a source file
 __/__/src/glad.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.i
 .PHONY : __/__/src/glad.cpp.i
 
 __/__/src/glad.s: __/__/src/glad.cpp.s
@@ -367,7 +367,7 @@ __/__/src/glad.s: __/__/src/glad.cpp.s
 
 # target to generate assembly for a file
 __/__/src/glad.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.s
 .PHONY : __/__/src/glad.cpp.s
 
 __/__/src/mikktspace.o: __/__/src/mikktspace.cpp.o
@@ -375,7 +375,7 @@ __/__/src/mikktspace.o: __/__/src/mikktspace.cpp.o
 
 # target to build an object file
 __/__/src/mikktspace.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o
 .PHONY : __/__/src/mikktspace.cpp.o
 
 __/__/src/mikktspace.i: __/__/src/mikktspace.cpp.i
@@ -383,7 +383,7 @@ __/__/src/mikktspace.i: __/__/src/mikktspace.cpp.i
 
 # target to preprocess a source file
 __/__/src/mikktspace.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.i
 .PHONY : __/__/src/mikktspace.cpp.i
 
 __/__/src/mikktspace.s: __/__/src/mikktspace.cpp.s
@@ -391,7 +391,7 @@ __/__/src/mikktspace.s: __/__/src/mikktspace.cpp.s
 
 # target to generate assembly for a file
 __/__/src/mikktspace.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.s
 .PHONY : __/__/src/mikktspace.cpp.s
 
 main.o: main.cpp.o
@@ -399,7 +399,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/main.cpp.o
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -407,7 +407,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/main.cpp.i
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -415,7 +415,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/main.cpp.s
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(MAKE) $(MAKESILENT) -f assignments/a0/CMakeFiles/assignment0.dir/build.make assignments/a0/CMakeFiles/assignment0.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -474,6 +474,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

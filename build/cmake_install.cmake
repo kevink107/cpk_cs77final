@@ -1,4 +1,4 @@
-# Install script for directory: /Users/logan/Desktop/cs77/dartmouth-cg-starter-code
+# Install script for directory: /Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/assignments/cmake_install.cmake")
+  include("/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/logan/Desktop/cs77/dartmouth-cg-starter-code/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

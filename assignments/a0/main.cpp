@@ -21,7 +21,7 @@
 //// TODO: put your name in the string               
 /////////////////////////////////////////////////////////////////////
 
-const std::string author="Logan Chang";
+const std::string author="Logan Chang, Josh Pfefferkorn, Kevin King";
 
 /////////////////////////////////////////////////////////////////////
 //// These are helper functions we created to generate circles and triangles by testing whether a point is inside the shape or not.

@@ -1,5 +1,5 @@
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/src/OpenGLShaderProgram.cpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/src/OpenGLShaderProgram.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config_site \
@@ -23,7 +23,7 @@ assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_symbol_aliasing.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_posix_availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/machine/_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/arm/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_pthread/_pthread_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/AvailabilityVersions.h \
@@ -32,7 +32,7 @@ assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_size_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_mbstate_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/machine/types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/arm/types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_int8_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_int16_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_int32_t.h \
@@ -93,11 +93,11 @@ assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/signal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/appleapiopts.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/machine/signal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/signal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/arm/signal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/machine/_mcontext.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/_mcontext.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/arm/_mcontext.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/mach/machine/_structs.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/mach/i386/_structs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/mach/arm/_structs.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_pthread/_pthread_attr_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_sigaltstack.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_ucontext.h \
@@ -115,10 +115,11 @@ assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_uintmax_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_timeval.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/machine/endian.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/endian.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/arm/endian.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_endian.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/libkern/_OSByteOrder.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/libkern/i386/_OSByteOrder.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/libkern/arm/OSByteOrder.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/arm/arch.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/alloca.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/malloc/_malloc.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_dev_t.h \
@@ -189,8 +190,8 @@ assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/machine/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/_limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/arm/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/arm/_limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/syslimits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__threading_support \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/errno.h \
@@ -420,11 +421,11 @@ assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/deque \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__split_buffer \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iomanip \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../src/OpenGLBufferObjects.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../src/glad.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../src/khrplatform.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/glm.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/_fixes.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../src/OpenGLBufferObjects.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../src/glad.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../src/khrplatform.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/glm.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/_fixes.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cmath \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/math.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/math.h \
@@ -432,218 +433,137 @@ assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/float.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/float.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/float.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/fwd.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_int.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/setup.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../simd/platform.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/smmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/tmmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/pmmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/emmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/mmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/mm_malloc.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/popcntintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/crc32intrin.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_float.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_vec.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/precision.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/vec2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_vec2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_vec2.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/vec3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_vec3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_vec3.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/vec4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_vec4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_vec4.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_vec4_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/mat2x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat2x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../fwd.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat2x2.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_matrix.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../detail/precision.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../detail/setup.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../detail/type_mat.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../vec2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../vec3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../vec4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../mat2x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../mat2x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat2x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat2x3.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../mat2x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat2x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat2x4.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../mat3x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat3x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat3x2.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../mat3x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat3x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat3x3.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../mat3x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat3x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat3x4.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../mat4x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat4x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat4x2.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../mat4x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat4x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat4x3.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../mat4x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat4x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat4x4.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_mat4x4_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_matrix.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../geometric.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_geometric.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_geometric.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_exponential.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_vec1.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_vec1.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_exponential.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_vector_relational.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_vector_relational.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_vector_relational_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/_vectorize.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_exponential_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../simd/exponential.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_common.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_common.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_common_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../simd/common.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/immintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/x86gprintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/hresetintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/uintrintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/wmmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/__wmmintrin_aes.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/__wmmintrin_pclmul.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/clflushoptintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/clwbintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avxintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx2intrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/f16cintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/bmiintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/bmi2intrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/lzcntintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/fmaintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512fintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vlintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512bwintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512bitalgintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512cdintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vpopcntdqintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vpopcntdqvlintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vnniintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vlvnniintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avxvnniintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512dqintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vlbitalgintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vlbwintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vlcdintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vldqintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512erintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512ifmaintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512ifmavlintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vbmiintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vbmivlintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vbmi2intrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vlvbmi2intrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512pfintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512bf16intrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vlbf16intrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/pkuintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/vpclmulqdqintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/vaesintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/gfniintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/rtmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xtestintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/shaintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/fxsrintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xsaveintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xsaveoptintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xsavecintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xsavesintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/cetintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/adxintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/rdseedintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/wbnoinvdintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/cldemoteintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/waitpkgintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/movdirintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/pconfigintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/sgxintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/ptwriteintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/invpcidintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/keylockerintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/amxintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vp2intersectintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/avx512vlvp2intersectintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/enqcmdintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/serializeintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/tsxldtrkintrin.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_geometric_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../simd/geometric.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_matrix_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../simd/matrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/mat2x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/mat2x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/mat3x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/mat3x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/mat3x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/mat4x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/mat4x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/mat4x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/trigonometric.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_trigonometric.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_trigonometric.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_trigonometric_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/exponential.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/common.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/packing.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_packing.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_packing.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_half.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/type_half.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_packing_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/geometric.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/matrix.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/vector_relational.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/integer.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_integer.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_integer.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/func_integer_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/detail/../simd/integer.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/matrix_transform.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../mat4x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../vec2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../vec3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../vec4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../gtc/constants.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../detail/setup.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/constants.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/matrix_transform.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../geometric.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../trigonometric.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../matrix.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/type_ptr.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../gtc/quaternion.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../mat3x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/quaternion.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../exponential.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/quaternion_simd.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../mat2x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../mat2x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../mat2x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../mat3x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../mat3x4.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../mat4x2.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/../mat4x3.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/type_ptr.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../src/Common.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/fwd.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_int.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/setup.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../simd/platform.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_float.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_vec.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/precision.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/vec2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_vec2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_vec2.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/vec3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_vec3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_vec3.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/vec4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_vec4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_vec4.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_vec4_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/mat2x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat2x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../fwd.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat2x2.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_matrix.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../detail/precision.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../detail/setup.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../detail/type_mat.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../vec2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../vec3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../vec4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../mat2x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../mat2x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat2x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat2x3.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../mat2x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat2x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat2x4.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../mat3x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat3x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat3x2.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../mat3x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat3x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat3x3.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../mat3x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat3x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat3x4.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../mat4x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat4x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat4x2.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../mat4x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat4x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat4x3.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../mat4x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat4x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat4x4.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_mat4x4_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_matrix.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../geometric.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_geometric.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_geometric.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_exponential.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_vec1.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_vec1.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_exponential.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_vector_relational.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_vector_relational.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_vector_relational_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/_vectorize.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_exponential_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../simd/exponential.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_common.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_common.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_common_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_geometric_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../simd/geometric.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../simd/common.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_matrix_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/mat2x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/mat2x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/mat3x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/mat3x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/mat3x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/mat4x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/mat4x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/mat4x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/trigonometric.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_trigonometric.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_trigonometric.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_trigonometric_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/exponential.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/common.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/packing.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_packing.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_packing.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_half.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/type_half.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_packing_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/geometric.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/matrix.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/vector_relational.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/integer.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_integer.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_integer.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/func_integer_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/detail/../simd/integer.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/matrix_transform.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../mat4x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../vec2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../vec3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../vec4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../gtc/constants.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../detail/setup.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/constants.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/matrix_transform.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../geometric.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../trigonometric.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../matrix.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/type_ptr.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../gtc/quaternion.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../mat3x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/quaternion.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../exponential.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/quaternion_simd.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../mat2x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../mat2x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../mat2x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../mat3x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../mat3x4.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../mat4x2.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/../mat4x3.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/type_ptr.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../src/Common.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/vector \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/list \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/queue \
@@ -654,272 +574,270 @@ assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/optional \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/unordered_set \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/Dense \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/Core \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/DisableStupidWarnings.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/Macros.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/Dense \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/Core \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/DisableStupidWarnings.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/Macros.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/complex \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/sstream \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/MKL_support.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/Constants.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/Meta.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/ForwardDeclarations.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/StaticAssert.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/XprHelper.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/Memory.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/NumTraits.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/MathFunctions.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/GenericPacketMath.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/MathFunctionsImpl.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/SSE/PacketMath.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/SSE/MathFunctions.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/SSE/Complex.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/SSE/TypeCasting.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/CUDA/Half.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/CUDA/PacketMathHalf.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/CUDA/TypeCasting.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/Default/Settings.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/TernaryFunctors.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/BinaryFunctors.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/UnaryFunctors.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/NullaryFunctors.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/StlFunctors.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/AssignmentFunctors.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/CUDA/Complex.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/IO.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/DenseCoeffsBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/DenseBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/BlockMethods.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/MatrixBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/CommonCwiseUnaryOps.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/CommonCwiseBinaryOps.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/MatrixCwiseUnaryOps.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/MatrixCwiseBinaryOps.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/EigenBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Product.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/CoreEvaluators.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/AssignEvaluator.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Assign.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/ArrayBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/ArrayCwiseUnaryOps.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/ArrayCwiseBinaryOps.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/BlasUtil.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/DenseStorage.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/NestByValue.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/ReturnByValue.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/NoAlias.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/PlainObjectBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Matrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Array.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/CwiseTernaryOp.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/CwiseBinaryOp.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/CwiseUnaryOp.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/CwiseNullaryOp.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/CwiseUnaryView.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/SelfCwiseBinaryOp.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Dot.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/StableNorm.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Stride.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/MapBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Map.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Ref.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Block.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/VectorBlock.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Transpose.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/DiagonalMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Diagonal.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/DiagonalProduct.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Redux.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Visitor.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Fuzzy.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Swap.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/CommaInitializer.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/GeneralProduct.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Solve.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Inverse.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/SolverBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/PermutationMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Transpositions.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/TriangularMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/SelfAdjointView.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/Parallelizer.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/ProductEvaluators.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/GeneralMatrixVector.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/GeneralMatrixMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/SolveTriangular.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/SelfadjointMatrixVector.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/SelfadjointProduct.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/SelfadjointRank2Update.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/TriangularMatrixVector.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/TriangularMatrixMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/TriangularSolverMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/products/TriangularSolverVector.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/BandMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/CoreIterators.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/ConditionEstimator.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/BooleanRedux.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Select.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/VectorwiseOp.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Random.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Replicate.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/Reverse.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/ArrayWrapper.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/GlobalFunctions.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Core/util/ReenableStupidWarnings.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/LU \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/misc/Kernel.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/misc/Image.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/LU/FullPivLU.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/LU/PartialPivLU.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/LU/Determinant.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/LU/InverseImpl.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/LU/arch/Inverse_SSE.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/Cholesky \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Cholesky/LLT.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Cholesky/LDLT.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/QR \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/Jacobi \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Jacobi/Jacobi.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/Householder \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Householder/Householder.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Householder/HouseholderSequence.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Householder/BlockHouseholder.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/QR/HouseholderQR.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/QR/FullPivHouseholderQR.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/QR/ColPivHouseholderQR.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/QR/CompleteOrthogonalDecomposition.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/SVD \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/misc/RealSvd2x2.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SVD/UpperBidiagonalization.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SVD/SVDBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SVD/JacobiSVD.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SVD/BDCSVD.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/Geometry \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/OrthoMethods.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/EulerAngles.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Homogeneous.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/RotationBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Rotation2D.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Quaternion.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/AngleAxis.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Transform.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Translation.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Scaling.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Hyperplane.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/ParametrizedLine.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/AlignedBox.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Umeyama.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Geometry/arch/Geometry_SSE.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/Eigenvalues \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/Tridiagonalization.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/RealSchur.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/./HessenbergDecomposition.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/EigenSolver.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/./RealSchur.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/./Tridiagonalization.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/ComplexSchur.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/./ComplexSchur.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/RealQZ.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/./RealQZ.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/Sparse \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/SparseCore \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/MKL_support.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/arm_neon.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/Constants.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/Meta.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/ForwardDeclarations.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/StaticAssert.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/XprHelper.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/Memory.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/NumTraits.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/MathFunctions.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/GenericPacketMath.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/MathFunctionsImpl.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/NEON/PacketMath.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/NEON/MathFunctions.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/NEON/Complex.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/CUDA/Half.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/CUDA/PacketMathHalf.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/CUDA/TypeCasting.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/Default/Settings.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/TernaryFunctors.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/BinaryFunctors.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/UnaryFunctors.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/NullaryFunctors.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/StlFunctors.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/functors/AssignmentFunctors.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/arch/CUDA/Complex.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/IO.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/DenseCoeffsBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/DenseBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/BlockMethods.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/MatrixBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/CommonCwiseUnaryOps.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/CommonCwiseBinaryOps.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/MatrixCwiseUnaryOps.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/MatrixCwiseBinaryOps.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/EigenBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Product.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/CoreEvaluators.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/AssignEvaluator.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Assign.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/ArrayBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/ArrayCwiseUnaryOps.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/../plugins/ArrayCwiseBinaryOps.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/BlasUtil.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/DenseStorage.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/NestByValue.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/ReturnByValue.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/NoAlias.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/PlainObjectBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Matrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Array.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/CwiseTernaryOp.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/CwiseBinaryOp.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/CwiseUnaryOp.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/CwiseNullaryOp.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/CwiseUnaryView.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/SelfCwiseBinaryOp.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Dot.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/StableNorm.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Stride.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/MapBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Map.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Ref.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Block.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/VectorBlock.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Transpose.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/DiagonalMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Diagonal.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/DiagonalProduct.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Redux.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Visitor.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Fuzzy.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Swap.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/CommaInitializer.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/GeneralProduct.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Solve.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Inverse.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/SolverBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/PermutationMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Transpositions.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/TriangularMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/SelfAdjointView.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/Parallelizer.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/ProductEvaluators.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/GeneralMatrixVector.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/GeneralMatrixMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/SolveTriangular.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/SelfadjointMatrixVector.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/SelfadjointProduct.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/SelfadjointRank2Update.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/TriangularMatrixVector.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/TriangularMatrixMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/TriangularSolverMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/products/TriangularSolverVector.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/BandMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/CoreIterators.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/ConditionEstimator.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/BooleanRedux.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Select.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/VectorwiseOp.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Random.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Replicate.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/Reverse.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/ArrayWrapper.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/GlobalFunctions.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Core/util/ReenableStupidWarnings.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/LU \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/misc/Kernel.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/misc/Image.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/LU/FullPivLU.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/LU/PartialPivLU.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/LU/Determinant.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/LU/InverseImpl.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/Cholesky \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Cholesky/LLT.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Cholesky/LDLT.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/QR \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/Jacobi \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Jacobi/Jacobi.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/Householder \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Householder/Householder.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Householder/HouseholderSequence.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Householder/BlockHouseholder.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/QR/HouseholderQR.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/QR/FullPivHouseholderQR.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/QR/ColPivHouseholderQR.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/QR/CompleteOrthogonalDecomposition.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/SVD \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/misc/RealSvd2x2.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SVD/UpperBidiagonalization.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SVD/SVDBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SVD/JacobiSVD.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SVD/BDCSVD.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/Geometry \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/OrthoMethods.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/EulerAngles.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Homogeneous.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/RotationBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Rotation2D.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Quaternion.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/AngleAxis.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Transform.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Translation.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Scaling.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Hyperplane.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/ParametrizedLine.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/AlignedBox.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Geometry/Umeyama.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/Eigenvalues \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/Tridiagonalization.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/RealSchur.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/./HessenbergDecomposition.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/EigenSolver.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/./RealSchur.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/./Tridiagonalization.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/ComplexSchur.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/./ComplexSchur.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/RealQZ.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/./RealQZ.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/Sparse \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/SparseCore \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__tree \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseUtil.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseMatrixBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/../plugins/CommonCwiseUnaryOps.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/../plugins/CommonCwiseBinaryOps.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/../plugins/MatrixCwiseUnaryOps.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/../plugins/MatrixCwiseBinaryOps.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/../plugins/BlockMethods.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseAssign.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/CompressedStorage.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/AmbiVector.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseCompressedBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseMap.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/MappedSparseMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseVector.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseRef.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseCwiseUnaryOp.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseCwiseBinaryOp.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseTranspose.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseBlock.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseDot.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseRedux.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseView.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseDiagonalProduct.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/ConservativeSparseSparseProduct.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseSparseProductWithPruning.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseProduct.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseDenseProduct.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseSelfAdjointView.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseTriangularView.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/TriangularSolver.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparsePermutation.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseFuzzy.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseSolverBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/OrderingMethods \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/OrderingMethods/Amd.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/OrderingMethods/../Core/util/NonMPL2.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/OrderingMethods/Ordering.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/OrderingMethods/Eigen_Colamd.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/SparseCholesky \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCholesky/SimplicialCholesky.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCholesky/SimplicialCholesky_impl.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCholesky/../Core/util/NonMPL2.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/SparseLU \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_gemm_kernel.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_Structs.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_SupernodalMatrix.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLUImpl.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseColEtree.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_Memory.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_heap_relax_snode.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_relax_snode.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_pivotL.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_panel_dfs.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_kernel_bmod.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_panel_bmod.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_column_dfs.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_column_bmod.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_copy_to_ucol.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_pruneL.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_Utils.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/SparseQR \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/SparseQR/SparseQR.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/IterativeLinearSolvers \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/SolveWithGuess.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/IterativeSolverBase.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/BasicPreconditioners.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/ConjugateGradient.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/LeastSquareConjugateGradient.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtc/quaternion.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtx/quaternion.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtx/../glm.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtx/../gtc/constants.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtx/../gtc/quaternion.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtx/../gtx/norm.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtx/../detail/func_geometric.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtx/../gtx/quaternion.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtx/norm.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtx/../detail/precision.hpp \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../ext/glm/gtx/quaternion.inl \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../src/OpenGLShaderProgram.h \
-  /Users/logan/Desktop/cs77/dartmouth-cg-starter-code/assignments/a0/../../src/das_file_watcher.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseUtil.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseMatrixBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/../plugins/CommonCwiseUnaryOps.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/../plugins/CommonCwiseBinaryOps.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/../plugins/MatrixCwiseUnaryOps.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/../plugins/MatrixCwiseBinaryOps.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/../plugins/BlockMethods.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseAssign.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/CompressedStorage.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/AmbiVector.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseCompressedBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseMap.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/MappedSparseMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseVector.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseRef.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseCwiseUnaryOp.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseCwiseBinaryOp.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseTranspose.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseBlock.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseDot.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseRedux.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseView.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseDiagonalProduct.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/ConservativeSparseSparseProduct.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseSparseProductWithPruning.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseProduct.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseDenseProduct.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseSelfAdjointView.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseTriangularView.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/TriangularSolver.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparsePermutation.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseFuzzy.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseSolverBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/OrderingMethods \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/OrderingMethods/Amd.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/OrderingMethods/../Core/util/NonMPL2.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/OrderingMethods/Ordering.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/OrderingMethods/Eigen_Colamd.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/SparseCholesky \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCholesky/SimplicialCholesky.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCholesky/SimplicialCholesky_impl.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCholesky/../Core/util/NonMPL2.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/SparseLU \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_gemm_kernel.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_Structs.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_SupernodalMatrix.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLUImpl.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseCore/SparseColEtree.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_Memory.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_heap_relax_snode.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_relax_snode.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_pivotL.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_panel_dfs.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_kernel_bmod.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_panel_bmod.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_column_dfs.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_column_bmod.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_copy_to_ucol.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_pruneL.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU_Utils.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseLU/SparseLU.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/SparseQR \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/SparseQR/SparseQR.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/IterativeLinearSolvers \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/SolveWithGuess.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/IterativeSolverBase.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/BasicPreconditioners.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/ConjugateGradient.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/LeastSquareConjugateGradient.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/eigen/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtc/quaternion.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtx/quaternion.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtx/../glm.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtx/../gtc/constants.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtx/../gtc/quaternion.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtx/../gtx/norm.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtx/../detail/func_geometric.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtx/../gtx/quaternion.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtx/norm.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtx/../detail/precision.hpp \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../ext/glm/gtx/quaternion.inl \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../src/OpenGLShaderProgram.h \
+  /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/../../src/das_file_watcher.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/stat.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_s_ifmt.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_filesec_t.h
