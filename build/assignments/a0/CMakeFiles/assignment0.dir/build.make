@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.25.2/bin/cmake
+CMAKE_COMMAND = /usr/local/Cellar/cmake/3.25.2/bin/cmake
 
 # The command to remove a file.
-RM = /opt/homebrew/Cellar/cmake/3.25.2/bin/cmake -E rm -f
+RM = /usr/local/Cellar/cmake/3.25.2/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final"
+CMAKE_SOURCE_DIR = "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build"
+CMAKE_BINARY_DIR = "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build"
 
 # Include any dependencies generated for this target.
 include assignments/a0/CMakeFiles/assignment0.dir/depend.make
@@ -70,172 +70,172 @@ include assignments/a0/CMakeFiles/assignment0.dir/progress.make
 include assignments/a0/CMakeFiles/assignment0.dir/flags.make
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/src/OpenGLBufferObjects.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/src/OpenGLBufferObjects.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLBufferObjects.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLBufferObjects.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLBufferObjects.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLBufferObjects.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLBufferObjects.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLBufferObjects.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLBufferObjects.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/src/OpenGLMarkerObjects.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/src/OpenGLMarkerObjects.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLMarkerObjects.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLMarkerObjects.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLMarkerObjects.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLMarkerObjects.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLMarkerObjects.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLMarkerObjects.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLMarkerObjects.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/src/OpenGLObject.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/src/OpenGLObject.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLObject.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLObject.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLObject.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLObject.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLObject.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLObject.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLObject.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/src/OpenGLShaderProgram.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/src/OpenGLShaderProgram.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLShaderProgram.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLShaderProgram.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLShaderProgram.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLShaderProgram.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLShaderProgram.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLShaderProgram.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLShaderProgram.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/src/OpenGLTexture.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/src/OpenGLTexture.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLTexture.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLTexture.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLTexture.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLTexture.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLTexture.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLTexture.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLTexture.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/src/OpenGLViewer.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/src/OpenGLViewer.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLViewer.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLViewer.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLViewer.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLViewer.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLViewer.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLViewer.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLViewer.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/src/OpenGLWindow.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/src/OpenGLWindow.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLWindow.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLWindow.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLWindow.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLWindow.cpp" > CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/OpenGLWindow.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/OpenGLWindow.cpp" -o CMakeFiles/assignment0.dir/__/__/src/OpenGLWindow.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/src/glad.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/src/glad.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/glad.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/glad.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/glad.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/src/glad.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/glad.cpp" > CMakeFiles/assignment0.dir/__/__/src/glad.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/glad.cpp" > CMakeFiles/assignment0.dir/__/__/src/glad.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/glad.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/src/glad.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/glad.cpp" -o CMakeFiles/assignment0.dir/__/__/src/glad.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/glad.cpp" -o CMakeFiles/assignment0.dir/__/__/src/glad.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/src/mikktspace.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/src/mikktspace.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/mikktspace.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o -MF CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/mikktspace.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/mikktspace.cpp" > CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/mikktspace.cpp" > CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/src/mikktspace.cpp" -o CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/src/mikktspace.cpp" -o CMakeFiles/assignment0.dir/__/__/src/mikktspace.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/main.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/main.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/assignments/a0/main.cpp
+assignments/a0/CMakeFiles/assignment0.dir/main.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/assignments/a0/main.cpp
 assignments/a0/CMakeFiles/assignment0.dir/main.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/main.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/main.cpp.o -MF CMakeFiles/assignment0.dir/main.cpp.o.d -o CMakeFiles/assignment0.dir/main.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/assignments/a0/main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/main.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/main.cpp.o -MF CMakeFiles/assignment0.dir/main.cpp.o.d -o CMakeFiles/assignment0.dir/main.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/assignments/a0/main.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/main.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/assignments/a0/main.cpp" > CMakeFiles/assignment0.dir/main.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/assignments/a0/main.cpp" > CMakeFiles/assignment0.dir/main.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/main.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/assignments/a0/main.cpp" -o CMakeFiles/assignment0.dir/main.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/assignments/a0/main.cpp" -o CMakeFiles/assignment0.dir/main.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/ext/stb/StbImage.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/ext/stb/StbImage.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o -MF CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/ext/stb/StbImage.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o -MF CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/ext/stb/StbImage.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/ext/stb/StbImage.cpp" > CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/ext/stb/StbImage.cpp" > CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/ext/stb/StbImage.cpp" -o CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/ext/stb/StbImage.cpp" -o CMakeFiles/assignment0.dir/__/__/ext/stb/StbImage.cpp.s
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/flags.make
-assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o: /Users/joshpfefferkorn/Desktop/COSC\ 77/Project/cpk_cs77final/ext/tiny_gltf/TinyGltfLoader.cpp
+assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o: /Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final\ Project/cpk_cs77final/ext/tiny_gltf/TinyGltfLoader.cpp
 assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o: assignments/a0/CMakeFiles/assignment0.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o -MF CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o -c "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/ext/tiny_gltf/TinyGltfLoader.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o -MF CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o.d -o CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o -c "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/ext/tiny_gltf/TinyGltfLoader.cpp"
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.i"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/ext/tiny_gltf/TinyGltfLoader.cpp" > CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.i
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/ext/tiny_gltf/TinyGltfLoader.cpp" > CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.i
 
 assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.s"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/ext/tiny_gltf/TinyGltfLoader.cpp" -o CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.s
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/ext/tiny_gltf/TinyGltfLoader.cpp" -o CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.s
 
 # Object files for target assignment0
 assignment0_OBJECTS = \
@@ -269,18 +269,18 @@ assignments/a0/assignment0: assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/
 assignments/a0/assignment0: assignments/a0/CMakeFiles/assignment0.dir/__/__/ext/tiny_gltf/TinyGltfLoader.cpp.o
 assignments/a0/assignment0: assignments/a0/CMakeFiles/assignment0.dir/build.make
 assignments/a0/assignment0: assignments/a0/CMakeFiles/assignment0.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable assignment0"
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/assignment0.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable assignment0"
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/assignment0.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 assignments/a0/CMakeFiles/assignment0.dir/build: assignments/a0/assignment0
 .PHONY : assignments/a0/CMakeFiles/assignment0.dir/build
 
 assignments/a0/CMakeFiles/assignment0.dir/clean:
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" && $(CMAKE_COMMAND) -P CMakeFiles/assignment0.dir/cmake_clean.cmake
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" && $(CMAKE_COMMAND) -P CMakeFiles/assignment0.dir/cmake_clean.cmake
 .PHONY : assignments/a0/CMakeFiles/assignment0.dir/clean
 
 assignments/a0/CMakeFiles/assignment0.dir/depend:
-	cd "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final" "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/assignments/a0" "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build" "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0" "/Users/joshpfefferkorn/Desktop/COSC 77/Project/cpk_cs77final/build/assignments/a0/CMakeFiles/assignment0.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final" "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/assignments/a0" "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build" "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0" "/Users/kevin/Desktop/Dartmouth/2022-23/23W/CS77/Final Project/cpk_cs77final/build/assignments/a0/CMakeFiles/assignment0.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : assignments/a0/CMakeFiles/assignment0.dir/depend
 
