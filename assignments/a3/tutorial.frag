@@ -28,7 +28,9 @@ out vec4 frag_color;
 
 void main()							
 {		
-	vec2 uv=vtx_uv;
+	float u = (atan(vtx_pos.z, vtx_pos.x) / (2 * 3.14159265358979));
+	float v = 0.5 - (asin(vtx_pos.y) / 3.14159265358979);
+	vec2 uv=vec2(u,v);
 	vec4 tex_color=texture(tex_albedo,uv);
 	vec4 mat_color=vtx_color;
 

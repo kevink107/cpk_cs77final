@@ -27,7 +27,7 @@ class NoiseDriver : public Driver, public OpenGLViewer
 {using Base=Driver;
 	std::vector<OpenGLTriangleMesh*> mesh_object_array;		////mesh objects, every object you put in this array will be rendered.
 	clock_t startTime;
-	const int part = 1;										////TODO: set the value of part to be 2 when working on part 2
+	const int part = 2;										////TODO: set the value of part to be 2 when working on part 2
 
 public:
 	virtual void Initialize()

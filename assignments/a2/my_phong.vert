@@ -20,13 +20,18 @@ layout (location=2) in vec4 normal;			/*vertex normal*/
 /*output variables*/
 out vec4 vtx_color;
 ////TODO: add your out variables to the fragment shader
+out vec3 vtx_pos;
+out vec3 vtx_nrm;
 
 void main()												
 {
 	/*camera-transformed position. do not modify.*/
 	gl_Position=pvm*vec4(pos.xyz,1.f);
 
-	vtx_color=vec4(v_color.rgb,1.f);
+	// vtx_color=vec4(vec3(248./255., 131./255., 121./255.),1.f);
+	vtx_color = vec4(v_color.rgb, 1.f);
 	
 	////TODO: add your operations on the out varialbes
+	vtx_pos = pos.xyz;
+	vtx_nrm = normal.xyz;
 }	

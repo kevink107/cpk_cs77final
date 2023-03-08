@@ -5,6 +5,7 @@
 //#####################################################################
 #include <iostream>
 #include <random>
+#include <unordered_map>
 #include <vector>
 #include <algorithm>
 #include <unordered_set>
@@ -105,7 +106,14 @@ public:
 		////NOTICE: This code updates the vertex color array on the CPU end. The array will then be sent to GPU and read it the vertex shader as v_color.
 		////You don't need to implement the CPU-GPU data transfer code.
 		for(int i=0;i<vn;i++){
+			//// DEFAULT GREEN COLOR 
 			vtx_color[i]=Vector4f(0.,1.,0.,1.);	////specify color for each vertex
+
+			//// STEP 0 IMPLEMENTATION
+			//// UNCOMMENT ONE OF THE FOLLOWING FOR A DIFFERENT COLOR SCHEME
+			// vtx_color[i]=Vector4f(i/20., i/30., i/50,1.);
+			// vtx_color[i]=Vector4f(max(sin(i/10), 0.1), cos(2.), 0.,1.);
+			// vtx_color[i]=Vector4f(min(sin(i), 0.1), i/4., 0.25,1.);
 		}
 
 		std::vector<Vector3>& vtx_normal=obj->vtx_normal;
@@ -115,18 +123,44 @@ public:
 		//TODO: update the normal for each vertex
 		//NOTICE: This code updates the vertex normal array on the CPU end. The array will then be sent to GPU and read it the vertex shader as normal.
 		//This is a default implementation of vertex normal that works for a sphere centered around the origin only.
-		for(int i=0;i<vn;i++){
-			vtx_normal[i]=Vector3(vertices[i][0],vertices[i][1],vertices[i][2]);
-		}	
+		// for(int i=0;i<vn;i++){
+		// 	vtx_normal[i]=Vector3(vertices[i][0],vertices[i][1],vertices[i][2]);
+		// }	
 
 		////TODO [Step 1]: Comment the default implementation and uncomment the following function and implement it to calculate mesh normals.
-		//Update_Vertex_Normal(vertices,elements,vtx_normal);
+		Update_Vertex_Normal(vertices,elements,vtx_normal);
 	}
 
 	////TODO [Step 1]: implement your function to update vertex normals
 	void Update_Vertex_Normal(const std::vector<Vector3>& vertices,const std::vector<Vector3i>& elements,std::vector<Vector3>& normals)
 	{
+		//// Notes: `elements` is the triangles array from last time, `vertices` and `elements` are inputs and `normals` is output
+		//// for each vertex, find its incident triangles, get normals of each triangle, update vertex normal as average of incident triangle normals
+		//// visual debug: show normal as color on screen
+
 		////TODO [Step 1]: your implementation to calculate the normal vector for each mesh vertex
+
+		//// accumulate face norms on each incident vertex
+		for (int i = 0; i < elements.size(); i++){
+			const Vector3i& curr_tri = elements[i];
+
+			const int a = curr_tri[0];
+			const int b = curr_tri[1];
+			const int c = curr_tri[2];
+
+			const Vector3 edge1 = vertices[a] - vertices[b];
+			const Vector3 edge2 = vertices[a] - vertices[c];
+			const Vector3 norm = Vector3(((edge1[1] * edge2[2]) - (edge1[2] * edge2[1])), ((edge1[2] * edge2[0]) - (edge1[0] * edge2[2])), ((edge1[0] * edge2[1]) - (edge1[1] * edge2[0])));
+
+			normals[a] += norm;
+			normals[b] += norm;
+			normals[c] += norm;
+		}
+
+		//// normalize norm vectors
+		for (int i = 0; i < normals.size(); i++){
+			normals[i] = normals[i].normalized();
+		}
 	}
 
 	virtual void Initialize_Data()
@@ -140,19 +174,20 @@ public:
 
 		////Add an obj mesh
 		////TODO [Step 4]: uncomment this part and use your own mesh for Step 4.
-		//{
-		//	int obj_idx=Add_Obj_Mesh_Object("bunny.obj");
-		//	auto obj=mesh_object_array[obj_idx];
-		//	Update_Vertex_Color_And_Normal_For_Mesh_Object(obj);		
-		//}
+		// {
+		// 	int obj_idx=Add_Obj_Mesh_Object("starfish.obj");
+		// 	auto obj=mesh_object_array[obj_idx];
+		// 	Translate_Vertex_Position_For_Mesh_Object(obj, Vector3(-0.15,0.,0.));
+		// 	Update_Vertex_Color_And_Normal_For_Mesh_Object(obj);		
+		// }
 
 		////If you want to put multiple objects in the scene, uncomment this block. It will add another sphere mesh in the scene.
-		//{
-		//	int obj_idx=Add_Sphere_Object();	////add a sphere
-		//	auto obj=mesh_object_array[obj_idx];
-		//	Translate_Vertex_Position_For_Mesh_Object(obj,Vector3::Unit(0)*3.);
-		//	Update_Vertex_Color_And_Normal_For_Mesh_Object(obj);		
-		//}
+		// {
+		// 	int obj_idx=Add_Sphere_Object();	////add a sphere
+		// 	auto obj=mesh_object_array[obj_idx];
+		// 	Translate_Vertex_Position_For_Mesh_Object(obj,Vector3::Unit(0)*3.);
+		// 	Update_Vertex_Color_And_Normal_For_Mesh_Object(obj);		
+		// }
 
 		//////Add a manually built triangle mesh (with a single triangle). This is the demo code I showed in class.
 		//// You don't need this part for your homework. Just put them here for your reference.
@@ -172,8 +207,8 @@ public:
 		////initialize shader
 		////TODO [Step 2,3,4]: switch the shaders by changing the file names here. We use the helloworld shader by default. 
 		////You need to switch them to my_lambertian and my_phong for step 2,3, and 4. 
-		std::string vertex_shader_file_name="helloworld.vert";
-		std::string fragment_shader_file_name="helloworld.frag";
+		std::string vertex_shader_file_name="my_lambertian.vert";
+		std::string fragment_shader_file_name="my_lambertian.frag";
 		OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name,fragment_shader_file_name,"a2_shader");
 
 		////bind the shader with each mesh object in the object array

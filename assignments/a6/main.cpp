@@ -49,16 +49,16 @@ public:
 		//OpenGLShaderLibrary::Instance()->Add_Shader_From_File("object_3_shadow.vert","object_3_shadow.frag","object_3_shadow");	
 
 		////SHADOW TODO: comment out next three lines
-		OpenGLShaderLibrary::Instance()->Add_Shader_From_File("object_1.vert","object_1.frag","object_1");	
-		OpenGLShaderLibrary::Instance()->Add_Shader_From_File("object_2.vert","object_2.frag","object_2");	
-		OpenGLShaderLibrary::Instance()->Add_Shader_From_File("object_3.vert","object_3.frag","object_3");	
+		// OpenGLShaderLibrary::Instance()->Add_Shader_From_File("normal_mapping.vert","normal_mapping.frag","object_1");	
+		// OpenGLShaderLibrary::Instance()->Add_Shader_From_File("object_2.vert","object_2.frag","object_2");	
+		// OpenGLShaderLibrary::Instance()->Add_Shader_From_File("object_3.vert","object_3.frag","object_3");	
 	}
 
 	void Add_Textures()
 	{
 		////format: image name, texture name
-		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("earth_albedo.png", "object_1_albedo");		
-		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("earth_normal.png", "object_1_normal");
+		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("boat.jpg", "object_1_albedo");		
+		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("wood.jpg", "object_1_normal");
 		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("earth_albedo.png", "object_2_albedo");		
 		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("earth_normal.png", "object_2_normal");
 		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("earth_albedo.png", "object_3_albedo");		
@@ -79,7 +79,7 @@ public:
 		auto mesh_obj=Add_Interactive_Object<OpenGLTriangleMesh>();
 
 		////read mesh file
-		std::string obj_file_name="bunny.obj";
+		std::string obj_file_name="boat.obj";
 		Array<std::shared_ptr<TriangleMesh<3> > > meshes;
 		Obj::Read_From_Obj_File_Discrete_Triangles(obj_file_name,meshes);
 		mesh_obj->mesh=*meshes[0];
@@ -209,17 +209,150 @@ public:
 		OpenGLUbos::Update_Lights_Ubo();	
 	}
 
+	//// FUNCTIONS BELOW ARE FROM A3 MAIN.CPP
+	////This function adds a mesh object from an obj file
+	int Add_Obj_Mesh_Object(std::string obj_file_name)
+	{
+		auto mesh_obj=Add_Interactive_Object<OpenGLTriangleMesh>();
+
+		Array<std::shared_ptr<TriangleMesh<3> > > meshes;
+		Obj::Read_From_Obj_File_Discrete_Triangles(obj_file_name,meshes);
+		mesh_obj->mesh=*meshes[0];
+		std::cout<<"load tri_mesh from obj file, #vtx: "<<mesh_obj->mesh.Vertices().size()<<", #ele: "<<mesh_obj->mesh.Elements().size()<<std::endl;		
+
+		mesh_object_array.push_back(mesh_obj);
+		return (int)mesh_object_array.size()-1;
+	}
+
+	////This function adds a sphere mesh
+	int Add_Sphere_Object(const double radius=1.)
+	{
+		auto mesh_obj=Add_Interactive_Object<OpenGLTriangleMesh>();
+
+		Initialize_Sphere_Mesh(radius,&mesh_obj->mesh,3);		////add a sphere with radius=1. if the obj file name is not specified
+
+		mesh_object_array.push_back(mesh_obj);
+		return (int)mesh_object_array.size()-1;
+	}
+
+	////This function adds a square with two triangles (the X-hour demo)
+	int Add_Square_Object(const std::vector<Vector3>& vertices)
+	{
+		auto mesh_obj=Add_Interactive_Object<OpenGLTriangleMesh>();
+		auto& mesh=mesh_obj->mesh;
+
+		////manually initialize the vertices and elements for a triangle mesh
+		mesh.Vertices().resize(4);
+		for(int i=0;i<vertices.size();i++)mesh.Vertices()[i]=vertices[i];
+
+		mesh_object_array.push_back(mesh_obj);
+		return (int)mesh_object_array.size()-1;
+	}
+
+	////This function demonstrates how to manipulate the color and normal arrays of a mesh on the CPU end.
+	////The updated colors and normals will be sent to GPU for rendering automatically.
+	void Update_Vertex_Color_And_Normal_For_Mesh_Object(OpenGLTriangleMesh* obj)
+	{
+		int vn=(int)obj->mesh.Vertices().size();					////number of vertices of a mesh
+		std::vector<Vector3>& vertices=obj->mesh.Vertices();		////you might find this array useful
+		std::vector<Vector3i>& elements=obj->mesh.Elements();		////you might find this array also useful
+
+		std::vector<Vector4f>& vtx_color=obj->vtx_color;
+		vtx_color.resize(vn);
+		std::fill(vtx_color.begin(),vtx_color.end(),Vector4f::Zero());
+
+		for(int i=0;i<vn;i++){
+			vtx_color[i]=Vector4f(0.,1.,0.,1.);	////specify color for each vertex
+		}
+
+		////The vertex normals are calculated on the back-end for this assignment. You don't need to worry about the normal calculation this time.
+	}
+
+	void Update_Vertex_UV_For_Mesh_Object(OpenGLTriangleMesh* obj)
+	{
+		int vn=(int)obj->mesh.Vertices().size();					////number of vertices of a mesh
+		std::vector<Vector3>& vertices=obj->mesh.Vertices();		////you might find this array useful
+		std::vector<Vector2>& uv=obj->mesh.Uvs();					////you need to set values in uv to specify the texture coordinates
+		uv.resize(vn);
+		for(int i=0;i<vn;i++){uv[i]=Vector2(0.,0.);}				////set uv to be zero by default
+
+		Update_Uv_Using_Spherical_Coordinates(vertices,uv);
+	}
+
+	void Update_Uv_Using_Spherical_Coordinates(const std::vector<Vector3>& vertices,std::vector<Vector2>& uv)
+	{
+		const float PI = 3.1415926535; 
+
+		for (int i = 0; i < vertices.size(); i++) {
+			Vector3 vtx = vertices[i].normalized();
+			
+			float radius = sqrt(vtx[0]*vtx[0] + vtx[1]*vtx[1] + vtx[2]*vtx[2]);
+			float theta = asin(-vtx[1]/radius); 
+			float phi = atan2(-vtx[2],vtx[0]);
+
+			float u = 0.5 + (phi / (2.0*PI));
+			float v = 0.5 + (theta / PI); 
+
+			uv[i] = Vector2(u,v);
+		}
+	}
+
 	virtual void Initialize_Data()
 	{
 		Add_Shaders();
-		Add_Textures();
-
+		// Add_Textures();
 		Add_Background();
-		Add_Object_1();
-		Add_Object_2();
-		Add_Object_3();
 
-		//Init_Lighting(); ////SHADOW TODO: uncomment this line
+		// Add_Object_1();
+		// Add_Object_2();
+		// Add_Object_3();
+		// Init_Lighting(); ////SHADOW TODO: uncomment this line
+
+
+		//// A4 - ADDING MESH *********
+		// std::string name = "normal_mapping";
+
+		// OpenGLShaderLibrary::Instance()->Add_Shader_From_File(name + ".vert", name +".frag", "a6_shader");		
+		
+		// ////add the plane mesh object
+		// int obj_idx=Add_Obj_Mesh_Object("plane.obj");
+		// auto plane_obj=mesh_object_array[obj_idx];
+		// plane_obj->Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("a6_shader"));
+
+		// Set_Polygon_Mode(plane_obj, PolygonMode::Fill);
+		// Set_Shading_Mode(plane_obj, ShadingMode::Texture);
+		// plane_obj->Set_Data_Refreshed();
+		// plane_obj->Initialize();
+
+
+		//// A3 - ADDING MESH **********
+		//// sphere mesh - beachball
+		// {
+		// 	int obj_idx=Add_Sphere_Object();
+		// 	auto obj=mesh_object_array[obj_idx];
+		// 	Update_Vertex_Color_And_Normal_For_Mesh_Object(obj);	
+		// 	Update_Vertex_UV_For_Mesh_Object(obj);	
+		// }
+
+		// std::string vertex_shader_file_name="beachball.vert";		
+		// std::string fragment_shader_file_name="beachball.frag";
+
+		// OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name,fragment_shader_file_name,"a6_shader");
+
+		// // ////specifying the textures
+		// OpenGLTextureLibrary::Instance()->Add_Texture_From_File("earth_albedo.png", "albedo");		////TODO (Step 4): use a different texture color image here for your own mesh!
+		// OpenGLTextureLibrary::Instance()->Add_Texture_From_File("earth_normal.png", "normal");		////TODO (Step 4): use a different texture normal image here for your own mesh!
+
+		// ////bind the shader with each mesh object in the object array
+		// for(auto& mesh_obj: mesh_object_array){
+		// 	mesh_obj->Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("a6_shader"));
+		// 	mesh_obj->Add_Texture("tex_albedo", OpenGLTextureLibrary::Get_Texture("albedo"));
+		// 	mesh_obj->Add_Texture("tex_normal", OpenGLTextureLibrary::Get_Texture("normal"));
+		// 	Set_Polygon_Mode(mesh_obj,PolygonMode::Fill);
+		// 	Set_Shading_Mode(mesh_obj,ShadingMode::Texture);
+		// 	mesh_obj->Set_Data_Refreshed();
+		// 	mesh_obj->Initialize();
+		// }
 	}
 
 	////Goto next frame 

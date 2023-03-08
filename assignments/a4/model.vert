@@ -23,6 +23,8 @@ vec2 hash2(vec2 v)
 	//rand  = 50.0 * 1.05 * fract(v * 0.3183099 + vec2(0.71, 0.113));
     //rand = -1.0 + 2 * 1.05 * fract(rand.x * rand.y * (rand.x + rand.y) * rand);
 
+	v = vec2( dot(v,vec2(111.3,298.3)), dot(v,vec2(301.1,112.4)) );
+	rand = -1.0 + 2.0*fract(cos(v)*28495.86743);
 	// Your implementation ends here
 
 	return rand;
@@ -34,6 +36,12 @@ float perlin_noise(vec2 v)
 {
 	float noise = 0;
 	// Your implementation starts here
+	vec2 i = floor(v);
+    vec2 f = fract(v);
+
+    vec2 u = smoothstep(0., 1., f);
+
+    noise = mix(mix(dot(hash2(i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ), dot(hash2(i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x), mix(dot(hash2(i + vec2(0.0,1.0) ), f - vec2(0.0,1.0) ), dot( hash2(i + vec2(1.0,1.0) ), f - vec2(1.0,1.0) ), u.x), u.y);
 
 	// Your implementation ends here
 	return noise;
@@ -46,7 +54,11 @@ float noiseOctave(vec2 v, int num)
 {
 	float sum = 0;
 	// Your implementation starts here
-
+	for (int i = 1; i <= num; i++){
+		float w = pow(2, -i);
+		float s = pow(2, i);
+		sum += (w *perlin_noise(s * v));
+	}
 	// Your implementation ends here
 	return sum;
 }
@@ -61,7 +73,9 @@ float noiseOctave(vec2 v, int num)
 float height(vec2 v){
     float h = 0;
 	// Your implementation starts here
-
+	h = noiseOctave(v,8);
+	if (h > 0) h = 0.3 * sqrt(h);
+	else h *= 2;
 	// Your implementation ends here
 	return h;
 }

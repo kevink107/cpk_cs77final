@@ -3,6 +3,7 @@
 // Dartmouth COSC 77/177 Computer Graphics, starter code
 // Contact: Bo Zhu (bo.zhu@dartmouth.edu)
 //#####################################################################
+#include <cmath>
 #include <iostream>
 #include <random>
 #include <vector>
@@ -111,8 +112,17 @@ public:
 	////You don't need to implement the CPU-GPU data transfer code.
 	void Update_Uv_Using_Spherical_Coordinates(const std::vector<Vector3>& vertices,std::vector<Vector2>& uv)
 	{
-		/*Your implementation starts*/	
+		/*Your implementation starts*/
+		for(int i = 0; i<vertices.size(); i++){
+			const Vector3& vert = vertices[i].normalized();
+			const float radius = sqrt(pow(vert[0], 2) + pow(vert[1], 2) + pow(vert[2], 2));
+			const float theta = atan2(-vert[2], vert[0]);
+			const float phi = asin(-vert[1] / radius);
+			float u = 0.5 + (theta / (2 * M_PI));
+			float v = 0.5 + (phi / M_PI);
 
+			uv[i] = Vector2(u, v);
+		}	
 		/*Your implementation ends*/
 	}
 
@@ -120,55 +130,58 @@ public:
 	{
 		//////Add a manually built square mesh (with two triangles). This is the demo code in X-hour.
 		//// You don't need this part for your homework. Just put them here for your reference.
-		//{
-		//	std::vector<Vector3> triangle_vertices={Vector3(0,0,0),Vector3(1,0,0),Vector3(0,1,0),Vector3(1,1,0)};
-		//	int obj_idx=Add_Square_Object(triangle_vertices);	////add a sphere
-		//	auto obj=mesh_object_array[obj_idx];
-		//	
-		//	//specify the vertex colors on the CPU end
-		//	std::vector<Vector4f>& vtx_color=obj->vtx_color;
-		//	vtx_color={Vector4f(1.f,0.f,0.f,1.f),Vector4f(0.f,1.f,0.f,1.f),Vector4f(0.f,0.f,1.f,1.f),Vector4f(1.f,1.f,0.f,1.f)};
-
-		//	std::vector<Vector3>& vtx_normal=obj->vtx_normal;
-		//	vtx_normal={Vector3(0.,0.,1.),Vector3(0.,0.,1.),Vector3(0.,0.,1.),Vector3(0.,0.,1.)};
-
-		//	std::vector<Vector2>& uv=obj->mesh.Uvs();
-		//	uv={Vector2(0.,0.),Vector2(1.,0.),Vector2(0.,1.),Vector2(1.,1.)};
-
-		//	std::vector<Vector3i>& elements=obj->mesh.Elements();
-		//	elements={Vector3i(0,1,3),Vector3i(0,3,2)};
-		//}
-
-		//////Add a sphere mesh
 		{
-			int obj_idx=Add_Sphere_Object();
+			std::vector<Vector3> triangle_vertices={Vector3(0,0,0),Vector3(1,0,0),Vector3(0,1,0),Vector3(1,1,0)};
+			int obj_idx=Add_Square_Object(triangle_vertices);	////add a sphere
 			auto obj=mesh_object_array[obj_idx];
-			Update_Vertex_Color_And_Normal_For_Mesh_Object(obj);		
-			Update_Vertex_UV_For_Mesh_Object(obj);			////This is the function you need to implement from Step 0 (for sphere only!)
+			
+			//specify the vertex colors on the CPU end
+			std::vector<Vector4f>& vtx_color=obj->vtx_color;
+			vtx_color={Vector4f(1.f,0.f,0.f,1.f),Vector4f(0.f,1.f,0.f,1.f),Vector4f(0.f,0.f,1.f,1.f),Vector4f(1.f,1.f,0.f,1.f)};
+
+			std::vector<Vector3>& vtx_normal=obj->vtx_normal;
+			vtx_normal={Vector3(0.,0.,1.),Vector3(0.,0.,1.),Vector3(0.,0.,1.),Vector3(0.,0.,1.)};
+
+			std::vector<Vector2>& uv=obj->mesh.Uvs();
+			uv={Vector2(0.,0.),Vector2(1.,0.),Vector2(0.,1.),Vector2(1.,1.)};
+
+			std::vector<Vector3i>& elements=obj->mesh.Elements();
+			elements={Vector3i(0,1,3),Vector3i(0,3,2)};
 		}
 
+		//////Add a sphere mesh
+		// {
+		// 	int obj_idx=Add_Sphere_Object();
+		// 	auto obj=mesh_object_array[obj_idx];
+		// 	Update_Vertex_Color_And_Normal_For_Mesh_Object(obj);		
+		// 	Update_Vertex_UV_For_Mesh_Object(obj);			////This is the function you need to implement from Step 0 (for sphere only!)
+		// }
+
 		//////Add an obj mesh
-		//////TODO (Step 4): uncomment this part and use your own mesh for Step 4.
-		//{
-		//	 int obj_idx=Add_Obj_Mesh_Object("bunny.obj");
-		//	 auto obj=mesh_object_array[obj_idx];
-		//	 Update_Vertex_Color_And_Normal_For_Mesh_Object(obj);		
-		//}
+		////TODO (Step 4): uncomment this part and use your own mesh for Step 4.
+		// {
+		// 	 int obj_idx=Add_Obj_Mesh_Object("david.obj");
+		// 	 auto obj=mesh_object_array[obj_idx];
+		// 	 Update_Vertex_Color_And_Normal_For_Mesh_Object(obj);		
+		// }
 
 		////initialize shader
-		std::string vertex_shader_file_name="checkerboard.vert";		////TODO (Step 1 and 2): switch the file name to normal_mapping.vert
-		std::string fragment_shader_file_name="checkerboard.frag";		////TODO (Step 1 and 2): switch the file name to normal_mapping.frag
+		std::string vertex_shader_file_name="normal_mapping.vert";		////TODO (Step 1 and 2): switch the file name to normal_mapping.vert
+		std::string fragment_shader_file_name="normal_mapping.frag";		////TODO (Step 1 and 2): switch the file name to normal_mapping.frag
 		OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name,fragment_shader_file_name,"a3_shader");
 
 		////specifying the textures
-		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("earth_albedo.png", "albedo");		////TODO (Step 4): use a different texture color image here for your own mesh!
-		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("earth_normal.png", "normal");		////TODO (Step 4): use a different texture normal image here for your own mesh!
+		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("bricks2.jpeg", "albedo");		////TODO (Step 4): use a different texture color image here for your own mesh!
+		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("bricks2_normal.jpeg", "normal");		////TODO (Step 4): use a different texture normal image here for your own mesh!
+		OpenGLTextureLibrary::Instance()->Add_Texture_From_File("bricks2_disp.jpeg", "depth");		//// I added this for the displacement mapping extra credit
+
 
 		////bind the shader with each mesh object in the object array
 		for(auto& mesh_obj: mesh_object_array){
 			mesh_obj->Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("a3_shader"));
 			mesh_obj->Add_Texture("tex_albedo", OpenGLTextureLibrary::Get_Texture("albedo"));
 			mesh_obj->Add_Texture("tex_normal", OpenGLTextureLibrary::Get_Texture("normal"));
+			mesh_obj->Add_Texture("tex_depth", OpenGLTextureLibrary::Get_Texture("depth"));
 			Set_Polygon_Mode(mesh_obj,PolygonMode::Fill);
 			Set_Shading_Mode(mesh_obj,ShadingMode::Texture);
 			mesh_obj->Set_Data_Refreshed();

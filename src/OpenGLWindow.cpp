@@ -327,22 +327,6 @@ void OpenGLWindow::Update_Camera()
 	view=glm::translate(view,glm::vec3(-camera_target[0],-camera_target[1],-camera_target[2]));
 
     glm::mat4& pvm=camera->object.pvm;
-
-	//glm::mat4 model=glm::mat4(2.f,0.f,0.f,0.f,
-	//						  0.f,1.f,0.f,0.f,
-	//						  0.f,0.f,1.f,0.f,
-	//						  0.f,0.f,0.f,1.f);
-
-	//glm::mat4 model=glm::mat4(1.f);
-	//model=glm::translate(model,glm::vec3(1.f,0.f,0.f));
-	//for(int i=0;i<4;i++){
-	//	for(int j=0;j<4;j++){
-	//		std::cout<<model[i][j]<<", ";
-	//	}
-	//	std::cout<<std::endl;
-	//}
-	//std::cout<<std::endl;
-
     pvm=proj*view;	////assuming model matrix is identity
     glm::mat4& ortho=camera->object.ortho;
     ortho=glm::ortho(0.f,(GLfloat)win_w,0.f,(GLfloat)win_h);

@@ -28,6 +28,9 @@ class MeshDriver : public Driver, public OpenGLViewer
 	OpenGLSegmentMesh* opengl_edges=nullptr;							////edges
 
 	bool use_obj_mesh=false;											////flag for use obj, set it to be true if you want to load an obj mesh
+	std::string obj_mesh_name="cap.obj";								////obj file name
+	////There are two other obj files provided, cap.obj and jetFighter.obj.
+	////They are both exported from resource library of Autodesk Maya 2020
 
 public:
 	virtual void Initialize()
@@ -37,10 +40,18 @@ public:
 
 	void Load_Mesh()
 	{
-		//Initialize_Icosahedron_Mesh(.5,tri_mesh);
-		//Create_Circle_Mesh(Vector3::Zero(),1.,32,*tri_mesh);
-		Create_Cube_Mesh(1.,*tri_mesh);
-		Find_Vertex_Neighbors(7,*tri_mesh);	
+		if(use_obj_mesh){
+			Array<std::shared_ptr<TriangleMesh<3> > > meshes;
+			Obj::Read_From_Obj_File(obj_mesh_name,meshes);
+			*tri_mesh=*meshes[0];
+			std::cout<<"load tri_mesh, #vtx: "<<tri_mesh->Vertices().size()<<", #ele: "<<tri_mesh->Elements().size()<<std::endl;		
+		}
+		else{
+			//Initialize_Icosahedron_Mesh(.5,tri_mesh);
+			//Create_Circle_Mesh(Vector3::Zero(),1.,32,*tri_mesh);
+			Create_Cube_Mesh(1.,*tri_mesh);
+			Find_Vertex_Neighbors(7,*tri_mesh);
+		}	
 	}
 
 	virtual void Initialize_Data()
@@ -86,8 +97,6 @@ public:
 	//// demo
 	void Use_Eigen_Vectors()
 	{
-		using namespace std;
-
 		Vector2 v=Vector2(1.,2.);
 		Vector2 v2=Vector2(2.,3.);
 		Vector2 v3=v+v2;
@@ -98,61 +107,32 @@ public:
 		v.normalize();
 
 		std::cout<<"v: "<<v.transpose()<<std::endl;
-		std::cout<<v[0]<<", "<<v[1]<<std::endl;
 	}
 
 	void Create_Circle_Mesh(const Vector3& center,double radius,int n,TriangleMesh<3>& tri_mesh)
 	{
 		tri_mesh.Clear();
 
-		//std::vector<Vector3>& vtx=tri_mesh.Vertices();
-		//std::vector<Vector3i>& tri=tri_mesh.Elements();
-
-		//double two_pi=2.*3.1415927;
-		//double theta=two_pi/(double)n;
-
-		//vtx.push_back(center+Vector3(0,0,0.5));
-		//for(int i=0;i<n;i++){
-		//	Vector3 p=center+Vector3(radius*cos(theta*(double)i),radius*sin(theta*(double)i),(double)0);
-		//	vtx.push_back(p);
-		//}
-
-		//for(int i=1;i<=n;i++){
-		//	tri.push_back(Vector3i(0,i,(i+1>n?(i+1-n):(i+1))));
-		//}
-
-		//std::cout<<"tri elements: "<<tri_mesh.elements.size()<<std::endl;
-		//for(int i=0;i<tri_mesh.elements.size();i++){
-		//	std::cout<<tri_mesh.elements[i].transpose()<<std::endl;
-		//}
-
 		std::vector<Vector3>& vtx=tri_mesh.Vertices();
 		std::vector<Vector3i>& tri=tri_mesh.Elements();
 
-		vtx.resize(n+1);
-		tri.resize(n);
+		double two_pi=2.*3.1415927;
+		double theta=two_pi/(double)n;
 
-		double two_pi=2*3.1415927;
-		double angle=two_pi/(double)n;
-
-		vtx[0]=center;
-		for(int i=1;i<n+1;i++){
-			double theta=angle*i;
-			vtx[i]=Vector3(radius*cos(theta),radius*sin(theta),0.);
+		vtx.push_back(center+Vector3(0,0,0.5));
+		for(int i=0;i<n;i++){
+			Vector3 p=center+Vector3(radius*cos(theta*(double)i),radius*sin(theta*(double)i),(double)0);
+			vtx.push_back(p);
 		}
 
-		vtx.push_back(Vector3(1.f,0.f,0.f));
-
-		vtx[0]=center+Vector3(0,0,1);
-
-		for(int i=0;i<n-1;i++){
-			tri.push_back(Vector3i(0,i+1,i+2));
+		for(int i=1;i<=n;i++){
+			tri.push_back(Vector3i(0,i,(i+1>n?(i+1-n):(i+1))));
 		}
-		tri.push_back(Vector3i(0,n,1));
 
-		//for(int i=0;i<n;i++){
-		//	tri.push_back(Vector3i(0,(i+1),(i+2)%n));
-		//}
+		std::cout<<"tri elements: "<<tri_mesh.elements.size()<<std::endl;
+		for(int i=0;i<tri_mesh.elements.size();i++){
+			std::cout<<tri_mesh.elements[i].transpose()<<std::endl;
+		}
 	}
 
 	void Create_Cube_Mesh(double length,TriangleMesh<3>& tri_mesh)
@@ -232,7 +212,7 @@ protected:
 int main(int argc,char* argv[])
 {
 	MeshDriver driver;
-	//driver.Use_Eigen_Vectors();		
+	driver.Use_Eigen_Vectors();
 	driver.Initialize();
 	driver.Run();	
 }

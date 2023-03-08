@@ -118,10 +118,7 @@ void main()
 const std::string vpos_model_vnormal_vfpos_vtx_shader=To_String(
 ~include version;
 ~include camera;
-uniform mat4 model=mat4(2.f,0.f,0.f,0.f,
-						0.f,1.f,0.f,0.f,
-						0.f,0.f,1.f,0.f,
-						0.f,0.f,0.f,1.f);
+uniform mat4 model=mat4(1.0f);
 layout (location=0) in vec4 pos;
 layout (location=1) in vec4 normal;
 out vec3 vtx_normal;
@@ -134,18 +131,12 @@ void main()
 }														
 );
 
-//uniform mat4 model=mat4(1.f,0.f,0.f,0.f,
-//						0.f,1.f,0.f,0.f,
-//						0.f,0.f,1.f,0.f,
-//						0.f,0.f,0.f,1.f);
-
 const std::string vcolor_vtx_shader=To_String(
 ~include version;
 ~include camera;
 layout (location=0) in vec4 pos;
 layout (location=1) in vec4 v_color;
 out vec4 vtx_color;
-
 void main()												
 {
 	gl_Position=pvm*vec4(pos.xyz,1.f);

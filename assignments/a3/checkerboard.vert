@@ -20,6 +20,10 @@ layout (location=3) in vec4 uv; 			/*vertex uv*/
 
 /*output variables*/
 //// TODO: declare your vertex attributes here
+out vec4 vtx_color;
+out vec3 vtx_normal;
+out vec2 vtx_uv;
+out vec3 vtx_pos;
 
 void main()												
 {
@@ -27,4 +31,9 @@ void main()
 	gl_Position=pvm*vec4(pos.xyz,1.f);
 
 	//// TODO: pass attributes to fragment shader
-}	
+	vtx_color = v_color;
+	vtx_pos = pos.xyz;
+	vtx_normal = vec3(normal.xyz);
+	vtx_uv = vec2(uv.xy);
+}
+

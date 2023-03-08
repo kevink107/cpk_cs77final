@@ -1,12 +1,11 @@
 #version 330 core
 
-layout (location=0) in vec4 pos;
-layout (location=1) in vec4 v_color;
+layout (location = 0) in vec2 position;            
+layout (location = 1) in vec2 inTexCoord;
 
-out vec3 vtx_frg_pos;
+out vec2 texCoord;
 
-void main()
-{
-	gl_Position=vec4(pos.xyz,1.f);
-	vtx_frg_pos=pos.xyz;
+void main(){
+    texCoord = inTexCoord;
+    gl_Position = vec4(position.x, position.y, 0.0f, 1.0f);
 }

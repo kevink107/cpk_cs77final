@@ -80,7 +80,11 @@ hit hitSphere(const ray r, const sphere s)
     float delta = 0.f;
 	////TODO: check whether r is interescting with s by updating delta
 	/*Your implementation*/
-
+    vec3 OC = r.ori - s.ori; //// O - C
+    float a = dot(r.dir, r.dir);
+    float b = 2.0 * dot(r.dir, OC);
+    float c = dot(OC, OC) - s.r*s.r;
+    delta = b*b - 4.0*a*c;
     if(delta<0.0){
         // no solution, return dummy
         return  dummyHit;
@@ -91,8 +95,21 @@ hit hitSphere(const ray r, const sphere s)
 
 		////TODO: update other attributes of hit when an intersection is detected
 		/*Your implementation*/
-		
-        return h;
+        if (delta == 0.0) h.t = -0.5 * b / a;
+
+        float root1 = (-b - sqrt(delta)) / (2.0 * a);
+        float root2 = (-b + sqrt(delta)) / (2.0 * a);
+        if ((root1 < 0) && (root2 < 0)) return dummyHit;
+        else if ((root1 < 0) && (root2 >= 0)) h.t = root2;
+        else if ((root2 < 0) && (root1 >= 0)) h.t = root1;
+        else if (root1 <= root2) h.t = root1;
+        else if (root2 <= root1) h.t = root2;
+
+        if (h.t < minT || h.t > maxT) return dummyHit; 
+        
+        h.p = r.ori + r.dir*h.t;
+        h.normal = normalize(h.p - s.ori);
+        return h; 
     }
 }
 
@@ -102,6 +119,14 @@ hit findHit(ray r, sphere[4] s)
 	hit h = dummyHit;
     ////TODO: traverse all the spheres and find the intersecting one with the smallest t value
 	/*Your implementation*/
+    float temp_min = maxT;
+    for (int i = 0; i < 4; i++){
+        hit curr = hitSphere(r, s[i]);
+        if (curr.t < temp_min && curr.t > minT){
+            temp_min = curr.t;
+            h = curr;
+        }
+    }
 
 	return h;
 }
@@ -115,6 +140,16 @@ vec3 color(ray r, sphere[4] s, light[2] l)
 		////TODO: traverse all the lights and calculate the color contribution from each of them
 		////TODO: send an additional shadow ray for each light to implement the shadow effect
 		/*Your implementation*/
+        const float epsilon = 1e-3;
+        for(int i = 0; i < 2; i++){
+            light currLight = l[i];
+            vec3 lightDir = currLight.position - h.p;
+            ray shadowRay = ray(h.p + epsilon, lightDir);
+            if (findHit(shadowRay, s) == dummyHit){
+                vec3 n = normalize(h.normal);
+                col += max(0, dot(n, normalize(lightDir))) * currLight.color * h.color;
+            }
+        }
     }
     return col;
 }
