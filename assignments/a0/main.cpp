@@ -41,50 +41,6 @@ const float M_PI = 3.1415926535;
 // The side length of the minimum unit (or the new "pixels")
 const float PIXEL_SIZE = 10.; 
 
-// To check if a point is inside a circle
-bool inCircle(vec2 p, vec2 center, float radius) {
-	vec2 to_center = p - center;
-	if (dot(to_center, to_center) < radius * radius) {
-		return true;
-	}
-	return false;
-}
-
-// To check if a point is inside a triangle
-bool inTriangle(vec2 p, vec2 p1, vec2 p2, vec2 p3) {
-	if (dot(cross(vec3(p2 - p1, 0), vec3(p - p1, 0)), cross(vec3(p2 - p1, 0), vec3(p3 - p1, 0))) >= 0. &&
-		dot(cross(vec3(p3 - p2, 0), vec3(p - p2, 0)), cross(vec3(p3 - p2, 0), vec3(p1 - p2, 0))) >= 0. &&
-		dot(cross(vec3(p1 - p3, 0), vec3(p - p3, 0)), cross(vec3(p1 - p3, 0), vec3(p2 - p3, 0))) >= 0.) {
-		return true;
-	}
-	return false;
-}
-
-// To check if a point is inside an ellipse
-bool inEllipse(vec2 p, vec2 center, float radiusX, float radiusY){
-	return (pow(p.x - center.x, 2) / pow(radiusX, 2)) + (pow(p.y - center.y, 2) / pow(radiusY, 2)) <= 1.0;
-}
-
-// To check if a point is inside a rectangle
-bool inRectangle(vec2 p, float x1, float x2, float y1, float y2){
-	return (p[0] >= min(x1, x2) && p[1] >= min(y1, y2) && p[0] <= max(x1, x2) && p[1] <= max(y1, y2));
-}
-
-// To convert from Polar Coordinates to Cartesian coordinates
-vec2 polar2cart(float angle, float length) {
-	return vec2(cos(angle) * length, sin(angle) * length);
-}
-
-// Provides the positive y-coordinate of a point on an ellipse (centered at the origin) given an x-coordinate as if the ellipse is centered about the origin
-float yOnEllipse(float x, float radiusX, float radiusY){
-	return radiusY * sqrt((1 - (pow(x, 2) / pow(radiusX, 2))));
-}
-
-// Provides the positive x-coordinate of a point on an ellipse (centered at the origin) given a y-coordinate as if the ellipse is centered about the origin
-float xOnEllipse(float y, float radiusX, float radiusY){
-	return radiusX * sqrt((1 - (pow(y, 2) / pow(radiusY, 2))));
-}
-
 /////////////////////////////////////////////////////////////////////////
 // Feel free to add more functions if needed!                          
 /////////////////////////////////////////////////////////////////////////
@@ -97,115 +53,18 @@ float xOnEllipse(float y, float radiusX, float radiusY){
 /////////////////////////////////////////////////////////////////////
 
 // Return the rgba color of the grid at position (x, y) 
-vec4 paintGrid(float x, float y) {
-	vec2 center = vec2(iResolution / PIXEL_SIZE / 2.); // window center
-	vec2 quarter = vec2(iResolution / PIXEL_SIZE / 4.);
-	vec2 fifth = vec2(iResolution / PIXEL_SIZE / 5.);
-	vec2 seventh = vec2(iResolution / PIXEL_SIZE / 7.);
 
-	// tennis ball
-	float ballRadius = 5.0;
-	float innerSeamRadius = 4.0;
-	float outterSeamRadius = 3.0;
-	float step = 10.0;
+struct camera{
+    vec3 origin;
+    vec3 horizontal;
+    vec3 vertical;
+    vec3 LowerLeftCorner;
+};
 
-	vec2 ballCenter = quarter + vec2(0., sin(10.0 * iTime) * step); 
-	vec2 ballLEdge = vec2(ballCenter.x- ballRadius, ballCenter.y);
-	vec2 ballREdge = vec2(ballCenter.x + ballRadius, ballCenter.y);
-	bool inBall = inCircle(vec2(x,y), ballCenter, ballRadius);
-
-	bool inLInSeam = inCircle(vec2(x,y), ballLEdge, innerSeamRadius);
-	bool inLOutSeam = inCircle(vec2(x,y), ballLEdge, outterSeamRadius);
-	bool inRInSeam = inCircle(vec2(x,y), ballREdge, innerSeamRadius);
-	bool inROutSeam = inCircle(vec2(x,y), ballREdge, outterSeamRadius);
-
-	// racket head
-	float outerRadiusX = quarter.y - 5;
-	float outerRadiusY = quarter.y - 1;
-	float innerRadiusX = outerRadiusX - 2.0;
-	float innerRadiusY = outerRadiusY - 2.0;
-
-	vec2 headCenter = center + vec2(0, fifth.y);
-
-	bool inOuterFrame = inEllipse(vec2(x,y), headCenter, outerRadiusX, outerRadiusY);
-	bool inInnerFrame = inEllipse(vec2(x,y), headCenter, innerRadiusX, innerRadiusY);
-
-	// vertical racket strings
-	float mainStringDist = 4.0;
-	float mainStringWidth = 0.0;
-
-	float yMainString1 = yOnEllipse(-2 * mainStringDist, outerRadiusX, outerRadiusY);
-	float yMainString2 = yOnEllipse(-1 * mainStringDist, outerRadiusX, outerRadiusY);
-	float yMainString3 = yOnEllipse(0 * mainStringDist, outerRadiusX, outerRadiusY);
-	float yMainString4 = yOnEllipse(1 * mainStringDist, outerRadiusX, outerRadiusY);
-	float yMainString5 = yOnEllipse(2 * mainStringDist, outerRadiusX, outerRadiusY);
-
-	bool inMainString1 = inRectangle(vec2(x,y), headCenter.x + (-2 * mainStringDist), headCenter.x + (-2 * mainStringDist) + mainStringWidth, headCenter.y + yMainString1 - 1.0, headCenter.y - yMainString1 + 1.0); 
-	bool inMainString2 = inRectangle(vec2(x,y), headCenter.x + (-1 * mainStringDist), headCenter.x + (-1 * mainStringDist) + mainStringWidth, headCenter.y + yMainString2 - 1.0, headCenter.y - yMainString2 + 1.0); 
-	bool inMainString3 = inRectangle(vec2(x,y), headCenter.x + (0 * mainStringDist), headCenter.x + (0 * mainStringDist) + mainStringWidth, headCenter.y + yMainString3 -1.0, headCenter.y - yMainString3 + 1.0); 
-	bool inMainString4 = inRectangle(vec2(x,y), headCenter.x + (1 * mainStringDist), headCenter.x + (1 * mainStringDist) + mainStringWidth, headCenter.y + yMainString4 - 1.0, headCenter.y - yMainString4 + 1.0); 
-	bool inMainString5 = inRectangle(vec2(x,y), headCenter.x + (2 * mainStringDist), headCenter.x + (2 * mainStringDist) + mainStringWidth, headCenter.y + yMainString5 - 1.0, headCenter.y - yMainString5 + 1.0); 
-
-	// horizontal racket strings
-	float crossStringDist = 5.0;
-	float crossStringWidth = 1.0;
-
-	float xCrossString1 = xOnEllipse(-3 * crossStringDist, outerRadiusX, outerRadiusY);
-	float xCrossString2 = xOnEllipse(-2 * crossStringDist, outerRadiusX, outerRadiusY);
-	float xCrossString3 = xOnEllipse(-1 * crossStringDist, outerRadiusX, outerRadiusY);
-	float xCrossString4 = xOnEllipse(0 * crossStringDist, outerRadiusX, outerRadiusY);
-	float xCrossString5 = xOnEllipse(1 * crossStringDist, outerRadiusX, outerRadiusY);
-	float xCrossString6 = xOnEllipse(2 * crossStringDist, outerRadiusX, outerRadiusY);
-	float xCrossString7 = xOnEllipse(3 * crossStringDist, outerRadiusX, outerRadiusY); 
-
-	bool inCrossString1 = inRectangle(vec2(x,y), headCenter.x - xCrossString1 + 1.0, headCenter.x + xCrossString1 - 1.0, headCenter.y + (-3 * crossStringDist), headCenter.y + (-3 * crossStringDist) + crossStringWidth);
-	bool inCrossString2 = inRectangle(vec2(x,y), headCenter.x - xCrossString2 + 1.0, headCenter.x + xCrossString2 - 1.0, headCenter.y + (-2 * crossStringDist), headCenter.y +  (-2 * crossStringDist) + crossStringWidth);
-	bool inCrossString3 = inRectangle(vec2(x,y), headCenter.x - xCrossString3 + 1.0, headCenter.x + xCrossString3 - 1.0, headCenter.y + (-1 * crossStringDist), headCenter.y +  (-1 * crossStringDist) + crossStringWidth);
-	bool inCrossString4 = inRectangle(vec2(x,y), headCenter.x - xCrossString4 + 1.0, headCenter.x + xCrossString4 - 1.0, headCenter.y + (0 * crossStringDist) , headCenter.y + (0 * crossStringDist) + crossStringWidth);
-	bool inCrossString5 = inRectangle(vec2(x,y), headCenter.x - xCrossString5 + 1.0, headCenter.x + xCrossString5 - 1.0, headCenter.y + (1 * crossStringDist) , headCenter.y + (1 * crossStringDist) + crossStringWidth);
-	bool inCrossString6 = inRectangle(vec2(x,y), headCenter.x - xCrossString6 + 1.0, headCenter.x + xCrossString6 - 1.0, headCenter.y + (2 * crossStringDist) , headCenter.y + (2 * crossStringDist) + crossStringWidth);
-	bool inCrossString7 = inRectangle(vec2(x,y), headCenter.x - xCrossString7 + 1.0, headCenter.x + xCrossString7 - 1.0, headCenter.y + (3 * crossStringDist) , headCenter.y + (3 * crossStringDist) + crossStringWidth);
-
-
-	// racket throat
-	vec2 p1 = vec2(headCenter.x - xCrossString1 + 1.0, headCenter.y + (-3 * crossStringDist));
-	vec2 p2 = vec2(headCenter.x + xCrossString1 - 1.0, headCenter.y + (-3 * crossStringDist));
-	vec2 p3 = vec2(headCenter.x, headCenter.y - outerRadiusY - seventh.y);
-
-	vec2 innerP1 = p1 + vec2(2.0, 0.0);
-	vec2 innerP2 = p2 + vec2(-2.0, 0.0);
-	vec2 innerP3 = p3 + vec2(0.0, 5.0);
-
-	bool inOuterThroat = inTriangle(vec2(x,y), p1, p2, p3);
-	bool inInnerThroat = inTriangle(vec2(x,y), innerP1, innerP2, innerP3);
-
-	// racket handle
-	bool inHandle = inRectangle(vec2(x, y), innerP3.x - 1.75, innerP3.x + 1.75, innerP3.y, p3.y - innerRadiusY);
-	
-
-	// shading rules
-	if ((inBall && inLInSeam && !inLOutSeam) || (inBall && inRInSeam && !inROutSeam)) {
-		return vec4(vec3(255, 255, 255) / 255., 1.); // white
-	} else if (inBall){
-		return vec4(vec3(2, 249, 2) / 255., 1.); // tennis ball green
-	} else if ((inOuterFrame && !inInnerFrame) || (inOuterThroat && !inInnerFrame && !inInnerThroat)){
-		if (y >= headCenter.y + (2 * crossStringDist)){
-			return vec4(vec3(51, 247, 2) / 255., 1.); // lime green
-		} else if(y < headCenter.y + (2 * crossStringDist) && y >= headCenter.y + (-2 * crossStringDist)) {
-			return vec4(vec3(157, 163, 155) / 255., 1.); // gray
-		} else {
-			return vec4(vec3(1, 1, 1) / 255., 1.); // black
-		}
-	} else if(inHandle){
-		return vec4(vec3(1, 1, 1) / 255., 1.); 
-	} else if (inMainString1 || inMainString2 || inMainString3 || inMainString4 || inMainString5){
-		return vec4(vec3(255, 1, 1) / 255., 1.); // red
-	} else if (inCrossString1 || inCrossString2 || inCrossString3 || inCrossString4 || inCrossString5 || inCrossString6 || inCrossString7){
-		return vec4(vec3(255, 1, 1) / 255., 1.); // red
-	} else {
-		return vec4(vec3(184, 243, 255) / 255., 1.); // background blue
-	}
-}
+struct ra{
+    vec3 ori;
+    vec3 dir;
+};
 
 const float tau = 6.28318530717958647692;
 
@@ -250,28 +109,44 @@ vec3 localRay;
 // distance - how far camera is from origin
 // rotation - about x & y axes, by left-hand screw rule, relative to camera looking along +z
 // zoom - the relative length of the lens
-void CamPolar( out vec3 pos, out vec3 ray, in vec3 origin, in vec2 rotation, in float distance, in float zoom, in vec2 fragCoord )
+// void CamPolar( out vec3 pos, out vec3 ray, in vec3 origin, in vec2 rotation, in float distance, in float zoom, in vec2 fragCoord )
+// {
+// 	// get rotation coefficients
+// 	vec2 c = vec2(cos(rotation.x),cos(rotation.y));
+// 	vec4 s;
+// 	s.xy = vec2(sin(rotation.x),sin(rotation.y)); // worth testing if this is faster as sin or sqrt(1.0-cos);
+// 	s.zw = -s.xy;
+
+// 	// ray in view space
+// 	ray.xy = fragCoord.xy - iResolution.xy*.5;
+// 	ray.z = iResolution.y*zoom;
+// 	ray = normalize(ray);
+// 	localRay = ray;
+	
+// 	// rotate ray
+// 	ray.yz = ray.yz*c.xx + ray.zy*s.zx;
+// 	ray.xz = ray.xz*c.yy + ray.zx*s.yw;
+	
+// 	// position camera
+// 	pos = origin - distance*vec3(c.x*s.y,s.z,c.x*c.y);
+// }
+
+ra getRay(camera cam, in vec2 fragCoord)
 {
-	// get rotation coefficients
-	vec2 c = vec2(cos(rotation.x),cos(rotation.y));
-	vec4 s;
-	s.xy = vec2(sin(rotation.x),sin(rotation.y)); // worth testing if this is faster as sin or sqrt(1.0-cos);
-	s.zw = -s.xy;
-
-	// ray in view space
-	ray.xy = fragCoord.xy - iResolution.xy*.5;
-	ray.z = iResolution.y*zoom;
-	ray = normalize(ray);
-	localRay = ray;
+    vec2 c = vec2(0.902, 0.568);
+    vec4 s = vec4(0.433, 0.823, -0.433, -0.823);
+    
+    vec3 tempRay;
+    tempRay.xy = fragCoord.xy - iResolution.xy*.5;
+	tempRay.z = iResolution.y;
+	tempRay = normalize(tempRay);
+	localRay = tempRay;
+    
+    tempRay.yz = vec2(tempRay.y*c.x, tempRay.z*c.x)+ vec2(tempRay.z*s.z, tempRay.y*s.x);
+	tempRay.xz = vec2(tempRay.x*c.y, tempRay.z*c.y)+ vec2(tempRay.z*s.y, tempRay.x*s.w);
 	
-	// rotate ray
-	ray.yz = ray.yz*c.xx + ray.zy*s.zx;
-	ray.xz = ray.xz*c.yy + ray.zx*s.yw;
-	
-	// position camera
-	pos = origin - distance*vec3(c.x*s.y,s.z,c.x*c.y);
+    return ra(cam.origin, tempRay.xyz);
 }
-
 
 // Noise functions, distinguished by variable types
 
@@ -666,36 +541,30 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	ComputeBoatTransform();
 	
-	vec2 camRot = vec2(.5,.5)+vec2(-.35,4.5)*(0.15);
-	vec3 pos;
-	vec3 ray;
-	CamPolar( pos, ray, vec3(0), camRot, 3.0, 1.0, fragCoord );
+	// vec2 camRot = vec2(.5,.5)+vec2(-.35,4.5)*(0.15);
+	// vec3 pos;
+	// vec3 ray;
+	// CamPolar( pos, ray, vec3(0), camRot, 3.0, 1.0, fragCoord );
+
+	camera c = camera(-3.0*vec3(0.742, -0.433, 0.512), vec3(5, 0, 0), vec3(0, 3, -3), vec3(-2.5, -1.5, -1));
+    ra r = getRay(c, fragCoord);
 	
-	float to = TraceOcean( pos, ray );
-	float tb = TraceBoat( pos, ray );
+	float to = TraceOcean( r.ori, r.dir );
+	float tb = TraceBoat( r.ori, r.dir );
 	
 	vec3 result;
 	if ( to > 0.0 && ( to < tb || tb == 0.0 ) )
-		result = ShadeOcean( pos+ray*to, ray, fragCoord );
+		result = ShadeOcean( r.ori+r.dir*to, r.dir, fragCoord );
 	else if ( tb > 0.0 )
-		result = ShadeBoat( pos+ray*tb, ray );
+		result = ShadeBoat( r.ori+r.dir*tb, r.dir );
 	else
-		result = Sky( ray );
+		result = Sky( r.dir );
 	
 	// vignette effect
 	result *= 1.1*smoothstep( .35, 1.0, localRay.z );
 	
 	// fragColor = vec4(result, 1,0);
 	fragColor = vec4(ToGamma(result),1.0);
-
-	// // Normalized pixel coordinates (from 0 to 1)
-    // vec2 uv = fragCoord/iResolution.xy;
-
-    // // Time varying pixel color
-    // vec3 col = 0.5 + 0.5*cos(iTime+uv.xyx+vec3(0,2,4));
-
-    // // Output to screen
-    // fragColor = vec4(col,1.0);
 }
 
 );
