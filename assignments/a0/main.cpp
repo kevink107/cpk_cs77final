@@ -61,7 +61,7 @@ struct camera{
     vec3 LowerLeftCorner;
 };
 
-struct ra{
+struct viewRay{
     vec3 ori;
     vec3 dir;
 };
@@ -131,21 +131,27 @@ vec3 localRay;
 // 	pos = origin - distance*vec3(c.x*s.y,s.z,c.x*c.y);
 // }
 
-ra getRay(camera cam, in vec2 fragCoord)
+viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 {
-    vec2 c = vec2(0.902, 0.568);
-    vec4 s = vec4(0.433, 0.823, -0.433, -0.823);
+	//// cosines and sines of rotation angles...
+    vec2 cosines = vec2(cos(thetas.x), cos(thetas.y));
+	vec2 sines = vec2(sin(thetas.x), sin(thetas.y));
     
+
+	//// create ray
     vec3 tempRay;
     tempRay.xy = fragCoord.xy - iResolution.xy*.5;
 	tempRay.z = iResolution.y;
 	tempRay = normalize(tempRay);
 	localRay = tempRay;
     
-    tempRay.yz = vec2(tempRay.y*c.x, tempRay.z*c.x)+ vec2(tempRay.z*s.z, tempRay.y*s.x);
-	tempRay.xz = vec2(tempRay.x*c.y, tempRay.z*c.y)+ vec2(tempRay.z*s.y, tempRay.x*s.w);
+	//// rotate ray by theta_x about x axis
+    tempRay.yz = vec2(tempRay.y*cosines.x, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
+	//// rotate ray by theta_y about y axis
+	tempRay.xz = vec2(tempRay.x*cosines.y, tempRay.z*cosines.y)+ vec2(tempRay.z*sines.y, -tempRay.x*sines.y);
 	
-    return ra(cam.origin, tempRay.xyz);
+	return viewRay(vec3(-2.226, 1.3, -1.536), tempRay.xyz);
+    // return viewRay(-3.0*vec3(cosines.x*sines.y, -sines.x, cosines.x*cosines.y), tempRay.xyz);
 }
 
 // Noise functions, distinguished by variable types
@@ -546,8 +552,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	// vec3 ray;
 	// CamPolar( pos, ray, vec3(0), camRot, 3.0, 1.0, fragCoord );
 
-	camera c = camera(-3.0*vec3(0.742, -0.433, 0.512), vec3(5, 0, 0), vec3(0, 3, -3), vec3(-2.5, -1.5, -1));
-    ra r = getRay(c, fragCoord);
+	vec2 rot_angles = vec2(0.4475, 0.9668);
+    viewRay r = getRay(rot_angles, fragCoord);
 	
 	float to = TraceOcean( r.ori, r.dir );
 	float tb = TraceBoat( r.ori, r.dir );
