@@ -138,7 +138,7 @@ vec2 Noise( in ivec3 x )
 /* Generates height map for waves in water surface */
 float Waves( vec3 pos )
 {
-	pos *= .2*vec3(1,1,1);
+	pos *= .1*vec3(1,1,1);
 	
 	const int octaves = 5;
 	float f = 0.0;
@@ -149,8 +149,8 @@ float Waves( vec3 pos )
 	for ( int i=0; i < octaves; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		f  = f*2.0+abs(Noise(pos).x-.5)*2.0;
-		pos *= 2.0;
+		f  = f*1.25+abs(Noise(pos).x-.5)*(Noise(pos).y + 1.0);
+		pos *= 1.75;
 	}
 	f /= exp2(float(octaves));
 	
@@ -171,7 +171,7 @@ float WavesDetail( vec3 pos )
 	for ( int i=0; i < octaves; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		f  = f*2.0+abs(NoisePrecise(pos).x-.5)*2.0;
+		f  = f*1.775+abs(NoisePrecise(pos).x-.5)*4.1875;
 		pos *= 2.0;
 	}
 	f /= exp2(float(octaves));
@@ -193,8 +193,8 @@ float WavesSmooth( vec3 pos )
 	for ( int i=0; i < octaves; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		//f  = f*2.0+abs(Noise(pos).x-.5)*2.0;
-		f  = f*2.0+sqrt(pow(NoisePrecise(pos).x-.5,2.0)+.01)*2.0;
+		//// THIS IS IMPT FOR THE HEIGHT AND MOTION OF THE BALL (the first constant and the last constant in particular)
+		f  = f*1.0+sqrt(pow(NoisePrecise(pos).x-.5,2.5)+.01)*1.85;
 		pos *= 2.0;
 	}
 	f /= exp2(float(octaves));
@@ -219,7 +219,7 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 	for ( int i=0; i < octaves1; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		f  = f*1.5+abs(Noise(pos).x-.5)*2.0;
+		f  = f*2.0+abs(Noise(pos).x-.5)*3.0;
 		pos *= 2.0;
 	}
 	pos = pos2 * exp2(float(octaves1));
@@ -227,7 +227,8 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 	for ( int i=octaves1; i < octaves2; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		f  = f*1.5+pow(abs(Noise(pos).x-.5)*2.0,1.0);
+		f  = f*1.5+pow(abs(Noise(pos).x-.5)*2.0, 50.0);
+		// f = f*1.5+abs(Noise(pos).x-.5)*2.0;
 		pos *= 2.0;
 	}
 	f /= 1500.0;
