@@ -52,15 +52,6 @@ const float PIXEL_SIZE = 10.;
 // iResolution: the size of the window (default: 1280*960)         //
 /////////////////////////////////////////////////////////////////////
 
-// Return the rgba color of the grid at position (x, y) 
-
-struct camera{
-    vec3 origin;
-    vec3 horizontal;
-    vec3 vertical;
-    vec3 LowerLeftCorner;
-};
-
 struct viewRay{
     vec3 ori;
     vec3 dir;
