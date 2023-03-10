@@ -55,32 +55,6 @@ vec4 hash42(vec2 p)
 
 vec3 localRay;
 
-// Set up a camera looking at the scene.
-// origin - camera is positioned relative to, and looking at, this point
-// distance - how far camera is from origin
-// rotation - about x & y axes, by left-hand screw rule, relative to camera looking along +z
-// zoom - the relative length of the lens
-// void CamPolar( out vec3 pos, out vec3 ray, in vec3 origin, in vec2 rotation, in float distance, in float zoom, in vec2 fragCoord )
-// {
-// 	// get rotation coefficients
-// 	vec2 c = vec2(cos(rotation.x),cos(rotation.y));
-// 	vec4 s;
-// 	s.xy = vec2(sin(rotation.x),sin(rotation.y)); // worth testing if this is faster as sin or sqrt(1.0-cos);
-// 	s.zw = -s.xy;
-
-// 	// ray in view space
-// 	ray.xy = fragCoord.xy - iResolution.xy*.5;
-// 	ray.z = iResolution.y*zoom;
-// 	ray = normalize(ray);
-// 	localRay = ray;
-	
-// 	// rotate ray
-// 	ray.yz = ray.yz*c.xx + ray.zy*s.zx;
-// 	ray.xz = ray.xz*c.yy + ray.zx*s.yw;
-	
-// 	// position camera
-// 	pos = origin - distance*vec3(c.x*s.y,s.z,c.x*c.y);
-// }
 
 viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 {
@@ -105,41 +79,26 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord)
     // return viewRay(-3.0*vec3(cosines.x*sines.y, -sines.x, cosines.x*cosines.y), tempRay.xyz);
 }
 
-// Noise functions, distinguished by variable types
-
-vec2 Noise( in vec3 x )
+/* Noise functions, distinguished by variable types */ 
+/* type: vec3 */
+vec2 Noise(vec3 x)
 {
     vec3 p = floor(x);
     vec3 f = fract(x);
 	f = f*f*(3.0-2.0*f);
-//	vec3 f2 = f*f; f = f*f2*(10.0-15.0*f+6.0*f2);
-
 	vec2 uv = (p.xy+vec2(37.0,17.0)*p.z);
-
-	// vec4 rg = textureLod( iChannel0, (uv+f.xy+0.5)/256.0, 0.0 );
 	vec4 rg = hash42((uv+f.xy+0.5)/256.0);
-
 	return mix( rg.yw, rg.xz, f.z );
 }
 
-vec2 NoisePrecise( in vec3 x )
+/* type: vec3 */
+vec2 NoisePrecise(vec3 x)
 {
     vec3 p = floor(x);
     vec3 f = fract(x);
 	f = f*f*(3.0-2.0*f);
-//	vec3 f2 = f*f; f = f*f2*(10.0-15.0*f+6.0*f2);
-
 	vec2 uv = (p.xy+vec2(37.0,17.0)*p.z);
 
-	// vec4 rg = mix( mix(
-	// 			textureLod( iChannel0, (uv+0.5)/256.0, 0.0 ),
-	// 			textureLod( iChannel0, (uv+vec2(1,0)+0.5)/256.0, 0.0 ),
-	// 			f.x ),
-	// 			  mix(
-	// 			textureLod( iChannel0, (uv+vec2(0,1)+0.5)/256.0, 0.0 ),
-	// 			textureLod( iChannel0, (uv+1.5)/256.0, 0.0 ),
-	// 			f.x ),
-	// 			f.y );
 	vec4 rg = mix( mix(
 				hash42((uv+0.5)/256.0),
 				hash42((uv+vec2(1,0)+0.5)/256.0),
@@ -149,38 +108,34 @@ vec2 NoisePrecise( in vec3 x )
 				hash42((uv+1.5)/256.0),
 				f.x ),
 				f.y );
-				  
 
 	return mix( rg.yw, rg.xz, f.z );
 }
 
+/* type: vec2 */
 vec4 Noise( in vec2 x )
 {
     vec2 p = floor(x.xy);
     vec2 f = fract(x.xy);
 	f = f*f*(3.0-2.0*f);
-//	vec3 f2 = f*f; f = f*f2*(10.0-15.0*f+6.0*f2);
-
 	vec2 uv = p.xy + f.xy;
 	return hash42((uv+0.5)/256.0);
-
-	// return textureLod( iChannel0, (uv+0.5)/256.0, 0.0 );
 }
 
+/* type: ivec2 */
 vec4 Noise( in ivec2 x )
 {
 	return hash42((vec2(x)+0.5)/256.0);
-	// return textureLod( iChannel0, (vec2(x)+0.5)/256.0, 0.0 );
 }
 
+/* type: ivec3 */
 vec2 Noise( in ivec3 x )
 {
 	vec2 uv = vec2(x.xy)+vec2(37.0,17.0)*float(x.z);
 	return hash42((uv+0.5)/256.0).xz;
-	// return textureLod( iChannel0, (uv+0.5)/256.0, 0.0 ).xz;
 }
 
-
+/* Generates height map for waves in water surface */
 float Waves( vec3 pos )
 {
 	pos *= .2*vec3(1,1,1);
@@ -202,6 +157,7 @@ float Waves( vec3 pos )
 	return (.5-f)*1.0;
 }
 
+/* Like Waves, but uses more octaves to create more detailed pattern */
 float WavesDetail( vec3 pos )
 {
 	pos *= .2*vec3(1,1,1);
@@ -223,11 +179,12 @@ float WavesDetail( vec3 pos )
 	return (.5-f)*1.0;
 }
 
+/* Like Waves, but uses sqrt to calculate height values */
 float WavesSmooth( vec3 pos )
 {
 	pos *= .2*vec3(1,1,1);
 	
-	const int octaves = 2;
+	const int octaves = 8;
 	float f = 0.0;
 
 	// need to do the octaves from large to small, otherwise things don't line up
@@ -245,6 +202,7 @@ float WavesSmooth( vec3 pos )
 	return (.5-f)*1.0;
 }
 
+/* */
 float WaveCrests( vec3 ipos, in vec2 fragCoord )
 {
 	vec3 pos = ipos;
@@ -279,18 +237,18 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 	return pow(smoothstep(.4,-.1,f),6.0);
 }
 
-
+/* returns color of sky for a given direction */
 vec3 Sky( vec3 ray )
 {
 	return vec3(.4,.45,.5);
 }
-
 
 vec3 boatRight;
 vec3 boatUp;
 vec3 boatForward;
 vec3 boatPosition;
 
+/* Uses transformation matrix to transform and orient the ball in the scene */
 void ComputeBoatTransform( void )
 {
 	vec3 samples[5];
@@ -308,7 +266,7 @@ void ComputeBoatTransform( void )
 	samples[4].y = WavesSmooth(samples[4]);
 
 	boatPosition = (samples[0]+samples[1]+samples[2]+samples[3]+samples[4])/5.0;
-	
+
 	boatRight = samples[3]-samples[4];
 	boatForward = samples[1]-samples[2];
 	boatUp = normalize(cross(boatForward,boatRight));
@@ -318,33 +276,36 @@ void ComputeBoatTransform( void )
 	boatPosition += .0*boatUp;
 }
 
+/* Directional boat vector in local coordinate system to world space */
 vec3 BoatToWorld( vec3 dir )
 {
-	return dir.x*boatRight+dir.x*boatUp+dir.x*boatForward;
+	return dir.x*boatRight + dir.x*boatUp + dir.x*boatForward;
 }
 
+/* Directional world space vector to boat's local coordinate system */
 vec3 WorldToBoat( vec3 dir )
 {
 	return vec3( dot(dir,boatRight), dot(dir,boatUp), dot(dir,boatForward) );
 }
 
+/* Makes ball */
 float TraceBoat( vec3 pos, vec3 ray )
 {
 	vec3 c = boatPosition;
-	float r = 1.0;
-	
+	float r = 0.8; // ball radius
+
 	c -= pos;
-	
+
 	float t = dot(c,ray);
-	
+
 	float p = length(c-t*ray);
 	if ( p > r )
 		return 0.0;
-	
+
 	return t-sqrt(r*r-p*p);
 }
 
-
+/* Shades/colors floating beachball pattern */
 vec3 ShadeBoat( vec3 pos, vec3 ray )
 {
 	pos -= boatPosition;
@@ -360,13 +321,6 @@ vec3 ShadeBoat( vec3 pos, vec3 ray )
 	// anti-alias the albedo
 	float aa = 4.0/iResolution.x;
 	
-	//vec3 albedo = ((fract(pos.x)-.5)*(fract(pos.y)-.5)*(fract(pos.z)-.5) < 0.0) ? vec3(0) : vec3(1);
-	// vec3 albedo = vec3(1,.01,0);
-	// albedo = mix( vec3(.04), albedo, smoothstep( .25-aa, .25, abs(pos.y) ) );
-	// albedo = mix( mix( vec3(1), vec3(.04), smoothstep(-aa*4.0,aa*4.0,cos(atan(pos.x,pos.z)*6.0)) ), albedo, smoothstep( .2-aa*1.5, .2, abs(pos.y) ) );
-	// albedo = mix( vec3(.04), albedo, smoothstep( .05-aa*1.0, .05, abs(abs(pos.y)-.6) ) );
-	// albedo = mix( vec3(1,.8,.08), albedo, smoothstep( .05-aa*1.0, .05, abs(abs(pos.y)-.65) ) );
-
 	vec3 col = vec3(1.0);
 	float PI = 3.1415926535;
 
@@ -411,17 +365,19 @@ vec3 ShadeBoat( vec3 pos, vec3 ray )
 	return col;
 }
 
-
+/* Distance from input position to the ocean surface */
 float OceanDistanceField( vec3 pos )
 {
 	return pos.y - Waves(pos);
 }
 
+/* Uses WavesDetail function to make ocean more realistic */
 float OceanDistanceFieldDetail( vec3 pos )
 {
 	return pos.y - WavesDetail(pos);
 }
 
+/* Calculates normal vector of the ocean */
 vec3 OceanNormal( vec3 pos )
 {
 	vec3 norm;
@@ -434,6 +390,8 @@ vec3 OceanNormal( vec3 pos )
 	return normalize(norm);
 }
 
+/* Ray marching algorithm that traces a ray through an ocean volume to 
+determine the distance to the surface of the ocean */
 float TraceOcean( vec3 pos, vec3 ray )
 {
 	float h = 1.0;
@@ -452,7 +410,7 @@ float TraceOcean( vec3 pos, vec3 ray )
 	return t;
 }
 
-
+/* Makes the color of a point on the ocean surface for a given viewing ray and screen coordinates */
 vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 {
 	vec3 norm = OceanNormal(pos);
@@ -475,7 +433,6 @@ vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 		reflection = ShadeBoat( pos+(t-crackFudge)*reflectedRay, reflectedRay );
 	}
 
-	
 	// refraction
 	t=TraceBoat( pos-crackFudge*refractedRay, refractedRay );
 	
@@ -493,7 +450,7 @@ vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 	return col;
 }
 
-// The function called in the fragment shader
+/* The function called in the fragment shader */
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	ComputeBoatTransform();
@@ -527,6 +484,12 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
 void main() {
 	mainImage(fragColor, fragCoord);
+	// float boatSpeed = 0.1;
+
+	// vec3 boatPos = vec3(0.0, 0.0, sin(iTime*0.5)*3.0);
+	// vec3 nextBoatPos = vec3(0.0, 0.0, sin((iTime+boatSpeed)*0.5)*3.0);
+
+	// boatPos = mix(boatPos, nextBoatPos, smoothstep(0.0, 1.0, fract(iTime/boatSpeed)));
 }
 
 
