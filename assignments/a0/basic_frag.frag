@@ -112,107 +112,111 @@ vec2 Noise( in ivec3 x )
 /* Generates height map for waves in water surface */
 float Waves( vec3 pos )
 {
-	pos *= .1*vec3(1,1,1);
-	
 	const int octaves = 5;
-	float f = 0.0;
+	float sum = 0.0;
 
 	// need to do the octaves from large to small, otherwise things don't line up
 	// (because I rotate by 45 degrees on each octave)
+	pos *= .1*vec3(1,1,1);
 	pos += iTime*vec3(0,.1,.1);
+
 	for ( int i=0; i < octaves; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		f  = f*1.25+abs(Noise(pos).x-.5)*(Noise(pos).y + 1.0);
+		sum *= 1.25;
+		sum += abs(Noise(pos).x-0.5)*(Noise(pos).y + 1.0);
 		pos *= 1.75;
 	}
-	f /= exp2(float(octaves));
+	sum /= exp2(float(octaves));
 	
-	return (.5-f)*1.0;
+	return 0.5-sum;
 }
 
 /* Like Waves, but uses more octaves to create more detailed pattern */
 float WavesDetail( vec3 pos )
 {
-	pos *= .2*vec3(1,1,1);
-	
 	const int octaves = 8;
-	float f = 0.0;
+	float sum = 0.0;
 
 	// need to do the octaves from large to small, otherwise things don't line up
 	// (because I rotate by 45 degrees on each octave)
+	pos *= .2*vec3(1,1,1);
 	pos += iTime*vec3(0,.1,.1);
+
 	for ( int i=0; i < octaves; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		f  = f*1.775+abs(NoisePrecise(pos).x-.5)*4.1875;
+		sum *= 1.775;
+		sum += abs(NoisePrecise(pos).x-.5)*4.1875;
 		pos *= 2.0;
 	}
-	f /= exp2(float(octaves));
+	sum /= exp2(float(octaves));
 	
-	return (.5-f)*0.5;
+	return (0.5-sum)*0.5;
 }
 
 /* Like Waves, but uses sqrt to calculate height values */
 float WavesSmooth( vec3 pos )
 {
-	pos *= .2*vec3(1,1,1);
-	
 	const int octaves = 8;
-	float f = 0.0;
+	float sum = 0.0;
 
 	// need to do the octaves from large to small, otherwise things don't line up
 	// (because I rotate by 45 degrees on each octave)
+	pos *= .2*vec3(1,1,1);
 	pos += iTime*vec3(0,.1,.1);
+
 	for ( int i=0; i < octaves; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
 		//// THIS IS IMPT FOR THE HEIGHT AND MOTION OF THE BALL (the first constant and the last constant in particular)
-		f  = f*1.0+sqrt(pow(NoisePrecise(pos).x-.5,2.0)+.01)*1.85;
+		sum += sqrt(pow(NoisePrecise(pos).x-.5,2.0)+.01)*1.85;
 		pos *= 2.0;
 	}
-	f /= exp2(float(octaves));
+	sum /= exp2(float(octaves));
 	
-	return (.5-f)*1.0;
+	return 0.5-sum;
 }
 
 /* */
 float WaveCrests( vec3 ipos, in vec2 fragCoord )
 {
-	vec3 pos = ipos * 0.1; //scale down the position vector
-	
 	// number of octaves for Perlin noise
 	const int octaves1 = 6;
 	const int octaves2 = 20;
-	float f = 0.0;
+	float sum = 0.0;
 
 	// first set of octaves
+	vec3 pos = ipos * 0.1; //scale down the position vector
 	pos += iTime*vec3(0,.1,.1);
-	vec3 pos2 = pos;
+
 	for (int i=0; i < octaves1; i++)
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0); // rotate by 45 degrees on each octave
-		f = f*2.0+abs(Noise(pos*4.0).x - 0.5) * 2.0; // generate noise and accumulate
+		sum *= 2.0;
+		sum += abs(Noise(pos*4.0).x - 0.5) * 2.0; // generate noise and accumulate
 		pos *= 2.0; // scale position for next octave
 	}
 
 	// second set of octaves
+	vec3 pos2 = pos;
 	pos = pos2 * exp2(float(octaves1));
 	pos.y = -.05*iTime;
 	for ( int i=octaves1; i < octaves2; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0); 
-		f  = f*2.0+pow(abs(Noise(pos*0.2).x - 0.5) * 5.0, 40.0);
+		sum *= 2.0;
+		sum += pow(abs(Noise(pos*0.2).x - 0.5) * 5.0, 40.0);
 		pos *= 2.0;
 	}
 
 	// normalize accumulated value?
-	f /= 1500.0;
+	sum /= 1500.0;
 	
 	// adds noise to fragment coordinate for randomness
-	f -= Noise(ivec2(fragCoord.xy)).x * 0.01;
+	sum -= Noise(ivec2(fragCoord.xy)).x * 0.01;
 	
-	return pow(smoothstep(.1,-.1,f),6.0);
+	return pow(smoothstep(.1,-.1,sum),6.0);
 }
 
 /* returns color of sky for a given direction */
