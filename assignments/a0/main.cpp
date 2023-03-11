@@ -65,22 +65,23 @@ public:
 		Disable_Resize_Window(); // Changing window size would cause trouble in progressive rendering
 	}
 
+
 	//// Initialize the screen covering mesh and shaders
 	virtual void Initialize_Data()
 	{
-		std::string vertex_shader_file_name = "common.vert";
+
+		std::string vertex_shader_file_name = "common.vert"; 
 		std::string fragment_shader_file_name = "basic_frag.frag";
 		OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name, fragment_shader_file_name, "A0_shader");
 	
-		// fragment_shader_file_name = "ray_tracing.frag";	
-		// OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name, fragment_shader_file_name, "shader_buffer");
+		fragment_shader_file_name = "ray_tracing.frag";	
+		OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name, fragment_shader_file_name, "shader_buffer");
 		screen_cover = Add_Interactive_Object<OpenGLScreenCover>();
 		Set_Polygon_Mode(screen_cover, PolygonMode::Fill);
 		Uniform_Update();
 
 		screen_cover->Set_Data_Refreshed();
 		screen_cover->Initialize();
-		// screen_cover->Add_Buffer();
 		screen_cover->Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("A0_shader"));
 		// screen_cover->Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("shader_buffer"));
 
