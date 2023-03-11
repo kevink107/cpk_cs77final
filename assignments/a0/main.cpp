@@ -31,26 +31,10 @@ public:
 		Disable_Resize_Window(); // Changing window size would cause trouble in progressive rendering
 	}
 
-	void Add_Shaders()
-	{
-		////format: vertex shader name, fragment shader name, shader name
-		OpenGLShaderLibrary::Instance()->Add_Shader_From_File("background.vert","background.frag","background");	
-		OpenGLShaderLibrary::Instance()->Add_Shader_From_File("common.vert","basic_frag.frag","A0_shader");	
-	}
-
-	void Add_Background()
-	{
-		OpenGLBackground* opengl_background=Add_Interactive_Object<OpenGLBackground>();
-		opengl_background->shader_name="background";
-		opengl_background->Initialize();
-	}
 
 	//// Initialize the screen covering mesh and shaders
 	virtual void Initialize_Data()
 	{
-		// Use Add_Shaders() if we want to use multiple shaders	
-		// Add_Shaders();
-		// Add_Background();
 
 		std::string vertex_shader_file_name = "common.vert"; 
 		std::string fragment_shader_file_name = "basic_frag.frag";
