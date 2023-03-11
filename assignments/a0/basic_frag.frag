@@ -71,7 +71,7 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 	localRay = tempRay;
     
 	//// rotate ray by theta_x about x axis
-    tempRay.yz = vec2(tempRay.y*cosines.x, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
+    tempRay.yz = vec2(tempRay.y*cosines.x + 0.1, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
 	//// rotate ray by theta_y about y axis
 	tempRay.xz = vec2(tempRay.x*cosines.y, tempRay.z*cosines.y)+ vec2(tempRay.z*sines.y, -tempRay.x*sines.y);
 	
