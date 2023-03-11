@@ -74,7 +74,6 @@ public:
 		std::string fragment_shader_file_name = "basic_frag.frag";
 		OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name, fragment_shader_file_name, "A0_shader");
 	
-		fragment_shader_file_name = "ray_tracing.frag";	
 		OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name, fragment_shader_file_name, "shader_buffer");
 		screen_cover = Add_Interactive_Object<OpenGLScreenCover>();
 		Set_Polygon_Mode(screen_cover, PolygonMode::Fill);
