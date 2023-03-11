@@ -1,5 +1,7 @@
 #version 330 core
 
+uniform samplerCube cubmapTexture;
+
 uniform vec2 iResolution;
 uniform float iTime;
 uniform int iFrame;
@@ -243,7 +245,7 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 /* returns color of sky for a given direction */
 vec3 Sky( vec3 ray )
 {
-	return vec3(.4,.45,.5);
+	return (texture(cubmapTexture, ray)).rgb;
 }
 
 vec3 boatRight;
@@ -497,13 +499,15 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	else if ( tb > 0.0 )
 		result = ShadeBoat( r.ori+r.dir*tb, r.dir );
 	else
-		result = Sky( r.dir );
+		// changes angle at which we are looking at the sky
+		//result = Sky( r.dir + vec3(1,1,0));
+		result = Sky( r.dir * vec3(0.2,1,0.08));
 	
 	// vignette effect
 	result *= 1.0*smoothstep( .25, 1.0, localRay.z );
 	
 	// fragColor = vec4(result, 1,0);
-	fragColor = vec4(ToGamma(result),1.0);
+	fragColor = vec4(ToGamma(result),1);
     // fragColor = vec4(gamma2(result), 1.);
 }
 
