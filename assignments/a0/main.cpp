@@ -86,19 +86,12 @@ public:
 
 
 		std::vector<std::string> faces {
-			// "negx.jpg", // right
-			// "posx.jpg", // left
-			// "posy.jpg", // top
-			// "negy.jpg", // bottom
-			// "posz.jpg", // back
-			// "negz.jpg" // front
-
-			"clouds1_east.bmp",
-			"clouds1_west.bmp",
-			"clouds1_up.bmp",
-			"clouds1_down.bmp",
-			"clouds1_south.bmp",
-			"clouds1_north.bmp"
+			"clouds1_east.bmp",// right
+			"clouds1_west.bmp",// left
+			"clouds1_up.bmp",// top
+			"clouds1_down.bmp",// bottom
+			"clouds1_south.bmp",// back
+			"clouds1_north.bmp"// front
 		};
 
 		unsigned int cubemapTexture = loadCubemap(faces);
