@@ -4,6 +4,7 @@
 // Contact: Bo Zhu (bo.zhu@dartmouth.edu)
 //#####################################################################
 #include <iostream>
+#include <vector>
 
 #include <random>
 #include "Common.h"
@@ -15,6 +16,7 @@
 #include "OpenGLViewer.h"
 #include "OpenGLMarkerObjects.h"
 #include "OpenGLParticles.h"
+#include "stb_image.h"
 
 class A0_Driver : public Driver, public OpenGLViewer
 {
@@ -23,6 +25,38 @@ class A0_Driver : public Driver, public OpenGLViewer
 	int frame;
 
 public:
+	unsigned int loadCubemap(std::vector<std::string> faces) {
+		stbi_set_flip_vertically_on_load(false);
+		unsigned int textureID;
+		glGenTextures(1, &textureID);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+
+		int width, height, nrChannels;
+		for (unsigned int i = 0; i < faces.size(); i++)
+		{
+			unsigned char *data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
+			stbi_set_flip_vertically_on_load(true);
+			
+			if (data)
+			{
+				glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+				stbi_image_free(data);
+			}
+			else
+			{
+				std::cout << "Cubemap tex failed to load at path: " << faces[i] << std::endl;
+				stbi_image_free(data);
+			}
+		}
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+		return textureID;
+	}  
+
 	virtual void Initialize()
 	{
 		startTime = clock();
@@ -49,6 +83,28 @@ public:
 		// screen_cover->Add_Buffer();
 		screen_cover->Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("A0_shader"));
 		// screen_cover->Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("shader_buffer"));
+
+
+		std::vector<std::string> faces {
+			// "negx.jpg", // right
+			// "posx.jpg", // left
+			// "posy.jpg", // top
+			// "negy.jpg", // bottom
+			// "posz.jpg", // back
+			// "negz.jpg" // front
+
+			"clouds1_east.bmp",
+			"clouds1_west.bmp",
+			"clouds1_up.bmp",
+			"clouds1_down.bmp",
+			"clouds1_south.bmp",
+			"clouds1_north.bmp"
+		};
+
+		unsigned int cubemapTexture = loadCubemap(faces);
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
 	}
 
 	//// Update the uniformed variables used in shader
