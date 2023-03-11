@@ -194,7 +194,7 @@ float WavesSmooth( vec3 pos )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
 		//// THIS IS IMPT FOR THE HEIGHT AND MOTION OF THE BALL (the first constant and the last constant in particular)
-		f  = f*1.0+sqrt(pow(NoisePrecise(pos).x-.5,2.5)+.01)*1.85;
+		f  = f*1.0+sqrt(pow(NoisePrecise(pos).x-.5,2.0)+.01)*1.85;
 		pos *= 2.0;
 	}
 	f /= exp2(float(octaves));
