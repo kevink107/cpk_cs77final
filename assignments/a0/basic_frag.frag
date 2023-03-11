@@ -53,32 +53,19 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 	return viewRay(camPosition, tempRay.xyz);
 }
 
-/* Noise functions, distinguished by variable types */ 
-
 /* type: vec3 */
-vec2 Noise(vec3 x)
+vec2 PerlinNoise(vec3 x)
 {
     vec3 p = floor(x);
     vec3 f = fract(x);
 	f = f*f*(3.0-2.0*f);
-	vec2 uv = (p.xy+vec2(37.0,17.0)*p.z);
 
-	vec4 rg = mix( 
-		mix(hash42((uv + vec2(0.0,0.0))/256.), hash42((uv + vec2(1.0,0.0))/256.), f.x),
-		mix(hash42((uv + vec2(0.0,1.0))/256.), hash42((uv + vec2(1.0,1.0))/256.), f.x),
+	vec4 noise = mix( 
+		mix(hash42((p.xy + vec2(0.0,0.0))), hash42((p.xy + vec2(1.0,0.0))), f.x),
+		mix(hash42((p.xy + vec2(0.0,1.0))), hash42((p.xy + vec2(1.0,1.0))), f.x),
 		f.y);
 
-	return mix( rg.yw, rg.xz, f.z );
-}
-
-/* type: vec2 */
-vec4 Noise(vec2 x )
-{
-    vec2 p = floor(x.xy);
-    vec2 f = fract(x.xy);
-	f = f*f*(3.0-2.0*f);
-	vec2 uv = p.xy + f.xy;
-	return hash42((uv+0.5)/256.0);
+	return mix(noise.yw, noise.xz, f.z );
 }
 
 /* Generates height map for waves in water surface */
@@ -96,7 +83,7 @@ float Waves( vec3 pos )
 	{
 		//pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
 		sum *= 1.25;
-		sum += abs(Noise(pos).x-0.5)*(Noise(pos).y + 1.0);
+		sum += abs(PerlinNoise(pos).x-0.5)*(PerlinNoise(pos).y + 1.0);
 		pos *= 1.75;
 	}
 	sum /= exp2(float(octaves));
@@ -119,7 +106,7 @@ float WavesDetail( vec3 pos )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
 		sum *= 1.775;
-		sum += abs(Noise(pos).x-.5)*4.1875;
+		sum += abs(PerlinNoise(pos).x-.5)*4.1875;
 		pos *= 2.0;
 	}
 	sum /= exp2(float(octaves));
@@ -142,7 +129,7 @@ float WavesSmooth( vec3 pos )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
 		//// THIS IS IMPT FOR THE HEIGHT AND MOTION OF THE BALL (the first constant and the last constant in particular)
-		sum += sqrt(pow(Noise(pos).x-.5,2.0)+.01)*1.85;
+		sum += sqrt(pow(PerlinNoise(pos).x-.5,2.0)+.01)*1.85;
 		pos *= 2.0;
 	}
 	sum /= exp2(float(octaves));
@@ -166,7 +153,7 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0); // rotate by 45 degrees on each octave
 		sum *= 2.0;
-		sum += abs(Noise(pos*4.0).x - 0.5) * 2.0; // generate noise and accumulate
+		sum += abs(PerlinNoise(pos*4.0).x - 0.5) * 2.0; // generate noise and accumulate
 		pos *= 2.0; // scale position for next octave
 	}
 
@@ -178,15 +165,12 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0); 
 		sum *= 2.0;
-		sum += pow(abs(Noise(pos*0.2).x - 0.5) * 5.0, 40.0);
+		sum += pow(abs(PerlinNoise(pos*0.2).x - 0.5) * 5.0, 40.0);
 		pos *= 2.0;
 	}
 
 	// normalize accumulated value?
 	sum /= 1500.0;
-	
-	// adds noise to fragment coordinate for randomness
-	sum -= Noise(ivec2(fragCoord.xy)).x * 0.01;
 	
 	return pow(smoothstep(.1,-.1,sum),6.0);
 }
@@ -256,6 +240,8 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 
 	// anti-alias factor for rendering?
 	float aa = 4.0/iResolution.x;
+
+	// kev
 	
 	vec3 col = vec3(1.0);
 	float PI = 3.1415926535;
@@ -282,6 +268,8 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
         col = vec3(0.0, 1.0, 0.0); // green band
     }
 	col = col*light; // multiply color by surface lighting
+
+	// kev
 	
 	// specular 
 	vec3 h = normalize(lightDir-ray); // half vector between light and view directions
@@ -304,6 +292,7 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 
 
 const int i = 0;
+
 /* Distance from input position to the ocean surface */
 float OceanDistanceField( vec3 pos )
 {
@@ -398,14 +387,9 @@ vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 }
 
 /* The function called in the fragment shader */
-void mainImage( out vec4 fragColor, in vec2 fragCoord )
+void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {
 	BallMovement();
-	
-	// vec2 camRot = vec2(.5,.5)+vec2(-.35,4.5)*(0.15);
-	// vec3 pos;
-	// vec3 ray;
-	// CamPolar( pos, ray, vec3(0), camRot, 3.0, 1.0, fragCoord );
 
 	vec2 rot_angles = vec2(0.3, 0.9668);
     viewRay r = getRay(rot_angles, fragCoord);
@@ -420,12 +404,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 		result = ShadeBall( r.ori+r.dir*tb, r.dir );
 	else
 		// changes angle at which we are looking at the sky
-		//result = Sky( r.dir + vec3(1,1,0));
 		result = ShadeSky( r.dir * vec3(0.2,1,0.08));
 	
-	// vignette effect
-	
-	// fragColor = vec4(result, 1,0);
 	fragColor = vec4(gamma2(result),1);
 }
 
