@@ -8,55 +8,29 @@ uniform int iFrame;
 in vec2 fragCoord; 
 out vec4 fragColor;
 
-// uniform sampler2D bufferTexture;
-
-struct viewRay{
+struct viewRay {
     vec3 ori;
     vec3 dir;
 };
 
-const float tau = 6.28318530717958647692;
+const vec3 camPosition = vec3(-2.226, 1.3, -1.536);
 
-// Gamma correction
-// #define GAMMA (2.2)
-
-vec3 ToLinear( in vec3 col )
-{
-	// simulate a monitor, converting colour values into light values
-	return pow( col, vec3(2.2) );
-}
-
+// from assignment a5
 vec3 gamma2(vec3 col) {
     return vec3(sqrt(col.r), sqrt(col.g), sqrt(col.b));
 }
 
-vec3 ToGamma( in vec3 col )
-{
-	// convert back into colour values, so the correct light will come out of the monitor
-	return pow( col, vec3(1.0/2.2) );
-}
-
+// sample hash function from shadertoy (https://www.shadertoy.com/view/4sKSzw)
 vec4 hash42(vec2 p)
-{
-	// vec4 p4 = fract(vec4(p.xyxy) * vec4(.1031, .1030, .0973, .1099));
-    // p4 += dot(p4, p4.wzxy+33.33);
-    // return fract((p4.xxyz+p4.yzzw)*p4.zywx);
-    
+{   
     p -= floor(p / 289.0) * 289.0;
     p += vec2(223.35734, 550.56781);
     p *= p;
     
     float xy = p.x * p.y;
     
-    return vec4(fract(xy * 0.00000012),
-                     fract(xy * 0.00000543),
-                     fract(xy * 0.00000192),
-                     fract(xy * 0.00000423));
-
+    return vec4(fract(xy * 0.00000012), fract(xy * 0.00000543), fract(xy * 0.00000192), fract(xy * 0.00000423));
 }
-
-vec3 localRay;
-
 
 viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 {
@@ -67,27 +41,26 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 	//// create ray
     vec3 tempRay;
     tempRay.xy = fragCoord.xy - iResolution.xy*.5;
-	tempRay.z = iResolution.y;
+	tempRay.z = iResolution.y - 50;
 	tempRay = normalize(tempRay);
-	localRay = tempRay;
     
 	//// rotate ray by theta_x about x axis
-   tempRay.yz = vec2(tempRay.y*cosines.x+0.1, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
+   	tempRay.yz = vec2(tempRay.y*cosines.x, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
 	//// rotate ray by theta_y about y axis
 	tempRay.xz = vec2(tempRay.x*cosines.y, tempRay.z*cosines.y)+ vec2(tempRay.z*sines.y, -tempRay.x*sines.y);
 	
-	return viewRay(vec3(-2.226, 1.3, -1.536), tempRay.xyz);
-    // return viewRay(-3.0*vec3(cosines.x*sines.y, -sines.x, cosines.x*cosines.y), tempRay.xyz);
+	return viewRay(camPosition, tempRay.xyz);
 }
 
 /* Noise functions, distinguished by variable types */ 
 /* type: vec3 */
 vec2 Noise(vec3 x)
 {
-    vec3 p = floor(x);
+    vec3 i = floor(x);
     vec3 f = fract(x);
+	// hermite interpolation
 	f = f*f*(3.0-2.0*f);
-	vec2 uv = (p.xy+vec2(37.0,17.0)*p.z);
+	vec2 uv = (i.xy+vec2(37.0,17.0)*i.z);
 	vec4 rg = hash42((uv+f.xy+0.5)/256.0);
 	return mix( rg.yw, rg.xz, f.z );
 }
@@ -466,7 +439,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	// vec3 ray;
 	// CamPolar( pos, ray, vec3(0), camRot, 3.0, 1.0, fragCoord );
 
-	vec2 rot_angles = vec2(0.3975, 0.9668);
+	vec2 rot_angles = vec2(0.3, 0.9668);
     viewRay r = getRay(rot_angles, fragCoord);
 	
 	float to = TraceOcean( r.ori, r.dir );
@@ -483,11 +456,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 		result = Sky( r.dir * vec3(0.2,1,0.08));
 	
 	// vignette effect
-	result *= 1.0*smoothstep( .25, 1.0, localRay.z );
 	
 	// fragColor = vec4(result, 1,0);
-	fragColor = vec4(ToGamma(result),1);
-    // fragColor = vec4(gamma2(result), 1.);
+	fragColor = vec4(gamma2(result),1);
 }
 
 void main() {
