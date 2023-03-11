@@ -56,17 +56,18 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 /* type: vec3 */
 vec2 PerlinNoise(vec3 x)
 {
-    vec3 p = floor(x);
+    vec3 i = floor(x);
     vec3 f = fract(x);
 	f = f*f*(3.0-2.0*f);
 
 	vec4 noise = mix( 
-		mix(hash42((p.xy + vec2(0.0,0.0))), hash42((p.xy + vec2(1.0,0.0))), f.x),
-		mix(hash42((p.xy + vec2(0.0,1.0))), hash42((p.xy + vec2(1.0,1.0))), f.x),
+		mix(hash42((i.xy + vec2(0.0,0.0))), hash42((i.xy + vec2(1.0,0.0))), f.x),
+		mix(hash42((i.xy + vec2(0.0,1.0))), hash42((i.xy + vec2(1.0,1.0))), f.x),
 		f.y);
 
 	return mix(noise.yw, noise.xz, f.z );
 }
+
 
 /* Generates height map for waves in water surface */
 float Waves( vec3 pos )
@@ -76,14 +77,14 @@ float Waves( vec3 pos )
 
 	// need to do the octaves from large to small, otherwise things don't line up
 	// (because I rotate by 45 degrees on each octave)
-	pos *= .1;
+	pos *= .5;
 	pos += iTime*vec3(0,.1,.1);
 
 	for ( int i=0; i < octaves; i++ )
 	{
-		//pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
+		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
 		sum *= 1.25;
-		sum += abs(PerlinNoise(pos).x-0.5)*(PerlinNoise(pos).y + 1.0);
+		sum += (PerlinNoise(pos).x) * (PerlinNoise(pos).y + 1.0);
 		pos *= 1.75;
 	}
 	sum /= exp2(float(octaves));
