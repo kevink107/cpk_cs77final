@@ -177,7 +177,7 @@ float WavesDetail( vec3 pos )
 	}
 	f /= exp2(float(octaves));
 	
-	return (.5-f)*1.0;
+	return (.5-f)*0.5;
 }
 
 /* Like Waves, but uses sqrt to calculate height values */
@@ -219,7 +219,7 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 	for (int i=0; i < octaves1; i++)
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0); // rotate by 45 degrees on each octave
-		f = f*2.0+abs(Noise(pos*2.0).x - 0.5) * 2.0; // generate noise and accumulate
+		f = f*2.0+abs(Noise(pos*4.0).x - 0.5) * 2.0; // generate noise and accumulate
 		pos *= 2.0; // scale position for next octave
 	}
 
@@ -229,7 +229,7 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 	for ( int i=octaves1; i < octaves2; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0); 
-		f  = f*2.0+pow(abs(Noise(pos*0.5).x - 0.5) * 5.0, 40.0);
+		f  = f*2.0+pow(abs(Noise(pos*0.2).x - 0.5) * 5.0, 40.0);
 		pos *= 2.0;
 	}
 
@@ -239,7 +239,7 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 	// adds noise to fragment coordinate for randomness
 	f -= Noise(ivec2(fragCoord.xy)).x * 0.01;
 	
-	return pow(smoothstep(.4,-.1,f),6.0);
+	return pow(smoothstep(.1,-.1,f),6.0);
 }
 
 /* returns color of sky for a given direction */
@@ -248,9 +248,9 @@ vec3 Sky( vec3 ray )
 	return (texture(cubmapTexture, ray)).rgb;
 }
 
-vec3 boatRight;
-vec3 boatUp;
-vec3 boatForward;
+vec3 boatRight = vec3(0,1,0);
+vec3 boatUp = vec3(0,0,1);
+vec3 boatForward = vec3(1,0,0);
 vec3 boatPosition;
 
 vec2 boatNoise(vec2 v) {
@@ -263,44 +263,11 @@ vec2 boatNoise(vec2 v) {
 /* Uses transformation matrix to transform and orient the ball in the scene */
 void ComputeBoatTransform( void )
 {
-	float period = 15;
+	float period = 25;
 	float amplitude = 0.08; 
 	vec3 v = vec3(0,0,0);
 	v.y = WavesSmooth(v);
 	boatPosition = v + amplitude * sin(period*iTime);
-	
-	vec3 samples[5];
-	float time = 5*iTime; // adjust wave speed
-	float waveAmplitude = 0.5; // adjust wave height
-
-	// five samples at different positions
-	samples[0] = vec3(0, 0, 0);
-	samples[1] = vec3(0, 0, .5);
-	samples[2] = vec3(0, 0, -.5);
-	samples[3] = vec3(.5, 0, 0);
-	samples[4] = vec3(-.5, 0, 0);
-
-	// evaluate height of waves at each sample point
-	samples[0].y = WavesSmooth(samples[0]);
-	samples[1].y = WavesSmooth(samples[1]);
-	samples[2].y = WavesSmooth(samples[2]);
-	samples[3].y = WavesSmooth(samples[3]);
-	samples[4].y = WavesSmooth(samples[4]);
-
-	// float boatOffset = 0.05 * boatNoise(vec2(iTime, 0)).x; // generate random offset
-
-	// average of sample points as boat position
-	//boatPosition = (samples[0]+samples[1]+samples[2]+samples[3]+samples[4])/5.0;
-
-	// orientation vectors for the boat
-	boatRight = samples[3]-samples[4];
-	boatForward = samples[1]-samples[2];
-	boatUp = normalize(cross(boatForward,boatRight));
-	boatRight = normalize(cross(boatUp,boatForward));
-	boatForward = normalize(boatForward);
-
-	// small offset to boat position
-	// boatPosition += .0*boatUp;
 }
 
 /* Directional boat vector in local coordinate system to world space */
@@ -312,7 +279,7 @@ vec3 BoatToWorld( vec3 dir )
 /* Directional world space vector to boat's local coordinate system */
 vec3 WorldToBoat( vec3 dir )
 {
-	return vec3( dot(dir,boatRight), dot(dir,boatUp), dot(dir,boatForward) );
+	return vec3( dot(dir,boatPosition), dot(dir,boatUp), dot(dir,boatForward) );
 }
 
 /* Makes ball */
@@ -394,15 +361,20 @@ vec3 ShadeBoat( vec3 pos, vec3 ray )
 	return col;
 }
 
+
+const int i = 0;
 /* Distance from input position to the ocean surface */
 float OceanDistanceField( vec3 pos )
 {
-	return pos.y - Waves(pos);
+	int n= i%3;
+	n+=1;
+	return pos.y - n*1.2*Waves(pos);
 }
 
 /* Uses WavesDetail function to make ocean more realistic */
 float OceanDistanceFieldDetail( vec3 pos )
 {
+
 	return pos.y - WavesDetail(pos);
 }
 
