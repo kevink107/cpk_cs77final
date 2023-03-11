@@ -228,7 +228,7 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 	pos.y = -.05*iTime;
 	for ( int i=octaves1; i < octaves2; i++ )
 	{
-		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
+		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0); 
 		f  = f*2.0+pow(abs(Noise(pos*0.5).x - 0.5) * 5.0, 40.0);
 		pos *= 2.0;
 	}
@@ -263,6 +263,12 @@ vec2 boatNoise(vec2 v) {
 /* Uses transformation matrix to transform and orient the ball in the scene */
 void ComputeBoatTransform( void )
 {
+	float period = 15;
+	float amplitude = 0.08; 
+	vec3 v = vec3(0,0,0);
+	v.y = WavesSmooth(v);
+	boatPosition = v + amplitude * sin(period*iTime);
+	
 	vec3 samples[5];
 	float time = 5*iTime; // adjust wave speed
 	float waveAmplitude = 0.5; // adjust wave height
@@ -284,7 +290,7 @@ void ComputeBoatTransform( void )
 	// float boatOffset = 0.05 * boatNoise(vec2(iTime, 0)).x; // generate random offset
 
 	// average of sample points as boat position
-	boatPosition = (samples[0]+samples[1]+samples[2]+samples[3]+samples[4])/5.0;
+	//boatPosition = (samples[0]+samples[1]+samples[2]+samples[3]+samples[4])/5.0;
 
 	// orientation vectors for the boat
 	boatRight = samples[3]-samples[4];
@@ -410,6 +416,7 @@ vec3 OceanNormal( vec3 pos )
 	norm.y = OceanDistanceFieldDetail( pos+d.yxy )-OceanDistanceFieldDetail( pos-d.yxy );
 	norm.z = OceanDistanceFieldDetail( pos+d.yyx )-OceanDistanceFieldDetail( pos-d.yyx );
 
+	
 	return normalize(norm);
 }
 
