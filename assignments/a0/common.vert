@@ -2,6 +2,7 @@
 
 uniform vec2 iResolution;
 out vec2 fragCoord;
+
 void main()
 {
 	vec2 vertices[3] = vec2[3](vec2(-1, -1), vec2(3, -1), vec2(-1, 3));

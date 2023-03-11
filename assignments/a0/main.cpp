@@ -31,24 +31,41 @@ public:
 		Disable_Resize_Window(); // Changing window size would cause trouble in progressive rendering
 	}
 
+	void Add_Shaders()
+	{
+		////format: vertex shader name, fragment shader name, shader name
+		OpenGLShaderLibrary::Instance()->Add_Shader_From_File("background.vert","background.frag","background");	
+		OpenGLShaderLibrary::Instance()->Add_Shader_From_File("common.vert","basic_frag.frag","A0_shader");	
+	}
+
+	void Add_Background()
+	{
+		OpenGLBackground* opengl_background=Add_Interactive_Object<OpenGLBackground>();
+		opengl_background->shader_name="background";
+		opengl_background->Initialize();
+	}
+
 	//// Initialize the screen covering mesh and shaders
 	virtual void Initialize_Data()
 	{
-		std::string vertex_shader_file_name = "common.vert";
+		// Use Add_Shaders() if we want to use multiple shaders	
+		// Add_Shaders();
+		// Add_Background();
+
+		std::string vertex_shader_file_name = "common.vert"; 
 		std::string fragment_shader_file_name = "basic_frag.frag";
 		OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name, fragment_shader_file_name, "A0_shader");
 	
-		// fragment_shader_file_name = "ray_tracing.frag";	
-		// OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name, fragment_shader_file_name, "shader_buffer");
+		fragment_shader_file_name = "ray_tracing.frag";	
+		OpenGLShaderLibrary::Instance()->Add_Shader_From_File(vertex_shader_file_name, fragment_shader_file_name, "shader_buffer");
 		screen_cover = Add_Interactive_Object<OpenGLScreenCover>();
 		Set_Polygon_Mode(screen_cover, PolygonMode::Fill);
 		Uniform_Update();
 
 		screen_cover->Set_Data_Refreshed();
 		screen_cover->Initialize();
-		// screen_cover->Add_Buffer();
 		screen_cover->Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("A0_shader"));
-		// screen_cover->Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("shader_buffer"));
+		//screen_cover->Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("background"));
 	}
 
 	//// Update the uniformed variables used in shader
