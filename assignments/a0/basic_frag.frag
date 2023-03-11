@@ -62,7 +62,6 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord)
     vec2 cosines = vec2(cos(thetas.x), cos(thetas.y));
 	vec2 sines = vec2(sin(thetas.x), sin(thetas.y));
     
-
 	//// create ray
     vec3 tempRay;
     tempRay.xy = fragCoord.xy - iResolution.xy*.5;
@@ -71,7 +70,7 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 	localRay = tempRay;
     
 	//// rotate ray by theta_x about x axis
-    tempRay.yz = vec2(tempRay.y*cosines.x, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
+    tempRay.yz = vec2(tempRay.y*cosines.x+0.1, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
 	//// rotate ray by theta_y about y axis
 	tempRay.xz = vec2(tempRay.x*cosines.y, tempRay.z*cosines.y)+ vec2(tempRay.z*sines.y, -tempRay.x*sines.y);
 	
@@ -194,7 +193,7 @@ float WavesSmooth( vec3 pos )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
 		//// THIS IS IMPT FOR THE HEIGHT AND MOTION OF THE BALL (the first constant and the last constant in particular)
-		f  = f*1.0+sqrt(pow(NoisePrecise(pos).x-.5,2.5)+.01)*1.85;
+		f  = f*1.0+sqrt(pow(NoisePrecise(pos).x-.5,2.0)+.01)*1.85;
 		pos *= 2.0;
 	}
 	f /= exp2(float(octaves));
@@ -205,35 +204,38 @@ float WavesSmooth( vec3 pos )
 /* */
 float WaveCrests( vec3 ipos, in vec2 fragCoord )
 {
-	vec3 pos = ipos;
-	pos *= .2*vec3(1,1,1);
+	vec3 pos = ipos * 0.1; //scale down the position vector
 	
+	// number of octaves for Perlin noise
 	const int octaves1 = 6;
-	const int octaves2 = 16;
+	const int octaves2 = 20;
 	float f = 0.0;
 
-	// need to do the octaves from large to small, otherwise things don't line up
-	// (because I rotate by 45 degrees on each octave)
+	// first set of octaves
 	pos += iTime*vec3(0,.1,.1);
 	vec3 pos2 = pos;
-	for ( int i=0; i < octaves1; i++ )
+	for (int i=0; i < octaves1; i++)
 	{
-		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		f  = f*2.0+abs(Noise(pos).x-.5)*3.0;
-		pos *= 2.0;
+		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0); // rotate by 45 degrees on each octave
+		f = f*2.0+abs(Noise(pos*2.0).x - 0.5) * 2.0; // generate noise and accumulate
+		pos *= 2.0; // scale position for next octave
 	}
+
+	// second set of octaves
 	pos = pos2 * exp2(float(octaves1));
 	pos.y = -.05*iTime;
 	for ( int i=octaves1; i < octaves2; i++ )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		f  = f*1.5+pow(abs(Noise(pos).x-.5)*2.0, 50.0);
-		// f = f*1.5+abs(Noise(pos).x-.5)*2.0;
+		f  = f*2.0+pow(abs(Noise(pos*0.5).x - 0.5) * 5.0, 40.0);
 		pos *= 2.0;
 	}
+
+	// normalize accumulated value?
 	f /= 1500.0;
 	
-	f -= Noise(ivec2(fragCoord.xy)).x*.01;
+	// adds noise to fragment coordinate for randomness
+	f -= Noise(ivec2(fragCoord.xy)).x * 0.01;
 	
 	return pow(smoothstep(.4,-.1,f),6.0);
 }
@@ -249,32 +251,48 @@ vec3 boatUp;
 vec3 boatForward;
 vec3 boatPosition;
 
+vec2 boatNoise(vec2 v) {
+	vec2 rand = vec2(0,0);
+	rand  = 50.0 * 1.05 * fract(v * 0.3183099 + vec2(0.71, 0.113));
+    rand = -1.0 + 2 * 1.05 * fract(rand.x * rand.y * (rand.x + rand.y) * rand);
+	return rand;
+}
+
 /* Uses transformation matrix to transform and orient the ball in the scene */
 void ComputeBoatTransform( void )
 {
 	vec3 samples[5];
-	
-	samples[0] = vec3(0,0, 0);
-	samples[1] = vec3(0,0, .5);
-	samples[2] = vec3(0,0,-.5);
-	samples[3] = vec3( .5,0,0);
-	samples[4] = vec3(-.5,0,0);
-	
+	float time = 5*iTime; // adjust wave speed
+	float waveAmplitude = 0.5; // adjust wave height
+
+	// five samples at different positions
+	samples[0] = vec3(0, 0, 0);
+	samples[1] = vec3(0, 0, .5);
+	samples[2] = vec3(0, 0, -.5);
+	samples[3] = vec3(.5, 0, 0);
+	samples[4] = vec3(-.5, 0, 0);
+
+	// evaluate height of waves at each sample point
 	samples[0].y = WavesSmooth(samples[0]);
 	samples[1].y = WavesSmooth(samples[1]);
 	samples[2].y = WavesSmooth(samples[2]);
 	samples[3].y = WavesSmooth(samples[3]);
 	samples[4].y = WavesSmooth(samples[4]);
 
+	// float boatOffset = 0.05 * boatNoise(vec2(iTime, 0)).x; // generate random offset
+
+	// average of sample points as boat position
 	boatPosition = (samples[0]+samples[1]+samples[2]+samples[3]+samples[4])/5.0;
 
+	// orientation vectors for the boat
 	boatRight = samples[3]-samples[4];
 	boatForward = samples[1]-samples[2];
 	boatUp = normalize(cross(boatForward,boatRight));
 	boatRight = normalize(cross(boatUp,boatForward));
 	boatForward = normalize(boatForward);
-	
-	boatPosition += .0*boatUp;
+
+	// small offset to boat position
+	// boatPosition += .0*boatUp;
 }
 
 /* Directional boat vector in local coordinate system to world space */
@@ -293,33 +311,34 @@ vec3 WorldToBoat( vec3 dir )
 float TraceBoat( vec3 pos, vec3 ray )
 {
 	vec3 c = boatPosition;
-	float r = 0.8; // ball radius
-
 	c -= pos;
+	float r = 0.7; // ball radius
+	float t = dot(c,ray); // distance between ray origin and intersect point of ray and ball?
 
-	float t = dot(c,ray);
-
+	// distance between ball center and intersection point of the ray with the ball
 	float p = length(c-t*ray);
+
 	if ( p > r )
 		return 0.0;
 
+	// if intersection point inside ball
 	return t-sqrt(r*r-p*p);
 }
 
 /* Shades/colors floating beachball pattern */
 vec3 ShadeBoat( vec3 pos, vec3 ray )
 {
-	pos -= boatPosition;
-	vec3 norm = normalize(pos);
-	pos = WorldToBoat(pos);
+	pos -= boatPosition; // subtract boat position from position vector
+	vec3 norm = normalize(pos); // gets surface normal
+	pos = WorldToBoat(pos); // transform pos vector from world to boat space
 	
-	vec3 lightDir = normalize(vec3(-2,3,1));
+	vec3 lightDir = normalize(vec3(-2,3,1)); 
 	float ndotl = dot(norm,lightDir);
 	
-	// allow some light bleed, as if it's subsurface scattering through plastic
+	// light value for given surface point - applies some light bleed to simulate subsurface scattering through plastic?
 	vec3 light = smoothstep(-.1,1.0,ndotl)*vec3(1.0,.9,.8)+vec3(.06,.1,.1);
 
-	// anti-alias the albedo
+	// anti-alias factor for rendering?
 	float aa = 4.0/iResolution.x;
 	
 	vec3 col = vec3(1.0);
@@ -346,17 +365,18 @@ vec3 ShadeBoat( vec3 pos, vec3 ray )
     else if (section == 5.0) {
         col = vec3(0.0, 1.0, 0.0); // green band
     }
-	col = col*light;
+	col = col*light; // multiply color by surface lighting
 	
-	// specular
-	vec3 h = normalize(lightDir-ray);
-	float s = pow(max(0.0,dot(norm,h)),100.0)*100.0/32.0;
-	
-	vec3 specular = s*vec3(1,1,1);
+	// specular 
+	vec3 h = normalize(lightDir-ray); // half vector between light and view directions
+	float s = pow(max(0.0,dot(norm,h)),100.0)*100.0/32.0; // specular intensity
+	vec3 specular = s*vec3(1,1,1); // white specular color
 
-	vec3 rr = reflect(ray,norm);
-	specular += mix( vec3(0,.04,.04), Sky(rr), smoothstep( -.1, .1, rr.y ) );
+	vec3 rr = reflect(ray,norm); // reflection vector
+	specular += mix( vec3(0,.04,.04), Sky(rr), smoothstep( -.1, .1, rr.y ) ); // add sky color to specular color
 	
+	// fresnel effect: amount of reflected light from a surface 
+	// increases as the viewing angle approaches a grazing angle
 	float ndotr = dot(norm,ray);
 	float fresnel = pow(1.0-abs(ndotr),5.0);
 	fresnel = mix( .001, 1.0, fresnel );
@@ -395,16 +415,20 @@ vec3 OceanNormal( vec3 pos )
 determine the distance to the surface of the ocean */
 float TraceOcean( vec3 pos, vec3 ray )
 {
-	float h = 1.0;
-	float t = 0.0;
+	float h = 1.0; // distance to ocean surface
+	float t = 0.0; // distance traveled along the ray
+
 	for ( int i=0; i < 100; i++ )
 	{
-		if ( h < .01 || t > 100.0 )
+		// exit loop if distance to surface is very small or we've traveled too far
+		if ( h < .01 || t > 100.0 ) 
 			break;
-		h = OceanDistanceField( pos+t*ray );
-		t += h;
+
+		h = OceanDistanceField(pos + t*ray); //distance to ocean surface
+		t += h; //increment total distance traveled
 	}
 	
+	// return 0 if distance to surface too large
 	if ( h > .1 )
 		return 0.0;
 	
@@ -414,38 +438,38 @@ float TraceOcean( vec3 pos, vec3 ray )
 /* Makes the color of a point on the ocean surface for a given viewing ray and screen coordinates */
 vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 {
-	vec3 norm = OceanNormal(pos);
-	float ndotr = dot(ray,norm);
+	vec3 norm = OceanNormal(pos); //surface normal of given ocean point
+	float ndotr = dot(ray,norm); 
 
-	float fresnel = pow(1.0-abs(ndotr),5.0);
+	float fresnel = pow(1.0-abs(ndotr),5.0); //fresnel term for reflection
 	
-	vec3 reflectedRay = ray-2.0*norm*ndotr;
+	// reflection and refraction rays based on surface normal and viewing ray
+	vec3 reflectedRay = ray-2.0*norm*ndotr; 
 	vec3 refractedRay = ray+(-cos(1.33*acos(-ndotr))-ndotr)*norm;	
 	refractedRay = normalize(refractedRay);
-
-	const float crackFudge = .0;
 	
-	// reflection
+	// color of reflection + checks if intersecting with ball
 	vec3 reflection = Sky(reflectedRay);
-	float t=TraceBoat( pos-crackFudge*reflectedRay, reflectedRay );
+	float t=TraceBoat(pos, reflectedRay);
 	
-	if ( t > 0.0 )
+	if (t > 0.0)
 	{
-		reflection = ShadeBoat( pos+(t-crackFudge)*reflectedRay, reflectedRay );
+		reflection = ShadeBoat( pos, reflectedRay );
 	}
 
-	// refraction
-	t=TraceBoat( pos-crackFudge*refractedRay, refractedRay );
+	// color of refraction + checks if intersecting with ball
+	t=TraceBoat(pos, refractedRay);
 	
 	vec3 col = vec3(0,.04,.04); // under-sea colour
 	if ( t > 0.0 )
 	{
-		col = mix( col, ShadeBoat( pos+(t-crackFudge)*refractedRay, refractedRay ), exp(-t) );
+		col = mix( col, ShadeBoat(pos, refractedRay), exp(-t) );
 	}
 	
+	// mixes reflection and refraction colors based on fresnel term
 	col = mix( col, reflection, fresnel );
 	
-	// foam
+	// adds foam to surface color - MAY NOT NEED
 	col = mix( col, vec3(1), WaveCrests(pos,fragCoord) );
 	
 	return col;
@@ -461,7 +485,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	// vec3 ray;
 	// CamPolar( pos, ray, vec3(0), camRot, 3.0, 1.0, fragCoord );
 
-	vec2 rot_angles = vec2(0.4475, 0.9668);
+	vec2 rot_angles = vec2(0.3975, 0.9668);
     viewRay r = getRay(rot_angles, fragCoord);
 	
 	float to = TraceOcean( r.ori, r.dir );
@@ -476,7 +500,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 		result = Sky( r.dir );
 	
 	// vignette effect
-	result *= 1.1*smoothstep( .35, 1.0, localRay.z );
+	result *= 1.0*smoothstep( .25, 1.0, localRay.z );
 	
 	// fragColor = vec4(result, 1,0);
 	fragColor = vec4(ToGamma(result),1.0);
@@ -485,12 +509,6 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
 void main() {
 	mainImage(fragColor, fragCoord);
-	// float boatSpeed = 0.1;
-
-	// vec3 boatPos = vec3(0.0, 0.0, sin(iTime*0.5)*3.0);
-	// vec3 nextBoatPos = vec3(0.0, 0.0, sin((iTime+boatSpeed)*0.5)*3.0);
-
-	// boatPos = mix(boatPos, nextBoatPos, smoothstep(0.0, 1.0, fract(iTime/boatSpeed)));
 }
 
 
