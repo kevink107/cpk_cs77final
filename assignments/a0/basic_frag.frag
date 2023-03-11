@@ -14,6 +14,7 @@ struct viewRay {
 };
 
 const vec3 camPosition = vec3(-2.226, 1.3, -1.536);
+vec3 ballPosition;
 
 // from assignment a5
 vec3 gamma2(vec3 col) {
@@ -53,60 +54,31 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 }
 
 /* Noise functions, distinguished by variable types */ 
-/* type: vec3 */
-vec2 Noise(vec3 x)
-{
-    vec3 i = floor(x);
-    vec3 f = fract(x);
-	// hermite interpolation
-	f = f*f*(3.0-2.0*f);
-	vec2 uv = (i.xy+vec2(37.0,17.0)*i.z);
-	vec4 rg = hash42((uv+f.xy+0.5)/256.0);
-	return mix( rg.yw, rg.xz, f.z );
-}
 
 /* type: vec3 */
-vec2 NoisePrecise(vec3 x)
+vec2 Noise(vec3 x)
 {
     vec3 p = floor(x);
     vec3 f = fract(x);
 	f = f*f*(3.0-2.0*f);
 	vec2 uv = (p.xy+vec2(37.0,17.0)*p.z);
 
-	vec4 rg = mix( mix(
-				hash42((uv+0.5)/256.0),
-				hash42((uv+vec2(1,0)+0.5)/256.0),
-				f.x ),
-				  mix(
-				hash42((uv+vec2(0,1)+0.5)/256.0),
-				hash42((uv+1.5)/256.0),
-				f.x ),
-				f.y );
+	vec4 rg = mix( 
+		mix(hash42((uv + vec2(0.0,0.0))/256.), hash42((uv + vec2(1.0,0.0))/256.), f.x),
+		mix(hash42((uv + vec2(0.0,1.0))/256.), hash42((uv + vec2(1.0,1.0))/256.), f.x),
+		f.y);
 
 	return mix( rg.yw, rg.xz, f.z );
 }
 
 /* type: vec2 */
-vec4 Noise( in vec2 x )
+vec4 Noise(vec2 x )
 {
     vec2 p = floor(x.xy);
     vec2 f = fract(x.xy);
 	f = f*f*(3.0-2.0*f);
 	vec2 uv = p.xy + f.xy;
 	return hash42((uv+0.5)/256.0);
-}
-
-/* type: ivec2 */
-vec4 Noise( in ivec2 x )
-{
-	return hash42((vec2(x)+0.5)/256.0);
-}
-
-/* type: ivec3 */
-vec2 Noise( in ivec3 x )
-{
-	vec2 uv = vec2(x.xy)+vec2(37.0,17.0)*float(x.z);
-	return hash42((uv+0.5)/256.0).xz;
 }
 
 /* Generates height map for waves in water surface */
@@ -117,12 +89,12 @@ float Waves( vec3 pos )
 
 	// need to do the octaves from large to small, otherwise things don't line up
 	// (because I rotate by 45 degrees on each octave)
-	pos *= .1*vec3(1,1,1);
+	pos *= .1;
 	pos += iTime*vec3(0,.1,.1);
 
 	for ( int i=0; i < octaves; i++ )
 	{
-		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
+		//pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
 		sum *= 1.25;
 		sum += abs(Noise(pos).x-0.5)*(Noise(pos).y + 1.0);
 		pos *= 1.75;
@@ -147,7 +119,7 @@ float WavesDetail( vec3 pos )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
 		sum *= 1.775;
-		sum += abs(NoisePrecise(pos).x-.5)*4.1875;
+		sum += abs(Noise(pos).x-.5)*4.1875;
 		pos *= 2.0;
 	}
 	sum /= exp2(float(octaves));
@@ -170,7 +142,7 @@ float WavesSmooth( vec3 pos )
 	{
 		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
 		//// THIS IS IMPT FOR THE HEIGHT AND MOTION OF THE BALL (the first constant and the last constant in particular)
-		sum += sqrt(pow(NoisePrecise(pos).x-.5,2.0)+.01)*1.85;
+		sum += sqrt(pow(Noise(pos).x-.5,2.0)+.01)*1.85;
 		pos *= 2.0;
 	}
 	sum /= exp2(float(octaves));
@@ -220,49 +192,41 @@ float WaveCrests( vec3 ipos, in vec2 fragCoord )
 }
 
 /* returns color of sky for a given direction */
-vec3 Sky( vec3 ray )
+vec3 ShadeSky(vec3 ray)
 {
 	return (texture(cubmapTexture, ray)).rgb;
 }
 
-vec3 boatRight = vec3(0,1,0);
-vec3 boatUp = vec3(0,0,1);
-vec3 boatForward = vec3(1,0,0);
-vec3 boatPosition;
+vec3 ballRight = vec3(0,1,0);
+vec3 ballUp = vec3(0,0,1);
+vec3 ballForward = vec3(1,0,0);
 
-vec2 boatNoise(vec2 v) {
-	vec2 rand = vec2(0,0);
-	rand  = 50.0 * 1.05 * fract(v * 0.3183099 + vec2(0.71, 0.113));
-    rand = -1.0 + 2 * 1.05 * fract(rand.x * rand.y * (rand.x + rand.y) * rand);
-	return rand;
-}
-
-/* Uses transformation matrix to transform and orient the ball in the scene */
-void ComputeBoatTransform( void )
+// make ball bob up and down over time
+void BallMovement( void )
 {
 	float period = 25;
 	float amplitude = 0.08; 
 	vec3 v = vec3(0,0,0);
 	v.y = WavesSmooth(v);
-	boatPosition = v + amplitude * sin(period*iTime);
+	ballPosition = v + amplitude * sin(period*iTime);
 }
 
-/* Directional boat vector in local coordinate system to world space */
-vec3 BoatToWorld( vec3 dir )
+/* Directional ball vector in local coordinate system to world space */
+vec3 BallToWorld( vec3 dir )
 {
-	return dir.x*boatRight + dir.x*boatUp + dir.x*boatForward;
+	return dir.x*ballRight + dir.x*ballUp + dir.x*ballForward;
 }
 
-/* Directional world space vector to boat's local coordinate system */
-vec3 WorldToBoat( vec3 dir )
+/* Directional world space vector to ball's local coordinate system */
+vec3 WorldToBall( vec3 dir )
 {
-	return vec3( dot(dir,boatPosition), dot(dir,boatUp), dot(dir,boatForward) );
+	return vec3( dot(dir,ballPosition), dot(dir,ballUp), dot(dir,ballForward) );
 }
 
 /* Makes ball */
-float TraceBoat( vec3 pos, vec3 ray )
+float TraceBall( vec3 pos, vec3 ray )
 {
-	vec3 c = boatPosition;
+	vec3 c = ballPosition;
 	c -= pos;
 	float r = 0.7; // ball radius
 	float t = dot(c,ray); // distance between ray origin and intersect point of ray and ball?
@@ -278,11 +242,11 @@ float TraceBoat( vec3 pos, vec3 ray )
 }
 
 /* Shades/colors floating beachball pattern */
-vec3 ShadeBoat( vec3 pos, vec3 ray )
+vec3 ShadeBall( vec3 pos, vec3 ray )
 {
-	pos -= boatPosition; // subtract boat position from position vector
+	pos -= ballPosition; // subtract ball position from position vector
 	vec3 norm = normalize(pos); // gets surface normal
-	pos = WorldToBoat(pos); // transform pos vector from world to boat space
+	pos = WorldToBall(pos); // transform pos vector from world to ball space
 	
 	vec3 lightDir = normalize(vec3(-2,3,1)); 
 	float ndotl = dot(norm,lightDir);
@@ -325,7 +289,7 @@ vec3 ShadeBoat( vec3 pos, vec3 ray )
 	vec3 specular = s*vec3(1,1,1); // white specular color
 
 	vec3 rr = reflect(ray,norm); // reflection vector
-	specular += mix( vec3(0,.04,.04), Sky(rr), smoothstep( -.1, .1, rr.y ) ); // add sky color to specular color
+	specular += mix( vec3(0,.04,.04), ShadeSky(rr), smoothstep( -.1, .1, rr.y ) ); // add sky color to specular color
 	
 	// fresnel effect: amount of reflected light from a surface 
 	// increases as the viewing angle approaches a grazing angle
@@ -333,7 +297,7 @@ vec3 ShadeBoat( vec3 pos, vec3 ray )
 	float fresnel = pow(1.0-abs(ndotr),5.0);
 	fresnel = mix( .001, 1.0, fresnel );
 
-	col = mix( col, specular, fresnel );
+	col = mix( col, specular, fresnel);
 	
 	return col;
 }
@@ -407,21 +371,21 @@ vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 	refractedRay = normalize(refractedRay);
 	
 	// color of reflection + checks if intersecting with ball
-	vec3 reflection = Sky(reflectedRay);
-	float t=TraceBoat(pos, reflectedRay);
+	vec3 reflection = ShadeSky(reflectedRay);
+	float t=TraceBall(pos, reflectedRay);
 	
 	if (t > 0.0)
 	{
-		reflection = ShadeBoat( pos, reflectedRay );
+		reflection = ShadeBall( pos, reflectedRay );
 	}
 
 	// color of refraction + checks if intersecting with ball
-	t=TraceBoat(pos, refractedRay);
+	t=TraceBall(pos, refractedRay);
 	
 	vec3 col = vec3(0,.04,.04); // under-sea colour
 	if ( t > 0.0 )
 	{
-		col = mix( col, ShadeBoat(pos, refractedRay), exp(-t) );
+		col = mix( col, ShadeBall(pos, refractedRay), exp(-t) );
 	}
 	
 	// mixes reflection and refraction colors based on fresnel term
@@ -436,7 +400,7 @@ vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 /* The function called in the fragment shader */
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
-	ComputeBoatTransform();
+	BallMovement();
 	
 	// vec2 camRot = vec2(.5,.5)+vec2(-.35,4.5)*(0.15);
 	// vec3 pos;
@@ -447,17 +411,17 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     viewRay r = getRay(rot_angles, fragCoord);
 	
 	float to = TraceOcean( r.ori, r.dir );
-	float tb = TraceBoat( r.ori, r.dir );
+	float tb = TraceBall( r.ori, r.dir );
 	
 	vec3 result;
 	if ( to > 0.0 && ( to < tb || tb == 0.0 ) )
 		result = ShadeOcean( r.ori+r.dir*to, r.dir, fragCoord );
 	else if ( tb > 0.0 )
-		result = ShadeBoat( r.ori+r.dir*tb, r.dir );
+		result = ShadeBall( r.ori+r.dir*tb, r.dir );
 	else
 		// changes angle at which we are looking at the sky
 		//result = Sky( r.dir + vec3(1,1,0));
-		result = Sky( r.dir * vec3(0.2,1,0.08));
+		result = ShadeSky( r.dir * vec3(0.2,1,0.08));
 	
 	// vignette effect
 	
@@ -468,5 +432,3 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 void main() {
 	mainImage(fragColor, fragCoord);
 }
-
-
