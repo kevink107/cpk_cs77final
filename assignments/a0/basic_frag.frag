@@ -14,7 +14,7 @@ struct viewRay {
 };
 
 const vec3 camPosition = vec3(-2.226, 1.3, -1.536);
-vec3 ballPosition = vec3(0,0,0);
+vec3 ballPosition;
 
 // from assignment a5
 vec3 gamma2(vec3 col) {
@@ -74,7 +74,7 @@ float noiseOctave(vec3 v, int octaves, float scale, float f1, float f2, int type
 
 	// move the noise around in xz plane over time
 	v *= scale;
-	v += iTime*vec3(0,.1,.1);
+	v += 10*iTime*vec3(0,.1,.1);
 
 	for (int i = 0; i < octaves; i++)
 	{
@@ -90,7 +90,7 @@ float noiseOctave(vec3 v, int octaves, float scale, float f1, float f2, int type
 		} 
 		
 		if (type == 2) {
-			sum += abs(PerlinNoise(v).x-.5)*4.1875;
+			sum += abs(PerlinNoise(v).x-0.5)*4;
 		}
 
 		if (type == 3) {
@@ -117,7 +117,7 @@ float Waves( vec3 pos )
 /* Like Waves, but uses more octaves to create more detailed pattern */
 float WavesDetail( vec3 pos )
 {
-	return noiseOctave(pos, 8, 0.2, 1.775, 2.0, 2, true);
+	return noiseOctave(pos, 8, 0.3, 1.75, 2.0, 2, true);
 }
 
 float WavesSmooth( vec3 pos )
@@ -141,22 +141,10 @@ void BallMovement( void )
 {
 	float period = 30;
 	float amplitude = 0.08; 
-	vec3 v = vec3(0,0,0);
-	v.y = WavesSmooth(v);
-	v.z += iTime;
+	vec3 v = vec3(0,0,4);
+	v.y = WavesSmooth(v)-0.15;
+	v.z -= 2.5*iTime;
 	ballPosition = v + amplitude * sin(period*iTime);
-}
-
-/* Directional ball vector in local coordinate system to world space */
-vec3 BallToWorld( vec3 dir )
-{
-	return dir.x*ballRight + dir.x*ballUp + dir.x*ballForward;
-}
-
-/* Directional world space vector to ball's local coordinate system */
-vec3 WorldToBall( vec3 dir )
-{
-	return vec3( dot(dir,ballPosition), dot(dir,ballUp), dot(dir,ballForward) );
 }
 
 /* Makes ball */
@@ -182,7 +170,6 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 {
 	pos -= ballPosition; // subtract ball position from position vector
 	vec3 norm = normalize(pos); // gets surface normal
-	pos = WorldToBall(pos); // transform pos vector from world to ball space
 	
 	vec3 lightDir = normalize(vec3(-2,3,1)); 
 	float ndotl = dot(norm,lightDir);
@@ -202,15 +189,11 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
     float phi = atan(-pos.z, pos.x) + PI;
 
     float u = phi / (2.0 * PI); // longitude component
-    float v = 0.5 + (asin(-pos.y / radius) / PI); // latitude component
 
     // divide longitude into six sections
-    float section = floor(u * 6.0);
+    float section = mod(floor((u * 6.0) + iTime * 5),6.);
 
-    if (section == 0.0 || section == 2.0 || section == 4.0) {
-        col = vec3(1.0); // alternating white bands
-    }
-    else if (section == 1.0) {
+    if (section == 1.0) {
         col = vec3(1.0, 0.0, 0.0); // red band
     }
     else if (section == 3.0) {
@@ -260,7 +243,7 @@ float OceanDistanceFieldDetail( vec3 pos )
 vec3 OceanNormal( vec3 pos )
 {
 	vec3 norm;
-	vec2 d = vec2(.01*length(pos),0);
+	vec2 d = vec2(.02*length(pos),0);
 	
 	norm.x = OceanDistanceFieldDetail( pos+d.xyy )-OceanDistanceFieldDetail( pos-d.xyy );
 	norm.y = OceanDistanceFieldDetail( pos+d.yxy )-OceanDistanceFieldDetail( pos-d.yxy );
@@ -283,7 +266,7 @@ float TraceOcean( vec3 pos, vec3 ray )
 		if ( h < .01 || t > 100.0 ) 
 			break;
 
-		h = OceanDistanceField(pos + t*ray); //distance to ocean surface
+		h = OceanDistanceFieldDetail(pos + t*ray); //distance to ocean surface
 		t += h; //increment total distance traveled
 	}
 	
@@ -304,7 +287,7 @@ vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 	
 	// reflection and refraction rays based on surface normal and viewing ray
 	vec3 reflectedRay = ray-2.0*norm*ndotr; 
-	vec3 refractedRay = ray+(-cos(1.33*acos(-ndotr))-ndotr)*norm;	
+	vec3 refractedRay = ray+(-cos(1.3*acos(-ndotr))-ndotr)*norm;	
 	refractedRay = normalize(refractedRay);
 	
 	// color of reflection + checks if intersecting with ball
