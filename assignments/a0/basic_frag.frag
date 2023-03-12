@@ -222,7 +222,7 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 
 	col = mix( col, specular, fresnel);
 	
-	return col;
+	return col * 0.1;
 }
 
 
@@ -270,7 +270,7 @@ float TraceOcean( vec3 pos, vec3 ray )
 		t += h; //increment total distance traveled
 	}
 	
-	// return 0 if distance to surface too large
+	// return 0 if distance to surface too larget
 	if ( h > .1 )
 		return 0.0;
 	
@@ -334,7 +334,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 		result = ShadeBall( r.ori+r.dir*tb, r.dir );
 	else
 		// changes angle at which we are looking at the sky
-		result = ShadeSky( r.dir * vec3(0.25,1,0.08));
+		result = ShadeSky( vec3(0.8,0,0) + r.dir * vec3(1,2.5,1));
 	
 	fragColor = vec4(gamma2(result),1);
 }

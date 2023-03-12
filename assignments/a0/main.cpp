@@ -93,12 +93,19 @@ public:
 			// "posz.jpg", // back
 			// "negz.jpg" // front
 
-			"clouds1_east.bmp",
-			"clouds1_west.bmp",
-			"clouds1_up.bmp",
-			"clouds1_down.bmp",
-			"clouds1_south.bmp",
-			"clouds1_north.bmp"
+			// "clouds1_east.bmp",
+			// "clouds1_west.bmp",
+			// "clouds1_up.bmp",
+			// "clouds1_down.bmp",
+			// "clouds1_south.bmp",
+			// "clouds1_north.bmp"
+
+			"galaxy-X.tga",
+			"galaxy+X.tga",
+			"galaxy+Y.tga",
+			"galaxy-Y.tga",
+			"galaxy+Z.tga",
+			"galaxy-Z.tga"
 		};
 
 		unsigned int cubemapTexture = loadCubemap(faces);
