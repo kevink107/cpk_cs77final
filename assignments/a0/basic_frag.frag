@@ -141,7 +141,7 @@ void BallMovement( void )
 {
 	float period = 30;
 	float amplitude = 0.08; 
-	vec3 v = vec3(0,0,4);
+	vec3 v = vec3(0,0,5);
 	v.y = WavesSmooth(v)-0.15;
 	v.z -= 2.5*iTime;
 	ballPosition = v + amplitude * sin(period*iTime);
