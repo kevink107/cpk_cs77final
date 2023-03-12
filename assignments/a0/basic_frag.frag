@@ -174,13 +174,10 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 	vec3 lightDir = normalize(vec3(-2,3,1)); 
 	float ndotl = dot(norm,lightDir);
 	
-	// light value for given surface point - applies some light bleed to simulate subsurface scattering through plastic?
-	vec3 light = smoothstep(-.1,1.0,ndotl)*vec3(1.0,.9,.8)+vec3(.06,.1,.1);
-
-	// anti-alias factor for rendering?
-	float aa = 4.0/iResolution.x;
-
-	// kev
+	// light value for given surface point 
+	vec3 diffuse = vec3(1.0,.9,.8);
+	vec3 ambient = vec3(.06,.1,.1);
+	vec3 light = max(0,ndotl) * diffuse + ambient;
 	
 	vec3 col = vec3(1.0);
 	float PI = 3.1415926535;
@@ -204,7 +201,6 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
     }
 	col = col*light; // multiply color by surface lighting
 
-	// kev
 	
 	// specular 
 	vec3 h = normalize(lightDir-ray); // half vector between light and view directions
