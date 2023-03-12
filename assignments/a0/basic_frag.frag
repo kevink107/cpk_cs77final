@@ -14,7 +14,7 @@ struct viewRay {
 };
 
 const vec3 camPosition = vec3(-2.226, 1.3, -1.536);
-vec3 ballPosition;
+vec3 ballPosition = vec3(0,0,0);
 
 // from assignment a5
 vec3 gamma2(vec3 col) {
@@ -68,112 +68,62 @@ vec2 PerlinNoise(vec3 x)
 	return mix(noise.yw, noise.xz, f.z );
 }
 
-
-/* Generates height map for waves in water surface */
-float Waves( vec3 pos )
+float noiseOctave(vec3 v, int octaves, float scale, float f1, float f2, int type, bool rotate) 
 {
-	const int octaves = 5;
 	float sum = 0.0;
 
-	// need to do the octaves from large to small, otherwise things don't line up
-	// (because I rotate by 45 degrees on each octave)
-	pos *= .5;
-	pos += iTime*vec3(0,.1,.1);
+	// move the noise around in xz plane over time
+	v *= scale;
+	v += iTime*vec3(0,.1,.1);
 
-	for ( int i=0; i < octaves; i++ )
+	for (int i = 0; i < octaves; i++)
 	{
-		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		sum *= 1.25;
-		sum += (PerlinNoise(pos).x) * (PerlinNoise(pos).y + 1.0);
-		pos *= 1.75;
+		if (rotate)
+		{
+			// rotate the noise by 45 degrees
+			v = (v.yzx + v.zyx*vec3(1,-1,1))/sqrt(2.0);
+		}
+		sum *= f1;
+
+		if (type == 1) {
+			sum += abs(PerlinNoise(v).x-0.5)*(PerlinNoise(v).y + 1.0);
+		} 
+		
+		if (type == 2) {
+			sum += abs(PerlinNoise(v).x-.5)*4.1875;
+		}
+
+		if (type == 3) {
+			sum += sqrt(pow(PerlinNoise(v).x-.5,2.0)+.01)*1.85;
+		}
+
+		v *= f2;
 	}
 	sum /= exp2(float(octaves));
+	// Your implementation ends here
+
+	if (type == 3) {
+		return 0.5-sum;
+	}
 	
-	return 0.5-sum;
+	return 0.5*(0.5-sum);
+}
+
+float Waves( vec3 pos )
+{
+	return noiseOctave(pos, 5, 0.5, 1.25, 1.75, 1, false);
 }
 
 /* Like Waves, but uses more octaves to create more detailed pattern */
 float WavesDetail( vec3 pos )
 {
-	const int octaves = 8;
-	float sum = 0.0;
-
-	// need to do the octaves from large to small, otherwise things don't line up
-	// (because I rotate by 45 degrees on each octave)
-	pos *= .2*vec3(1,1,1);
-	pos += iTime*vec3(0,.1,.1);
-
-	for ( int i=0; i < octaves; i++ )
-	{
-		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		sum *= 1.775;
-		sum += abs(PerlinNoise(pos).x-.5)*4.1875;
-		pos *= 2.0;
-	}
-	sum /= exp2(float(octaves));
-	
-	return (0.5-sum)*0.5;
+	return noiseOctave(pos, 8, 0.2, 1.775, 2.0, 2, true);
 }
 
-/* Like Waves, but uses sqrt to calculate height values */
 float WavesSmooth( vec3 pos )
 {
-	const int octaves = 8;
-	float sum = 0.0;
 
-	// need to do the octaves from large to small, otherwise things don't line up
-	// (because I rotate by 45 degrees on each octave)
-	pos *= .2*vec3(1,1,1);
-	pos += iTime*vec3(0,.1,.1);
-
-	for ( int i=0; i < octaves; i++ )
-	{
-		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0);
-		//// THIS IS IMPT FOR THE HEIGHT AND MOTION OF THE BALL (the first constant and the last constant in particular)
-		sum += sqrt(pow(PerlinNoise(pos).x-.5,2.0)+.01)*1.85;
-		pos *= 2.0;
-	}
-	sum /= exp2(float(octaves));
-	
-	return 0.5-sum;
-}
-
-/* */
-float WaveCrests( vec3 ipos, in vec2 fragCoord )
-{
-	// number of octaves for Perlin noise
-	const int octaves1 = 6;
-	const int octaves2 = 20;
-	float sum = 0.0;
-
-	// first set of octaves
-	vec3 pos = ipos * 0.1; //scale down the position vector
-	pos += iTime*vec3(0,.1,.1);
-
-	for (int i=0; i < octaves1; i++)
-	{
-		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0); // rotate by 45 degrees on each octave
-		sum *= 2.0;
-		sum += abs(PerlinNoise(pos*4.0).x - 0.5) * 2.0; // generate noise and accumulate
-		pos *= 2.0; // scale position for next octave
-	}
-
-	// second set of octaves
-	vec3 pos2 = pos;
-	pos = pos2 * exp2(float(octaves1));
-	pos.y = -.05*iTime;
-	for ( int i=octaves1; i < octaves2; i++ )
-	{
-		pos = (pos.yzx + pos.zyx*vec3(1,-1,1))/sqrt(2.0); 
-		sum *= 2.0;
-		sum += pow(abs(PerlinNoise(pos*0.2).x - 0.5) * 5.0, 40.0);
-		pos *= 2.0;
-	}
-
-	// normalize accumulated value?
-	sum /= 1500.0;
-	
-	return pow(smoothstep(.1,-.1,sum),6.0);
+	return noiseOctave(pos, 8, 0.2, 1.0, 2.0, 3, true);
 }
 
 /* returns color of sky for a given direction */
@@ -182,17 +132,18 @@ vec3 ShadeSky(vec3 ray)
 	return (texture(cubmapTexture, ray)).rgb;
 }
 
-vec3 ballRight = vec3(0,1,0);
-vec3 ballUp = vec3(0,0,1);
+vec3 ballRight = vec3(0,0,1);
+vec3 ballUp = vec3(0,1,0);
 vec3 ballForward = vec3(1,0,0);
 
 // make ball bob up and down over time
 void BallMovement( void )
 {
-	float period = 25;
+	float period = 30;
 	float amplitude = 0.08; 
 	vec3 v = vec3(0,0,0);
 	v.y = WavesSmooth(v);
+	v.z += iTime;
 	ballPosition = v + amplitude * sin(period*iTime);
 }
 
@@ -284,7 +235,7 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 	// increases as the viewing angle approaches a grazing angle
 	float ndotr = dot(norm,ray);
 	float fresnel = pow(1.0-abs(ndotr),5.0);
-	fresnel = mix( .001, 1.0, fresnel );
+	fresnel = mix( .01, 1.0, fresnel );
 
 	col = mix( col, specular, fresnel);
 	
@@ -292,14 +243,10 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 }
 
 
-const int i = 0;
-
 /* Distance from input position to the ocean surface */
 float OceanDistanceField( vec3 pos )
 {
-	int n= i%3;
-	n+=1;
-	return pos.y - n*1.2*Waves(pos);
+	return pos.y - Waves(pos);
 }
 
 /* Uses WavesDetail function to make ocean more realistic */
@@ -372,7 +319,7 @@ vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 	// color of refraction + checks if intersecting with ball
 	t=TraceBall(pos, refractedRay);
 	
-	vec3 col = vec3(0,.04,.04); // under-sea colour
+	vec3 col = vec3(0,.06,.06); // under-sea colour
 	if ( t > 0.0 )
 	{
 		col = mix( col, ShadeBall(pos, refractedRay), exp(-t) );
@@ -382,7 +329,6 @@ vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 	col = mix( col, reflection, fresnel );
 	
 	// adds foam to surface color - MAY NOT NEED
-	col = mix( col, vec3(1), WaveCrests(pos,fragCoord) );
 	
 	return col;
 }
@@ -405,7 +351,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 		result = ShadeBall( r.ori+r.dir*tb, r.dir );
 	else
 		// changes angle at which we are looking at the sky
-		result = ShadeSky( r.dir * vec3(0.2,1,0.08));
+		result = ShadeSky( r.dir * vec3(0.25,1,0.08));
 	
 	fragColor = vec4(gamma2(result),1);
 }
