@@ -8,11 +8,13 @@ uniform int iFrame;
 in vec2 fragCoord; 
 out vec4 fragColor;
 
+// ray struct
 struct viewRay {
     vec3 ori;
     vec3 dir;
 };
 
+// hardcoded camera position and initialize ball position
 const vec3 camPosition = vec3(-2.226, 1.3, -1.536);
 vec3 ballPosition;
 
@@ -35,25 +37,25 @@ vec4 hash42(vec2 p)
 
 viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 {
-	//// cosines and sines of rotation angles...
+	// cosines and sines of rotation angles...
     vec2 cosines = vec2(cos(thetas.x), cos(thetas.y));
 	vec2 sines = vec2(sin(thetas.x), sin(thetas.y));
     
-	//// create ray
+	// create ray
     vec3 tempRay;
     tempRay.xy = fragCoord.xy - iResolution.xy*.5;
 	tempRay.z = iResolution.y - 50;
 	tempRay = normalize(tempRay);
     
-	//// rotate ray by theta_x about x axis
+	// rotate ray by theta_x about x axis
    	tempRay.yz = vec2(tempRay.y*cosines.x, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
-	//// rotate ray by theta_y about y axis
+	// rotate ray by theta_y about y axis
 	tempRay.xz = vec2(tempRay.x*cosines.y, tempRay.z*cosines.y)+ vec2(tempRay.z*sines.y, -tempRay.x*sines.y);
 	
 	return viewRay(camPosition, tempRay.xyz);
 }
 
-/* type: vec3 */
+// generates perlin noise using bilinear interpolation
 vec2 PerlinNoise(vec3 x)
 {
     vec3 i = floor(x);
@@ -67,6 +69,7 @@ vec2 PerlinNoise(vec3 x)
 
 	return mix(noise.yw, noise.xz, f.z );
 }
+
 
 float noiseOctave(vec3 v, int octaves, float scale, float f1, float f2, int type, bool rotate) 
 {
@@ -132,11 +135,7 @@ vec3 ShadeSky(vec3 ray)
 	return (texture(cubmapTexture, ray)).rgb;
 }
 
-vec3 ballRight = vec3(0,0,1);
-vec3 ballUp = vec3(0,1,0);
-vec3 ballForward = vec3(1,0,0);
-
-// make ball bob up and down over time
+// make ball bob up and down over time and move it forward
 void BallMovement( void )
 {
 	float period = 30;
@@ -147,7 +146,7 @@ void BallMovement( void )
 	ballPosition = v + amplitude * sin(period*iTime);
 }
 
-/* Makes ball */
+// ray trace beachball
 float TraceBall( vec3 pos, vec3 ray )
 {
 	vec3 c = ballPosition;
@@ -176,11 +175,6 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 	
 	// light value for given surface point - applies some light bleed to simulate subsurface scattering through plastic?
 	vec3 light = smoothstep(-.1,1.0,ndotl)*vec3(1.0,.9,.8)+vec3(.06,.1,.1);
-
-	// anti-alias factor for rendering?
-	float aa = 4.0/iResolution.x;
-
-	// kev
 	
 	vec3 col = vec3(1.0);
 	float PI = 3.1415926535;
@@ -203,8 +197,6 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
         col = vec3(0.0, 1.0, 0.0); // green band
     }
 	col = col*light; // multiply color by surface lighting
-
-	// kev
 	
 	// specular 
 	vec3 h = normalize(lightDir-ray); // half vector between light and view directions
@@ -227,13 +219,13 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 
 
 /* Distance from input position to the ocean surface */
-float OceanDistanceField( vec3 pos )
+float OceanDistanceField(vec3 pos)
 {
 	return pos.y - Waves(pos);
 }
 
 /* Uses WavesDetail function to make ocean more realistic */
-float OceanDistanceFieldDetail( vec3 pos )
+float OceanDistanceFieldDetail(vec3 pos)
 {
 
 	return pos.y - WavesDetail(pos);
@@ -311,32 +303,28 @@ vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 	// mixes reflection and refraction colors based on fresnel term
 	col = mix( col, reflection, fresnel );
 	
-	// adds foam to surface color - MAY NOT NEED
-	
 	return col;
 }
 
 /* The function called in the fragment shader */
-void mainImage(out vec4 fragColor, in vec2 fragCoord)
-{
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 	BallMovement();
 
+	// sets the angle at which we are looking at the ocean
 	vec2 rot_angles = vec2(0.3, 0.9668);
     viewRay r = getRay(rot_angles, fragCoord);
 	
-	float to = TraceOcean( r.ori, r.dir );
-	float tb = TraceBall( r.ori, r.dir );
+	float to = TraceOcean(r.ori, r.dir);
+	float tb = TraceBall(r.ori, r.dir);
+
+	vec3 result = ShadeSky(r.dir * vec3(0.25,1,0.08));
+
+	if (to > 0.0 && (to < tb || tb == 0.0))
+		result = ShadeOcean(r.ori+r.dir*to, r.dir, fragCoord);
+	else if (tb > 0.0)
+		result = ShadeBall(r.ori+r.dir*tb, r.dir);
 	
-	vec3 result;
-	if ( to > 0.0 && ( to < tb || tb == 0.0 ) )
-		result = ShadeOcean( r.ori+r.dir*to, r.dir, fragCoord );
-	else if ( tb > 0.0 )
-		result = ShadeBall( r.ori+r.dir*tb, r.dir );
-	else
-		// changes angle at which we are looking at the sky
-		result = ShadeSky( r.dir * vec3(0.25,1,0.08));
-	
-	fragColor = vec4(gamma2(result),1);
+	fragColor = vec4(gamma2(result).rgb,1.0);
 }
 
 void main() {
