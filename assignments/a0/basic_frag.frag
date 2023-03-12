@@ -129,7 +129,7 @@ float WavesSmooth( vec3 pos )
 /* returns color of sky for a given direction */
 vec3 ShadeSky(vec3 ray)
 {
-	return (texture(cubmapTexture, ray)).rgb;
+	return (texture(cubmapTexture, vec3(ray.xy, -ray.z))).rgb;
 }
 
 vec3 ballRight = vec3(0,0,1);
@@ -171,7 +171,7 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 	pos -= ballPosition; // subtract ball position from position vector
 	vec3 norm = normalize(pos); // gets surface normal
 	
-	vec3 lightDir = normalize(vec3(-2,3,1)); 
+	vec3 lightDir = normalize(vec3(1,5,1)); 
 	float ndotl = dot(norm,lightDir);
 	
 	// light value for given surface point - applies some light bleed to simulate subsurface scattering through plastic?
@@ -202,23 +202,22 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
     else if (section == 5.0) {
         col = vec3(0.0, 1.0, 0.0); // green band
     }
-	col = col*light; // multiply color by surface lighting
+	col = col*light*2; // multiply color by surface lighting
 
 	// kev
 	
 	// specular 
 	vec3 h = normalize(lightDir-ray); // half vector between light and view directions
-	float s = pow(max(0.0,dot(norm,h)),100.0)*100.0/32.0; // specular intensity
+	float s = pow(max(0.0,dot(norm,h)),100.0)*10.0/32.0; // specular intensity
 	vec3 specular = s*vec3(1,1,1); // white specular color
 
 	vec3 rr = reflect(ray,norm); // reflection vector
-	specular += mix( vec3(0,.04,.04), ShadeSky(rr), smoothstep( -.1, .1, rr.y ) ); // add sky color to specular color
+	specular += mix( vec3(0,.7,.04), ShadeSky(rr), smoothstep( -.1, .1, rr.y ) ); // add sky color to specular color
 	
 	// fresnel effect: amount of reflected light from a surface 
 	// increases as the viewing angle approaches a grazing angle
 	float ndotr = dot(norm,ray);
-	float fresnel = pow(1.0-abs(ndotr),5.0);
-	fresnel = mix( .01, 1.0, fresnel );
+	float fresnel = pow(1.0-abs(ndotr),5);
 
 	col = mix( col, specular, fresnel);
 	
@@ -291,7 +290,7 @@ vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
 	refractedRay = normalize(refractedRay);
 	
 	// color of reflection + checks if intersecting with ball
-	vec3 reflection = ShadeSky(reflectedRay);
+	vec3 reflection = ShadeSky(reflectedRay) * 4;
 	float t=TraceBall(pos, reflectedRay);
 	
 	if (t > 0.0)
@@ -335,6 +334,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 	else
 		// changes angle at which we are looking at the sky
 		result = ShadeSky( vec3(0.8,0,0) + r.dir * vec3(1,2.5,1));
+		//result = ShadeSky( vec3(0,0,0) + r.dir);
 	
 	fragColor = vec4(gamma2(result),1);
 }
