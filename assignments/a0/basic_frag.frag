@@ -38,13 +38,13 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 	//// cosines and sines of rotation angles...
     vec2 cosines = vec2(cos(thetas.x), cos(thetas.y));
 	vec2 sines = vec2(sin(thetas.x), sin(thetas.y));
-    
+
 	//// create ray
     vec3 tempRay;
     tempRay.xy = fragCoord.xy - iResolution.xy*.5;
 	tempRay.z = iResolution.y - 50;
 	tempRay = normalize(tempRay);
-    
+
 	//// rotate ray by theta_x about x axis
    	tempRay.yz = vec2(tempRay.y*cosines.x, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
 	//// rotate ray by theta_y about y axis
@@ -76,10 +76,8 @@ float noiseOctave(vec3 v, int octaves, float scale, float f1, float f2, int type
 	v *= scale;
 	v += 10*iTime*vec3(0,.1,.1);
 
-	for (int i = 0; i < octaves; i++)
-	{
-		if (rotate)
-		{
+	for (int i = 0; i < octaves; i++) {
+		if (rotate) {
 			// rotate the noise by 45 degrees
 			v = (v.yzx + v.zyx*vec3(1,-1,1))/sqrt(2.0);
 		}
@@ -88,19 +86,15 @@ float noiseOctave(vec3 v, int octaves, float scale, float f1, float f2, int type
 		if (type == 1) {
 			sum += abs(PerlinNoise(v).x-0.5)*(PerlinNoise(v).y + 1.0);
 		} 
-		
 		if (type == 2) {
 			sum += abs(PerlinNoise(v).x-0.5)*4;
 		}
-
 		if (type == 3) {
 			sum += sqrt(pow(PerlinNoise(v).x-.5,2.0)+.01)*1.85;
 		}
-
 		v *= f2;
 	}
-	sum /= exp2(float(octaves));
-	// Your implementation ends here
+	sum /= exp2(float(octaves));\
 
 	if (type == 3) {
 		return 0.5-sum;
@@ -170,17 +164,14 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
 {
 	pos -= ballPosition; // subtract ball position from position vector
 	vec3 norm = normalize(pos); // gets surface normal
-	
+
 	vec3 lightDir = normalize(vec3(-2,3,1)); 
 	float ndotl = dot(norm,lightDir);
-	
-	// light value for given surface point - applies some light bleed to simulate subsurface scattering through plastic?
-	vec3 light = smoothstep(-.1,1.0,ndotl)*vec3(1.0,.9,.8)+vec3(.06,.1,.1);
 
-	// anti-alias factor for rendering?
-	float aa = 4.0/iResolution.x;
-
-	// kev
+	// light value for given surface point - lambertian component (ambient + diffuse)
+	vec3 ambient = vec3(.06,.1,.1);
+	vec3 diffuse = vec3(1.0,.9,.8);
+	vec3 light = max(0,ndotl) * diffuse + ambient;
 	
 	vec3 col = vec3(1.0);
 	float PI = 3.1415926535;
@@ -204,11 +195,9 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
     }
 	col = col*light; // multiply color by surface lighting
 
-	// kev
-	
 	// specular 
-	vec3 h = normalize(lightDir-ray); // half vector between light and view directions
-	float s = pow(max(0.0,dot(norm,h)),100.0)*100.0/32.0; // specular intensity
+	vec3 r = normalize(lightDir-ray); // half vector between light and view directions
+	float s = pow(max(0.0,dot(norm,r)),100.0)*100.0/32.0; // specular intensity
 	vec3 specular = s*vec3(1,1,1); // white specular color
 
 	vec3 rr = reflect(ray,norm); // reflection vector
