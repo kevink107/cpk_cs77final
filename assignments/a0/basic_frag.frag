@@ -250,14 +250,14 @@ vec3 refractRay(vec3 rayDir, vec3 normal, float eta) {
 
 // get surface normal of ocean
 vec3 getOceanNormal(vec3 pt) {
-	vec3 norm;
+	vec3 normal = vec3(0.,0.,0.);
 	float d = 0.02*length(pt);
 	
-	norm.x = getOceanDist(pt+vec3(d,0.,0.))-getOceanDist(pt-vec3(d,0.,0.));
-	norm.y = getOceanDist(pt+vec3(0.,d,0.))-getOceanDist(pt-vec3(0.,d,0.));
-	norm.z = getOceanDist(pt+vec3(0.,0.,d))-getOceanDist(pt-vec3(0.,0.,d));
+	normal.x = getOceanDist(pt+vec3(d,0.,0.))-getOceanDist(pt-vec3(d,0.,0.));
+	normal.y = getOceanDist(pt+vec3(0.,d,0.))-getOceanDist(pt-vec3(0.,d,0.));
+	normal.z = getOceanDist(pt+vec3(0.,0.,d))-getOceanDist(pt-vec3(0.,0.,d));
 
-	return normalize(norm);
+	return normalize(normal);
 }
 
 // shades ocean
@@ -307,8 +307,7 @@ void moveBall() {
 	float amplitude = 0.08; 
 
 	// set ball position
-	vec3 v = vec3(0,0,5);
-	v.y = waveHigher(v)-0.15;
+	vec3 v = vec3(0,0.3,5);
 
 	// move ball forward in z
 	v.z -= 2.5*iTime;
