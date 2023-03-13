@@ -164,7 +164,7 @@ float getOceanDist(vec3 rayOri) {
 // ray march ocean surface
 float traceOcean(vec3 rayOri, vec3 rayDir) {
 	// distance to ocean surface
-	float distToOcean = 0.1;
+	float distToOcean = getOceanDist(rayOri);
 	float t = 0.0; 
 
 	for (int i=0; i < 90; i++) {
