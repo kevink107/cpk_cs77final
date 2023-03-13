@@ -14,9 +14,10 @@ struct viewRay {
     vec3 dir;
 };
 
-// hardcoded camera position and initialize ball position
+// hardcoded camera position and ocean color, initialize ball position
 const vec3 camPosition = vec3(-2.226, 1.3, -1.536);
-vec3 ballPosition;
+vec3 ballCenter;
+vec3 oceanColor = vec3(0,.06,.06);
 
 // from assignment a5
 vec3 gamma2(vec3 col) {
@@ -24,19 +25,15 @@ vec3 gamma2(vec3 col) {
 }
 
 // sample hash function from shadertoy (https://www.shadertoy.com/view/4sKSzw)
-vec4 hash42(vec2 p)
-{   
+vec4 hash42(vec2 p) {   
     p -= floor(p / 289.0) * 289.0;
     p += vec2(223.35734, 550.56781);
     p *= p;
-    
     float xy = p.x * p.y;
-    
     return vec4(fract(xy * 0.00000012), fract(xy * 0.00000543), fract(xy * 0.00000192), fract(xy * 0.00000423));
 }
 
-viewRay getRay(in vec2 thetas, in vec2 fragCoord)
-{
+viewRay getRay(in vec2 thetas, in vec2 fragCoord) {
 	// cosines and sines of rotation angles...
     vec2 cosines = vec2(cos(thetas.x), cos(thetas.y));
 	vec2 sines = vec2(sin(thetas.x), sin(thetas.y));
@@ -56,8 +53,7 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord)
 }
 
 // generates perlin noise using bilinear interpolation
-vec2 PerlinNoise(vec3 x)
-{
+vec2 PerlinNoise(vec3 x) {
     vec3 i = floor(x);
     vec3 f = fract(x);
 	f = f*f*(3.0-2.0*f);
@@ -67,118 +63,108 @@ vec2 PerlinNoise(vec3 x)
 		mix(hash42((i.xy + vec2(0.0,1.0))), hash42((i.xy + vec2(1.0,1.0))), f.x),
 		f.y);
 
-	return mix(noise.yw, noise.xz, f.z );
+	return mix(vec2(noise.y, 0), noise.xz, f.z);
 }
 
 
-float noiseOctave(vec3 v, int octaves, float scale, float f1, float f2, int type, bool rotate) 
-{
+float noiseOctave(vec3 v, int octaves, float scale, float multiplySum, float multiplyV, int waveType, bool rotate) {
 	float sum = 0.0;
 
-	// move the noise around in xz plane over time
+	// scale and move the noise around in xz plane over time
 	v *= scale;
 	v += 10*iTime*vec3(0,.1,.1);
 
 	for (int i = 0; i < octaves; i++) {
+		sum *= multiplySum;
 		if (rotate) {
 			// rotate the noise by 45 degrees
 			v = (v.yzx + v.zyx*vec3(1,-1,1))/sqrt(2.0);
 		}
-		sum *= f1;
-
-		if (type == 1) {
-			sum += abs(PerlinNoise(v).x-0.5)*(PerlinNoise(v).y + 1.0);
-		} 
-		if (type == 2) {
-			sum += abs(PerlinNoise(v).x-0.5)*4;
+		// increment sum based on type of waver
+		if (waveType == 1) {
+			sum += 4 * abs(PerlinNoise(v).x-0.5);
 		}
-		if (type == 3) {
+		if (waveType == 2) {
 			sum += sqrt(pow(PerlinNoise(v).x-.5,2.0)+.01)*1.85;
 		}
-		v *= f2;
+		v *= multiplyV;
 	}
-	sum /= exp2(float(octaves));\
-
-	if (type == 3) {
-		return 0.5-sum;
-	}
+	sum /= exp2(octaves);
 	
 	return 0.5*(0.5-sum);
 }
 
-float Waves( vec3 pos )
-{
-	return noiseOctave(pos, 5, 0.5, 1.25, 1.75, 1, false);
+float waveLower(vec3 pos) {
+	return noiseOctave(pos, 8, 0.3, 1.75, 2.0, 1, true);
 }
 
-/* Like Waves, but uses more octaves to create more detailed pattern */
-float WavesDetail( vec3 pos )
-{
-	return noiseOctave(pos, 8, 0.3, 1.75, 2.0, 2, true);
+float waveHigher(vec3 pos) {
+
+	return 2 * noiseOctave(pos, 8, 0.2, 1.0, 2.0, 2, true);
 }
 
-float WavesSmooth( vec3 pos )
-{
-
-	return noiseOctave(pos, 8, 0.2, 1.0, 2.0, 3, true);
-}
-
-/* returns color of sky for a given direction */
-vec3 ShadeSky(vec3 ray)
-{
+// sample from skybox color
+vec3 ShadeSky(vec3 ray) {
 	return (texture(cubmapTexture, ray)).rgb;
 }
 
-// make ball bob up and down over time and move it forward
-void BallMovement( void )
-{
+// make ball bob up and down over time and move it forward in z
+void BallMovement() {
+	// control height and speed of ball bobbing
 	float period = 30;
 	float amplitude = 0.08; 
+
+	// set ball position
 	vec3 v = vec3(0,0,5);
-	v.y = WavesSmooth(v)-0.15;
+	v.y = waveHigher(v)-0.15;
+
+	// move ball forward in z
 	v.z -= 2.5*iTime;
-	ballPosition = v + amplitude * sin(period*iTime);
+
+	// move ball up and down
+	ballCenter = v + amplitude * sin(period*iTime);
 }
 
-// ray trace beachball
-float TraceBall( vec3 pos, vec3 ray )
-{
-	vec3 c = ballPosition;
-	c -= pos;
-	float r = 0.7; // ball radius
-	float t = dot(c,ray); // distance between ray origin and intersect point of ray and ball?
+// ray trace beachball (used optimized signed distance function)
+float TraceBall(vec3 rayOrigin, vec3 rayDirection) {
+	vec3 center = ballCenter;
+	center -= rayOrigin;
+
+	// distance between ray origin and ball center
+	float t = dot(center,rayDirection); 
 
 	// distance between ball center and intersection point of the ray with the ball
-	float p = length(c-t*ray);
+	float p = length(center-t*rayDirection);
+	// ball radius
+	float radius = 0.7; 
 
-	if ( p > r )
+	// ray misses ball
+	if (radius < p)
 		return 0.0;
 
-	// if intersection point inside ball
-	return t-sqrt(r*r-p*p);
+	// t value if ray intersects ball
+	return t-sqrt(pow(radius,2)-pow(p,2));
 }
 
-/* Shades/colors floating beachball pattern */
-vec3 ShadeBall( vec3 pos, vec3 ray )
-{
-	pos -= ballPosition; // subtract ball position from position vector
-	vec3 norm = normalize(pos); // gets surface normal
+// shades beachball
+vec3 ShadeBall( vec3 intersectionPoint, vec3 ray ) {
+	intersectionPoint -= ballCenter;
+	// get surface normal
+	vec3 norm = normalize(intersectionPoint); 
 
+	// hardcoded light direction
 	vec3 lightDir = normalize(vec3(-2,3,1)); 
 	float ndotl = dot(norm,lightDir);
-
-	// light value for given surface point - lambertian component (ambient + diffuse)
-	vec3 ambient = vec3(.06,.1,.1);
-	vec3 diffuse = vec3(1.0,.9,.8);
-	vec3 light = max(0,ndotl) * diffuse + ambient;
 	
-	vec3 col = vec3(1.0);
+	// default color white
+	vec3 col = vec3(1.0, 1.0, 1.0);
 	float PI = 3.1415926535;
 
-    float radius = sqrt(pos.x*pos.x + pos.y*pos.y + pos.z*pos.z);
-    float phi = atan(-pos.z, pos.x) + PI;
+    float radius = sqrt(pow(intersectionPoint.x,2) + pow(intersectionPoint.y,2) + pow(intersectionPoint.z, 2));
+    float phi = atan(-intersectionPoint.z, intersectionPoint.x) + PI;
 
-    float u = phi / (2.0 * PI); // longitude component
+	// longitude component
+    float u = phi / (2.0 * PI); 
 
     // divide longitude into six sections
     float section = mod(floor((u * 6.0) + iTime * 5),6.);
@@ -192,112 +178,121 @@ vec3 ShadeBall( vec3 pos, vec3 ray )
     else if (section == 5.0) {
         col = vec3(0.0, 1.0, 0.0); // green band
     }
-	col = col*light; // multiply color by surface lighting
+
+	// light value for given surface point - lambertian component (ambient + diffuse)
+	vec3 ambient = vec3(.06,.1,.1);
+	vec3 diffuse = vec3(1.0,.9,.8);
 
 	// specular 
 	vec3 r = normalize(lightDir-ray); // half vector between light and view directions
-	float s = pow(max(0.0,dot(norm,r)),100.0)*100.0/32.0; // specular intensity
-	vec3 specular = s*vec3(1,1,1); // white specular color
+	float specular = pow(max(0.0,dot(norm,r)),10.0);
 
-	vec3 rr = reflect(ray,norm); // reflection vector
-	specular += mix( vec3(0,.04,.04), ShadeSky(rr), smoothstep( -.1, .1, rr.y ) ); // add sky color to specular color
+	vec3 light = max(0,ndotl) * diffuse + ambient + specular;
+
+	// include color in lighting
+	col = col*light; 
+
+	// // specular 
+	// vec3 r = normalize(lightDir-ray); // half vector between light and view directions
+	// float s = pow(max(0.0,dot(norm,r)),100.0)*100.0/32.0; // specular intensity
+	// vec3 specular = s*vec3(1,1,1); // white specular color
+
+	// vec3 rr = reflect(ray,norm); // reflection vector
+	// specular += mix( vec3(0,.04,.04), ShadeSky(rr), smoothstep( -.1, .1, rr.y ) ); // add sky color to specular color
 	
-	// fresnel effect: amount of reflected light from a surface 
-	// increases as the viewing angle approaches a grazing angle
-	float ndotr = dot(norm,ray);
-	float fresnel = pow(1.0-abs(ndotr),5.0);
-	fresnel = mix( .01, 1.0, fresnel );
+	// // fresnel effect: amount of reflected light from a surface 
+	// // increases as the viewing angle approaches a grazing angle
+	// float ndotr = dot(norm,ray);
+	// float fresnel = pow(1.0-abs(ndotr),5.0);
+	// fresnel = mix( .01, 1.0, fresnel );
 
-	col = mix( col, specular, fresnel);
+	// col = mix( col, specular, fresnel);
 	
 	return col;
 }
 
+// vertical distance from ray origin to ocean surface
+float oceanDistance(vec3 pos) {
 
-/* Distance from input position to the ocean surface */
-float OceanDistanceField(vec3 pos)
-{
-	return pos.y - Waves(pos);
+	return pos.y - waveLower(pos);
 }
 
-/* Uses WavesDetail function to make ocean more realistic */
-float OceanDistanceFieldDetail(vec3 pos)
-{
-
-	return pos.y - WavesDetail(pos);
-}
-
-/* Calculates normal vector of the ocean */
-vec3 OceanNormal( vec3 pos )
-{
+// get surface normal of ocean
+vec3 OceanNormal(vec3 pos) {
 	vec3 norm;
-	vec2 d = vec2(.02*length(pos),0);
+	float d = 0.02*length(pos);
 	
-	norm.x = OceanDistanceFieldDetail( pos+d.xyy )-OceanDistanceFieldDetail( pos-d.xyy );
-	norm.y = OceanDistanceFieldDetail( pos+d.yxy )-OceanDistanceFieldDetail( pos-d.yxy );
-	norm.z = OceanDistanceFieldDetail( pos+d.yyx )-OceanDistanceFieldDetail( pos-d.yyx );
+	norm.x = oceanDistance(pos+vec3(d,0.,0.))-oceanDistance(pos-vec3(d,0.,0.));
+	norm.y = oceanDistance(pos+vec3(0.,d,0.))-oceanDistance(pos-vec3(0.,d,0.));
+	norm.z = oceanDistance(pos+vec3(0.,0.,d))-oceanDistance(pos-vec3(0.,0.,d));
 
-	
 	return normalize(norm);
 }
 
-/* Ray marching algorithm that traces a ray through an ocean volume to 
-determine the distance to the surface of the ocean */
-float TraceOcean( vec3 pos, vec3 ray )
-{
-	float h = 1.0; // distance to ocean surface
-	float t = 0.0; // distance traveled along the ray
+// ray march ocean surface
+float TraceOcean(vec3 pos, vec3 ray) {
+	// distance to ocean surface
+	float distToOcean = 0.1;
+	float t = 0.0; 
 
-	for ( int i=0; i < 100; i++ )
-	{
+	for (int i=0; i < 90; i++) {
 		// exit loop if distance to surface is very small or we've traveled too far
-		if ( h < .01 || t > 100.0 ) 
+		if (distToOcean < .01 || t > 90.0) 
 			break;
 
-		h = OceanDistanceFieldDetail(pos + t*ray); //distance to ocean surface
-		t += h; //increment total distance traveled
-	}
-	
-	// return 0 if distance to surface too large
-	if ( h > .1 )
+		distToOcean = oceanDistance(pos + t*ray);
+		// increment distance traveled
+		t += distToOcean; 
+	}	
+	// ray misses ocean
+	if (distToOcean > .1) {
 		return 0.0;
-	
+	}
 	return t;
 }
 
-/* Makes the color of a point on the ocean surface for a given viewing ray and screen coordinates */
-vec3 ShadeOcean( vec3 pos, vec3 ray, in vec2 fragCoord )
-{
-	vec3 norm = OceanNormal(pos); //surface normal of given ocean point
-	float ndotr = dot(ray,norm); 
+// refract ray (from OpenGL docs)
+vec3 refractRay(vec3 rayDir, vec3 normal, float eta) {
+	float k = 1.0 - eta * eta * (1.0 - dot(normal, rayDir) * dot(normal, rayDir));
+    if (k < 0.0) {
+        return vec3(0.,0.,0.);
+	}
+	return vec3(eta * rayDir - (eta * dot(normal, rayDir) + sqrt(k)) * normal);
+}
 
-	float fresnel = pow(1.0-abs(ndotr),5.0); //fresnel term for reflection
+// shades ocean
+vec3 ShadeOcean(vec3 intersectionPoint, vec3 rayDir) {
+	// get surface normal at intersection point
+	vec3 n = OceanNormal(intersectionPoint); 
+	float ndotr = dot(rayDir,n); 
 	
 	// reflection and refraction rays based on surface normal and viewing ray
-	vec3 reflectedRay = ray-2.0*norm*ndotr; 
-	vec3 refractedRay = ray+(-cos(1.3*acos(-ndotr))-ndotr)*norm;	
-	refractedRay = normalize(refractedRay);
+	vec3 reflectedRay = rayDir-2.0*ndotr*n; 
+	vec3 refractedRay = refractRay(normalize(rayDir), normalize(n), 1.0/1.33);
 	
-	// color of reflection + checks if intersecting with ball
+	// default color of reflection is the sky color
 	vec3 reflection = ShadeSky(reflectedRay);
-	float t=TraceBall(pos, reflectedRay);
-	
-	if (t > 0.0)
-	{
-		reflection = ShadeBall( pos, reflectedRay );
+	// if reflection hits the ball, use the ball color instead
+	float t = TraceBall(intersectionPoint, reflectedRay);
+	if (t > 0.0) {
+		reflection = ShadeBall(intersectionPoint, reflectedRay);
 	}
 
-	// color of refraction + checks if intersecting with ball
-	t=TraceBall(pos, refractedRay);
-	
-	vec3 col = vec3(0,.06,.06); // under-sea colour
-	if ( t > 0.0 )
-	{
-		col = mix( col, ShadeBall(pos, refractedRay), exp(-t) );
+	// default color of refraction is the ocean color
+	vec3 refraction = oceanColor;
+	// if refraction hits the ball, interpolate between the ball color and the ocean color based on t value
+	// the further away the ball is underwater, the more ocean color is used
+	t = TraceBall(intersectionPoint, refractedRay);
+	if (t > 0.0) {
+		refraction = mix(refraction, ShadeBall(intersectionPoint, refractedRay), exp2(-t));
 	}
 	
 	// mixes reflection and refraction colors based on fresnel term
-	col = mix( col, reflection, fresnel );
+	// uses schlick's approximation
+	float r0 = pow(((1.0-1.33)/(1.0+1.33)),2.0);
+	float fresnel = r0+(1-r0)*(pow(1.0-abs(ndotr),5.0));
+
+	vec3 col = mix(refraction, reflection, fresnel);
 	
 	return col;
 }
@@ -315,12 +310,15 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 
 	vec3 result = ShadeSky(r.dir * vec3(0.25,1,0.08));
 
-	if (to > 0.0 && (to < tb || tb == 0.0))
-		result = ShadeOcean(r.ori+r.dir*to, r.dir, fragCoord);
-	else if (tb > 0.0)
-		result = ShadeBall(r.ori+r.dir*tb, r.dir);
-	
-	fragColor = vec4(gamma2(result).rgb,1.0);
+	if (to > 0.0 && (to < tb || tb == 0.0)) {
+		vec3 intersectionPoint = r.ori+r.dir*to;
+		result = ShadeOcean(intersectionPoint, r.dir);
+	}
+	else if (tb > 0.0) {
+		vec3 intersectionPoint = r.ori+r.dir*tb;
+		result = ShadeBall(intersectionPoint, r.dir);
+	}
+	fragColor = vec4(gamma2(result).rgb, 1.0);
 }
 
 void main() {
