@@ -224,8 +224,8 @@ vec3 shadeBall(vec3 intersectionPoint, vec3 rayDir) {
 	float ndotl = dot(normal,lightPos);
 	
 	vec3 i_a = col * 1.2;
-	vec3 i_d = col * 1.;
-	vec3 i_s = col * 0.3;
+	vec3 i_d = col * 1.5;
+	vec3 i_s = col * 0.4;
 
 	const float k_a = 0.2;
 	const float k_d = 0.5;
