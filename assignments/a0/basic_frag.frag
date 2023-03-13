@@ -298,7 +298,6 @@ vec3 shadeOcean(vec3 intersectionPoint, vec3 rayDir) {
 	
 	// default color of reflection is the sky color
 	vec3 reflection = shadeSky(reflectedRay);
-	// if reflection hits the ball, use the ball color instead
 	float t = traceBall(intersectionPoint, reflectedRay);
 	if (t > 0.0) {
 		reflection = shadeBall(intersectionPoint, reflectedRay);
