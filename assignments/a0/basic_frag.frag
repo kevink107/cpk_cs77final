@@ -25,6 +25,29 @@ float oceanSpeed = 10*iTime;
 vec3 ballCenter;
 const float PI = 3.1415926535;
 
+/* MISC */
+
+// make ball bob up and down over time and move it forward in z
+void moveBall() {
+	// control height and speed of ball bobbing
+	float period = 30;
+	float amplitude = 0.08; 
+
+	// set ball position
+	vec3 v = vec3(0,0.3,5);
+
+	// move ball forward in z
+	v.z -= 2.5*iTime;
+
+	// move ball up and down
+	ballCenter = v + amplitude * sin(period*iTime);
+}
+
+// from assignment a5
+vec3 gamma2(vec3 col) {
+    return vec3(sqrt(col.r), sqrt(col.g), sqrt(col.b));
+}
+
 /* NOISE FUNCTIONS */
 
 // sample hash function from shadertoy (https://www.shadertoy.com/view/4sKSzw)
@@ -296,29 +319,6 @@ vec3 shadeOcean(vec3 intersectionPoint, vec3 rayDir) {
 	vec3 col = mix(refraction, reflection, fresnel);
 	
 	return col;
-}
-
-/* MISC */
-
-// make ball bob up and down over time and move it forward in z
-void moveBall() {
-	// control height and speed of ball bobbing
-	float period = 30;
-	float amplitude = 0.08; 
-
-	// set ball position
-	vec3 v = vec3(0,0.3,5);
-
-	// move ball forward in z
-	v.z -= 2.5*iTime;
-
-	// move ball up and down
-	ballCenter = v + amplitude * sin(period*iTime);
-}
-
-// from assignment a5
-vec3 gamma2(vec3 col) {
-    return vec3(sqrt(col.r), sqrt(col.g), sqrt(col.b));
 }
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
