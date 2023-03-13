@@ -223,9 +223,9 @@ vec3 shadeBall(vec3 intersectionPoint, vec3 rayDir) {
 	vec3 lightPos = vec3(-2,3,0); 
 	float ndotl = dot(normal,lightPos);
 	
-	vec3 i_a = col * 0.5;
-	vec3 i_d = col * 0.8;
-	vec3 i_s = col * 1.;
+	vec3 i_a = col * 1.2;
+	vec3 i_d = col * 1.;
+	vec3 i_s = col * 0.3;
 
 	const float k_a = 0.2;
 	const float k_d = 0.5;
@@ -238,13 +238,13 @@ vec3 shadeBall(vec3 intersectionPoint, vec3 rayDir) {
 
 	// diffusive term
 	vec3 l_j = normalize(lightPos - intersectionPoint);
-	float lambert = max(0., dot(normal,l_j));
+	float lambert = max(0.001, dot(normal,l_j));
 	vec3 diffuse = k_d * i_d * col.rgb * lambert;
 
 	// specular term
 	vec3 v = normalize(camPosition - intersectionPoint);
 	vec3 r = reflect(-l_j,normal);
-	float spec = pow(max(0., dot(v, r)),p);
+	float spec = pow(max(0, dot(v, r)),p);
 	vec3 specular = k_s * i_s * spec;
 
 	col = diffuse + ambient + specular;
