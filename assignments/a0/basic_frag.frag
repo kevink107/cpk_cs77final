@@ -17,8 +17,8 @@ struct viewRay {
 /* GLOBAL VARIABLES */
 
 // initialize camera position and viewing angles
-const vec3 camPosition = vec3(-2.226, 1.3, -1.536);
-vec2 camRotation = vec2(0.3, 0.9668);
+const vec3 camPosition = vec3(-2.226, 0.2, -1.536);
+vec2 camRotation = vec2(-0.1, 0.9668);
 
 // set ocean color and speed
 vec3 oceanColor = vec3(0,.06,.06);
