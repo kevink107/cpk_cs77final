@@ -14,11 +14,16 @@ struct viewRay {
     vec3 dir;
 };
 
-// initialize camera and ball positions, ocean color and speed
+// initialize camera position and viewing angles
 const vec3 camPosition = vec3(-2.226, 1.3, -1.536);
-vec3 ballCenter;
+vec2 camRotation = vec2(0.3, 0.9668);
+
+// set ocean color and speed
 vec3 oceanColor = vec3(0,.06,.06);
 float oceanSpeed = 10*iTime;
+
+vec3 ballCenter;
+const float PI = 3.1415926535;
 
 /* NOISE FUNCTIONS */
 
@@ -163,7 +168,6 @@ vec3 shadeSky(vec3 rayDir) {
 // shades beachball
 vec3 shadeBall(vec3 intersectionPoint, vec3 rayDir) {
 	intersectionPoint -= ballCenter;
-	float PI = 3.1415926535;
 
     float radius = sqrt(pow(intersectionPoint.x,2) + pow(intersectionPoint.y,2) + pow(intersectionPoint.z, 2));
     float phi = atan(-intersectionPoint.z, intersectionPoint.x) + PI;
@@ -172,7 +176,7 @@ vec3 shadeBall(vec3 intersectionPoint, vec3 rayDir) {
     float u = phi / (2.0 * PI); 
 
     // divide longitude into six sections
-    float section = mod(floor((u * 6.0) + iTime * 5),6.);
+    float section = mod(floor((u * 6.0) + iTime * 5),6.0);
 
 	// default color white
 	vec3 col = vec3(1.0, 1.0, 1.0);
@@ -321,9 +325,7 @@ vec3 gamma2(vec3 col) {
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 	moveBall();
 
-	// sets the angle at which we are looking at the ocean
-	vec2 rot_angles = vec2(0.3, 0.9668);
-    viewRay r = getRay(rot_angles, fragCoord);
+    viewRay r = getRay(camRotation, fragCoord);
 	
 	float t_O = traceOcean(r.ori, r.dir);
 	float t_B = traceBall(r.ori, r.dir);
