@@ -248,7 +248,7 @@ vec3 refractRay(vec3 rayDir, vec3 normal, float eta) {
 	return vec3(eta * rayDir - (eta * dot(normal, rayDir) + sqrt(k)) * normal);
 }
 
-// get surface normal of ocean
+// get surface normal of ocean using finite difference approximation
 vec3 getOceanNormal(vec3 pt) {
 	vec3 normal = vec3(0.,0.,0.);
 	float d = 0.02*length(pt);
@@ -324,17 +324,22 @@ vec3 gamma2(vec3 col) {
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 	moveBall();
 
+	// get ray from camera
     viewRay r = getRay(camRotation, fragCoord);
 	
+	// trace ray for ball and ocean
 	float t_O = traceOcean(r.ori, r.dir);
 	float t_B = traceBall(r.ori, r.dir);
 
+	// default color is sky color
 	vec3 result = shadeSky(r.dir * vec3(0.25,1,0.08));
 
+	// if ray hits ocean first, use ocean color
 	if (t_O > 0.0 && (t_O < t_B || t_B == 0.0)) {
 		vec3 intersectionPoint = r.dir*t_O + r.ori;
 		result = shadeOcean(intersectionPoint, r.dir);
 	}
+	// if ray hits ball first, use ball color
 	else if (t_B > 0.0) {
 		vec3 intersectionPoint = r.dir*t_B + r.ori;
 		result = shadeBall(intersectionPoint, r.dir);
