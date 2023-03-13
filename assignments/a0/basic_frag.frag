@@ -163,15 +163,6 @@ vec3 shadeSky(vec3 rayDir) {
 // shades beachball
 vec3 shadeBall(vec3 intersectionPoint, vec3 rayDir) {
 	intersectionPoint -= ballCenter;
-	// get surface normal
-	vec3 norm = normalize(intersectionPoint); 
-
-	// hardcoded light direction
-	vec3 lightDir = normalize(vec3(-2,3,1)); 
-	float ndotl = dot(norm,lightDir);
-	
-	// default color white
-	vec3 col = vec3(1.0, 1.0, 1.0);
 	float PI = 3.1415926535;
 
     float radius = sqrt(pow(intersectionPoint.x,2) + pow(intersectionPoint.y,2) + pow(intersectionPoint.z, 2));
@@ -183,6 +174,9 @@ vec3 shadeBall(vec3 intersectionPoint, vec3 rayDir) {
     // divide longitude into six sections
     float section = mod(floor((u * 6.0) + iTime * 5),6.);
 
+	// default color white
+	vec3 col = vec3(1.0, 1.0, 1.0);
+
     if (section == 1.0) {
         col = vec3(1.0, 0.0, 0.0); // red band
     }
@@ -193,34 +187,50 @@ vec3 shadeBall(vec3 intersectionPoint, vec3 rayDir) {
         col = vec3(0.0, 1.0, 0.0); // green band
     }
 
-	// light value for given surface point - lambertian component (ambient + diffuse)
-	vec3 ambient = vec3(.06,.1,.1);
-	vec3 diffuse = vec3(1.0,.9,.8);
+	// get surface normal
+	vec3 normal = normalize(intersectionPoint); 
 
-	// specular 
-	vec3 r = normalize(lightDir-rayDir); // half vector between light and view directions
-	float specular = pow(max(0.0,dot(norm,r)),10.0);
-
-	vec3 light = max(0,ndotl) * diffuse + ambient + specular;
-
-	// include color in lighting
-	col = col*light; 
-
-	// // specular 
-	// vec3 r = normalize(lightDir-ray); // half vector between light and view directions
-	// float s = pow(max(0.0,dot(norm,r)),100.0)*100.0/32.0; // specular intensity
-	// vec3 specular = s*vec3(1,1,1); // white specular color
-
-	// vec3 rr = reflect(ray,norm); // reflection vector
-	// specular += mix( vec3(0,.04,.04), shadeSky(rr), smoothstep( -.1, .1, rr.y ) ); // add sky color to specular color
+	// hardcoded light position
+	vec3 lightPos = vec3(-2,3,0); 
+	float ndotl = dot(normal,lightPos);
 	
-	// // fresnel effect: amount of reflected light from a surface 
-	// // increases as the viewing angle approaches a grazing angle
-	// float ndotr = dot(norm,ray);
-	// float fresnel = pow(1.0-abs(ndotr),5.0);
-	// fresnel = mix( .01, 1.0, fresnel );
+	vec3 i_a = col * 0.5;
+	vec3 i_d = col * 0.8;
+	vec3 i_s = col * 1.;
 
-	// col = mix( col, specular, fresnel);
+	const float k_a = 0.2;
+	const float k_d = 0.5;
+	const float k_s = 0.3;
+
+	const float p = 5.;
+
+	// ambient term
+	vec3 ambient = k_a * i_a;
+
+	// diffusive term
+	vec3 l_j = normalize(lightPos - intersectionPoint);
+	float lambert = max(0., dot(normal,l_j));
+	vec3 diffuse = k_d * i_d * col.rgb * lambert;
+
+	// specular term
+	vec3 v = normalize(camPosition - intersectionPoint);
+	vec3 r = reflect(-l_j,normal);
+	float spec = pow(max(0., dot(v, r)),p);
+	vec3 specular = k_s * i_s * spec;
+
+	col = diffuse + ambient + specular;
+
+	float ndotr = dot(rayDir,normal); 
+	vec3 reflectedRay = rayDir-2.0*ndotr*normal; 
+
+	// reflection color interpolates between sky and ocean color based on y-component of reflection ray
+	vec3 reflection = mix(oceanColor, shadeSky(reflectedRay), smoothstep(-0.2, 0.2, reflectedRay.y));
+
+	// schlick's approximation for fresnel term
+	float r0 = pow(((1.0-1.35)/(1.0+1.35)),2.0);
+	float fresnel = r0+(1-r0)*(pow(1.0-abs(ndotr),5.0));
+
+	col = mix(col,reflection,fresnel);
 	
 	return col;
 }
