@@ -27,7 +27,6 @@ class A0_Driver : public Driver, public OpenGLViewer
 public:
 	// https://learnopengl.com/Advanced-OpenGL/Cubemaps
 	unsigned int loadCubemap(std::vector<std::string> faces) {
-		stbi_set_flip_vertically_on_load(false);
 		unsigned int textureID;
 		glGenTextures(1, &textureID);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
@@ -35,8 +34,8 @@ public:
 		int width, height, nrChannels;
 		for (unsigned int i = 0; i < faces.size(); i++)
 		{
+			stbi_set_flip_vertically_on_load(false);
 			unsigned char *data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
-			stbi_set_flip_vertically_on_load(true);
 			
 			if (data)
 			{
@@ -87,19 +86,12 @@ public:
 
 
 		std::vector<std::string> faces {
-			// "negx.jpg", // right
-			// "posx.jpg", // left
-			// "posy.jpg", // top
-			// "negy.jpg", // bottom
-			// "posz.jpg", // back
-			// "negz.jpg" // front
-
 			"clouds1_east.bmp",
 			"clouds1_west.bmp",
 			"clouds1_up.bmp",
 			"clouds1_down.bmp",
-			"clouds1_south.bmp",
-			"clouds1_north.bmp"
+			"clouds1_north.bmp",
+			"clouds1_south.bmp"
 		};
 
 		unsigned int cubemapTexture = loadCubemap(faces);
