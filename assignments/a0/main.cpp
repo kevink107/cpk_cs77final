@@ -25,6 +25,7 @@ class A0_Driver : public Driver, public OpenGLViewer
 	int frame;
 
 public:
+	// https://learnopengl.com/Advanced-OpenGL/Cubemaps
 	unsigned int loadCubemap(std::vector<std::string> faces) {
 		stbi_set_flip_vertically_on_load(false);
 		unsigned int textureID;

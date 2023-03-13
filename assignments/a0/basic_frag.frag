@@ -14,15 +14,13 @@ struct viewRay {
     vec3 dir;
 };
 
-// hardcoded camera position and ocean color, initialize ball position
+// initialize camera and ball positions, ocean color and speed
 const vec3 camPosition = vec3(-2.226, 1.3, -1.536);
 vec3 ballCenter;
 vec3 oceanColor = vec3(0,.06,.06);
+float oceanSpeed = 10*iTime;
 
-// from assignment a5
-vec3 gamma2(vec3 col) {
-    return vec3(sqrt(col.r), sqrt(col.g), sqrt(col.b));
-}
+/* NOISE FUNCTIONS */
 
 // sample hash function from shadertoy (https://www.shadertoy.com/view/4sKSzw)
 vec4 hash42(vec2 p) {   
@@ -33,7 +31,7 @@ vec4 hash42(vec2 p) {
     return vec4(fract(xy * 0.00000012), fract(xy * 0.00000543), fract(xy * 0.00000192), fract(xy * 0.00000423));
 }
 
-viewRay getRay(in vec2 thetas, in vec2 fragCoord) {
+viewRay getRay(vec2 thetas, vec2 fragCoord) {
 	// cosines and sines of rotation angles...
     vec2 cosines = vec2(cos(thetas.x), cos(thetas.y));
 	vec2 sines = vec2(sin(thetas.x), sin(thetas.y));
@@ -53,7 +51,7 @@ viewRay getRay(in vec2 thetas, in vec2 fragCoord) {
 }
 
 // generates perlin noise using bilinear interpolation
-vec2 PerlinNoise(vec3 x) {
+vec2 perlinNoise(vec3 x) {
     vec3 i = floor(x);
     vec3 f = fract(x);
 	f = f*f*(3.0-2.0*f);
@@ -66,75 +64,56 @@ vec2 PerlinNoise(vec3 x) {
 	return mix(vec2(noise.y, 0), noise.xz, f.z);
 }
 
-
-float noiseOctave(vec3 v, int octaves, float scale, float multiplySum, float multiplyV, int waveType, bool rotate) {
+// generates perlin noise at various octaves using various transformations at each
+float noiseOctave(vec3 v, int octaves, float scale, float multiplySum, float multiplyPosition, int waveType, bool rotate) {
 	float sum = 0.0;
 
-	// scale and move the noise around in xz plane over time
+	// scale and move the noise over time
 	v *= scale;
-	v += 10*iTime*vec3(0,.1,.1);
+	v += oceanSpeed * vec3(0,.1,.1);
 
 	for (int i = 0; i < octaves; i++) {
 		sum *= multiplySum;
+
+		// rotate the noise by 45 degrees
 		if (rotate) {
-			// rotate the noise by 45 degrees
-			v = (v.yzx + v.zyx*vec3(1,-1,1))/sqrt(2.0);
+			v = (v.yzx + v.zyx * vec3(1,-1,1))/sqrt(2.0);
 		}
-		// increment sum based on type of waver
+
+		// increment sum based on type of wave
 		if (waveType == 1) {
-			sum += 4 * abs(PerlinNoise(v).x-0.5);
+			sum += 4 * abs(perlinNoise(v).x - 0.5);
 		}
 		if (waveType == 2) {
-			sum += sqrt(pow(PerlinNoise(v).x-.5,2.0)+.01)*1.85;
+			sum += sqrt(pow(perlinNoise(v).x - 0.5, 2.0) + .01) * 1.85;
 		}
-		v *= multiplyV;
+		v *= multiplyPosition;
 	}
 	sum /= exp2(octaves);
 	
-	return 0.5*(0.5-sum);
+	return 0.5-sum;
 }
 
 float waveLower(vec3 pos) {
-	return noiseOctave(pos, 8, 0.3, 1.75, 2.0, 1, true);
+	return noiseOctave(pos, 8, 0.3, 1.75, 2.0, 1, true)/2.0;
 }
 
 float waveHigher(vec3 pos) {
-
-	return 2 * noiseOctave(pos, 8, 0.2, 1.0, 2.0, 2, true);
+	return noiseOctave(pos, 8, 0.2, 1.0, 2.0, 2, true);
 }
 
-// sample from skybox color
-vec3 ShadeSky(vec3 ray) {
-	return (texture(cubmapTexture, ray)).rgb;
-}
-
-// make ball bob up and down over time and move it forward in z
-void BallMovement() {
-	// control height and speed of ball bobbing
-	float period = 30;
-	float amplitude = 0.08; 
-
-	// set ball position
-	vec3 v = vec3(0,0,5);
-	v.y = waveHigher(v)-0.15;
-
-	// move ball forward in z
-	v.z -= 2.5*iTime;
-
-	// move ball up and down
-	ballCenter = v + amplitude * sin(period*iTime);
-}
+/* RAY MARCHING & TRACING FUNCTIONS */
 
 // ray trace beachball (used optimized signed distance function)
-float TraceBall(vec3 rayOrigin, vec3 rayDirection) {
+float traceBall(vec3 rayOri, vec3 rayDir) {
 	vec3 center = ballCenter;
-	center -= rayOrigin;
+	center -= rayOri;
 
 	// distance between ray origin and ball center
-	float t = dot(center,rayDirection); 
+	float t = dot(center,rayDir); 
 
 	// distance between ball center and intersection point of the ray with the ball
-	float p = length(center-t*rayDirection);
+	float p = length(center-t*rayDir);
 	// ball radius
 	float radius = 0.7; 
 
@@ -146,8 +125,43 @@ float TraceBall(vec3 rayOrigin, vec3 rayDirection) {
 	return t-sqrt(pow(radius,2)-pow(p,2));
 }
 
+// vertical distance from ray origin to ocean surface
+float getOceanDist(vec3 rayOri) {
+
+	return rayOri.y - waveLower(rayOri);
+}
+
+// ray march ocean surface
+float traceOcean(vec3 rayOri, vec3 rayDir) {
+	// distance to ocean surface
+	float distToOcean = 0.1;
+	float t = 0.0; 
+
+	for (int i=0; i < 90; i++) {
+		// exit loop if distance to surface is very small or we've traveled too far
+		if (distToOcean < .01 || t > 90.0) 
+			break;
+
+		distToOcean = getOceanDist(t * rayDir + rayOri);
+		// increment distance traveled
+		t += distToOcean; 
+	}	
+	// ray misses ocean
+	if (distToOcean > .1) {
+		return 0.0;
+	}
+	return t;
+}
+
+/* SHADING FUNCTIONS */
+
+// sample from skybox color
+vec3 shadeSky(vec3 rayDir) {
+	return (texture(cubmapTexture, rayDir)).rgb;
+}
+
 // shades beachball
-vec3 ShadeBall( vec3 intersectionPoint, vec3 ray ) {
+vec3 shadeBall(vec3 intersectionPoint, vec3 rayDir) {
 	intersectionPoint -= ballCenter;
 	// get surface normal
 	vec3 norm = normalize(intersectionPoint); 
@@ -184,7 +198,7 @@ vec3 ShadeBall( vec3 intersectionPoint, vec3 ray ) {
 	vec3 diffuse = vec3(1.0,.9,.8);
 
 	// specular 
-	vec3 r = normalize(lightDir-ray); // half vector between light and view directions
+	vec3 r = normalize(lightDir-rayDir); // half vector between light and view directions
 	float specular = pow(max(0.0,dot(norm,r)),10.0);
 
 	vec3 light = max(0,ndotl) * diffuse + ambient + specular;
@@ -198,7 +212,7 @@ vec3 ShadeBall( vec3 intersectionPoint, vec3 ray ) {
 	// vec3 specular = s*vec3(1,1,1); // white specular color
 
 	// vec3 rr = reflect(ray,norm); // reflection vector
-	// specular += mix( vec3(0,.04,.04), ShadeSky(rr), smoothstep( -.1, .1, rr.y ) ); // add sky color to specular color
+	// specular += mix( vec3(0,.04,.04), shadeSky(rr), smoothstep( -.1, .1, rr.y ) ); // add sky color to specular color
 	
 	// // fresnel effect: amount of reflected light from a surface 
 	// // increases as the viewing angle approaches a grazing angle
@@ -211,46 +225,6 @@ vec3 ShadeBall( vec3 intersectionPoint, vec3 ray ) {
 	return col;
 }
 
-// vertical distance from ray origin to ocean surface
-float oceanDistance(vec3 pos) {
-
-	return pos.y - waveLower(pos);
-}
-
-// get surface normal of ocean
-vec3 OceanNormal(vec3 pos) {
-	vec3 norm;
-	float d = 0.02*length(pos);
-	
-	norm.x = oceanDistance(pos+vec3(d,0.,0.))-oceanDistance(pos-vec3(d,0.,0.));
-	norm.y = oceanDistance(pos+vec3(0.,d,0.))-oceanDistance(pos-vec3(0.,d,0.));
-	norm.z = oceanDistance(pos+vec3(0.,0.,d))-oceanDistance(pos-vec3(0.,0.,d));
-
-	return normalize(norm);
-}
-
-// ray march ocean surface
-float TraceOcean(vec3 pos, vec3 ray) {
-	// distance to ocean surface
-	float distToOcean = 0.1;
-	float t = 0.0; 
-
-	for (int i=0; i < 90; i++) {
-		// exit loop if distance to surface is very small or we've traveled too far
-		if (distToOcean < .01 || t > 90.0) 
-			break;
-
-		distToOcean = oceanDistance(pos + t*ray);
-		// increment distance traveled
-		t += distToOcean; 
-	}	
-	// ray misses ocean
-	if (distToOcean > .1) {
-		return 0.0;
-	}
-	return t;
-}
-
 // refract ray (from OpenGL docs)
 vec3 refractRay(vec3 rayDir, vec3 normal, float eta) {
 	float k = 1.0 - eta * eta * (1.0 - dot(normal, rayDir) * dot(normal, rayDir));
@@ -260,31 +234,44 @@ vec3 refractRay(vec3 rayDir, vec3 normal, float eta) {
 	return vec3(eta * rayDir - (eta * dot(normal, rayDir) + sqrt(k)) * normal);
 }
 
+// get surface normal of ocean
+vec3 getOceanNormal(vec3 pt) {
+	vec3 norm;
+	float d = 0.02*length(pt);
+	
+	norm.x = getOceanDist(pt+vec3(d,0.,0.))-getOceanDist(pt-vec3(d,0.,0.));
+	norm.y = getOceanDist(pt+vec3(0.,d,0.))-getOceanDist(pt-vec3(0.,d,0.));
+	norm.z = getOceanDist(pt+vec3(0.,0.,d))-getOceanDist(pt-vec3(0.,0.,d));
+
+	return normalize(norm);
+}
+
 // shades ocean
-vec3 ShadeOcean(vec3 intersectionPoint, vec3 rayDir) {
+vec3 shadeOcean(vec3 intersectionPoint, vec3 rayDir) {
 	// get surface normal at intersection point
-	vec3 n = OceanNormal(intersectionPoint); 
+	vec3 n = getOceanNormal(intersectionPoint); 
 	float ndotr = dot(rayDir,n); 
 	
 	// reflection and refraction rays based on surface normal and viewing ray
 	vec3 reflectedRay = rayDir-2.0*ndotr*n; 
+	// using water and air IORs
 	vec3 refractedRay = refractRay(normalize(rayDir), normalize(n), 1.0/1.33);
 	
 	// default color of reflection is the sky color
-	vec3 reflection = ShadeSky(reflectedRay);
+	vec3 reflection = shadeSky(reflectedRay);
 	// if reflection hits the ball, use the ball color instead
-	float t = TraceBall(intersectionPoint, reflectedRay);
+	float t = traceBall(intersectionPoint, reflectedRay);
 	if (t > 0.0) {
-		reflection = ShadeBall(intersectionPoint, reflectedRay);
+		reflection = shadeBall(intersectionPoint, reflectedRay);
 	}
 
 	// default color of refraction is the ocean color
 	vec3 refraction = oceanColor;
 	// if refraction hits the ball, interpolate between the ball color and the ocean color based on t value
 	// the further away the ball is underwater, the more ocean color is used
-	t = TraceBall(intersectionPoint, refractedRay);
+	t = traceBall(intersectionPoint, refractedRay);
 	if (t > 0.0) {
-		refraction = mix(refraction, ShadeBall(intersectionPoint, refractedRay), exp2(-t));
+		refraction = mix(refraction, shadeBall(intersectionPoint, refractedRay), exp2(-t));
 	}
 	
 	// mixes reflection and refraction colors based on fresnel term
@@ -297,26 +284,49 @@ vec3 ShadeOcean(vec3 intersectionPoint, vec3 rayDir) {
 	return col;
 }
 
-/* The function called in the fragment shader */
+/* MISC */
+
+// make ball bob up and down over time and move it forward in z
+void moveBall() {
+	// control height and speed of ball bobbing
+	float period = 30;
+	float amplitude = 0.08; 
+
+	// set ball position
+	vec3 v = vec3(0,0,5);
+	v.y = waveHigher(v)-0.15;
+
+	// move ball forward in z
+	v.z -= 2.5*iTime;
+
+	// move ball up and down
+	ballCenter = v + amplitude * sin(period*iTime);
+}
+
+// from assignment a5
+vec3 gamma2(vec3 col) {
+    return vec3(sqrt(col.r), sqrt(col.g), sqrt(col.b));
+}
+
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
-	BallMovement();
+	moveBall();
 
 	// sets the angle at which we are looking at the ocean
 	vec2 rot_angles = vec2(0.3, 0.9668);
     viewRay r = getRay(rot_angles, fragCoord);
 	
-	float to = TraceOcean(r.ori, r.dir);
-	float tb = TraceBall(r.ori, r.dir);
+	float t_O = traceOcean(r.ori, r.dir);
+	float t_B = traceBall(r.ori, r.dir);
 
-	vec3 result = ShadeSky(r.dir * vec3(0.25,1,0.08));
+	vec3 result = shadeSky(r.dir * vec3(0.25,1,0.08));
 
-	if (to > 0.0 && (to < tb || tb == 0.0)) {
-		vec3 intersectionPoint = r.ori+r.dir*to;
-		result = ShadeOcean(intersectionPoint, r.dir);
+	if (t_O > 0.0 && (t_O < t_B || t_B == 0.0)) {
+		vec3 intersectionPoint = r.dir*t_O + r.ori;
+		result = shadeOcean(intersectionPoint, r.dir);
 	}
-	else if (tb > 0.0) {
-		vec3 intersectionPoint = r.ori+r.dir*tb;
-		result = ShadeBall(intersectionPoint, r.dir);
+	else if (t_B > 0.0) {
+		vec3 intersectionPoint = r.dir*t_B + r.ori;
+		result = shadeBall(intersectionPoint, r.dir);
 	}
 	fragColor = vec4(gamma2(result).rgb, 1.0);
 }
