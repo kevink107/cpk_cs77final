@@ -112,10 +112,10 @@ float noiseOctave(vec3 v, int octaves, float scale, float multiplySum, float mul
 
 		// increment sum based on type of wave
 		if (waveType == 1) {
-			sum += 4 * abs(perlinNoise(v).x - 0.5);
+			sum += 10 * abs(perlinNoise(v).x - 0.5);
 		}
 		if (waveType == 2) {
-			sum += sqrt(pow(perlinNoise(v).x - 0.5, 2.0) + .01) * 1.85;
+			sum += sqrt(pow(perlinNoise(v).x - 0.5, 2.0) + .1) * 1.85;
 		}
 		v *= multiplyPosition;
 	}
@@ -276,7 +276,7 @@ vec3 refractRay(vec3 rayDir, vec3 normal, float eta) {
 // get surface normal of ocean using finite difference approximation
 vec3 getOceanNormal(vec3 pt) {
 	vec3 normal = vec3(0.,0.,0.);
-	float d = 0.2*length(pt);
+	float d = 0.02*length(pt);
 	
 	normal.x = getOceanDist(pt+vec3(d,0.,0.))-getOceanDist(pt-vec3(d,0.,0.));
 	normal.y = getOceanDist(pt+vec3(0.,d,0.))-getOceanDist(pt-vec3(0.,d,0.));
