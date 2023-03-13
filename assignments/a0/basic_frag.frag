@@ -61,25 +61,6 @@ vec4 hash42(vec2 p) {
     return vec4(fract(xy * 0.00000012), fract(xy * 0.00000543), fract(xy * 0.00000192), fract(xy * 0.00000423));
 }
 
-viewRay getRay(vec2 thetas, vec2 fragCoord) {
-	// cosines and sines of rotation angles...
-    vec2 cosines = vec2(cos(thetas.x), cos(thetas.y));
-	vec2 sines = vec2(sin(thetas.x), sin(thetas.y));
-    
-	// create ray
-    vec3 tempRay;
-    tempRay.xy = fragCoord.xy - iResolution.xy*.5;
-	tempRay.z = iResolution.y - 50;
-	tempRay = normalize(tempRay);
-    
-	// rotate ray by theta_x about x axis
-   	tempRay.yz = vec2(tempRay.y*cosines.x, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
-	// rotate ray by theta_y about y axis
-	tempRay.xz = vec2(tempRay.x*cosines.y, tempRay.z*cosines.y)+ vec2(tempRay.z*sines.y, -tempRay.x*sines.y);
-	
-	return viewRay(camPosition, tempRay.xyz);
-}
-
 // generates perlin noise using bilinear interpolation
 vec2 perlinNoise(vec3 x) {
     vec3 i = floor(x);
@@ -134,8 +115,28 @@ float waveHigher(vec3 pos) {
 
 /* RAY MARCHING & TRACING FUNCTIONS */
 
+viewRay getRay(vec2 thetas, vec2 fragCoord) {
+	// cosines and sines of rotation angles...
+    vec2 cosines = vec2(cos(thetas.x), cos(thetas.y));
+	vec2 sines = vec2(sin(thetas.x), sin(thetas.y));
+    
+	// create ray
+    vec3 tempRay;
+    tempRay.xy = fragCoord.xy - iResolution.xy*.5;
+	tempRay.z = iResolution.y - 50;
+	tempRay = normalize(tempRay);
+    
+	// rotate ray by theta_x about x axis
+   	tempRay.yz = vec2(tempRay.y*cosines.x, tempRay.z*cosines.x)+ vec2(-tempRay.z*sines.x, tempRay.y*sines.x);
+	// rotate ray by theta_y about y axis
+	tempRay.xz = vec2(tempRay.x*cosines.y, tempRay.z*cosines.y)+ vec2(tempRay.z*sines.y, -tempRay.x*sines.y);
+	
+	return viewRay(camPosition, tempRay.xyz);
+}
+
 // ray trace beachball (used optimized signed distance function)
 float traceBall(vec3 rayOri, vec3 rayDir) {
+	// generate ray from ray origin to ball center
 	vec3 center = ballCenter;
 	center -= rayOri;
 
@@ -157,7 +158,6 @@ float traceBall(vec3 rayOri, vec3 rayDir) {
 
 // vertical distance from ray origin to ocean surface
 float getOceanDist(vec3 rayOri) {
-
 	return rayOri.y - waveLower(rayOri);
 }
 
@@ -323,6 +323,7 @@ vec3 shadeOcean(vec3 intersectionPoint, vec3 rayDir) {
 }
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+	// begin ball animation
 	moveBall();
 
 	// get ray from camera
