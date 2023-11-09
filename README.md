@@ -1,5 +1,8 @@
 # COSC 77/277 Computer Graphics Starter Code Manual
 
+## Demonstration 
+[Click this link to view the final product](https://drive.google.com/file/d/1gkEJpApFcygvHin4CdPbO8i2pB8mQlqi/view?usp=share_link)
+
 ## 0. Quick Guide
 
 If you are already experienced with using CMake to generate a C++ project, please read the following paragraphs for a quick guide. If not, you may read Section 1 and 2 first and then get back to check this section as a summary.
